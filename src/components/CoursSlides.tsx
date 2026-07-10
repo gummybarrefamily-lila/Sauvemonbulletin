@@ -3,12 +3,14 @@
 import { useState } from "react";
 import type { Slide } from "@content/types";
 import { VoiceRecorder } from "./VoiceRecorder";
+import { MotAudio } from "./MotAudio";
 
 /**
  * Lecteur de cours en diapositives. Plus de voix off automatique : l'élève lit
  * le texte de la diapositive à voix haute, s'enregistre et se réécoute.
+ * En chinois/russe (`lang`), les mots deviennent cliquables pour en écouter la prononciation.
  */
-export function CoursSlides({ slides, idBase }: { slides: Slide[]; idBase: string }) {
+export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[]; idBase: string; lang?: string }) {
   const [i, setI] = useState(0);
   const slide = slides[i];
 
@@ -29,13 +31,17 @@ export function CoursSlides({ slides, idBase }: { slides: Slide[]; idBase: strin
               {slide.contenu.map((c, k) => (
                 <li key={k} className="flex items-start gap-2.5 text-lg text-slate-700">
                   <span className="mt-1 text-brand-500">▸</span>
-                  <span>{c}</span>
+                  <span>
+                    <MotAudio texte={c} lang={lang} />
+                  </span>
                 </li>
               ))}
             </ul>
             {slide.visuel && (
               <div className="flex items-center justify-center rounded-2xl bg-white/70 px-6 py-8 sm:w-2/5">
-                <span className="text-center text-3xl font-black text-brand-700 sm:text-4xl">{slide.visuel}</span>
+                <span className="text-center text-3xl font-black text-brand-700 sm:text-4xl">
+                  <MotAudio texte={slide.visuel} lang={lang} />
+                </span>
               </div>
             )}
           </div>

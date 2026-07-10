@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { MemoCard } from "@content/types";
+import { MotAudio } from "./MotAudio";
 
 export function MemoCards({ cards, titre, lang = "fr-FR" }: { cards: MemoCard[]; titre: string; lang?: string }) {
   const [retournees, setRetournees] = useState<Record<number, boolean>>({});
@@ -29,10 +30,15 @@ export function MemoCards({ cards, titre, lang = "fr-FR" }: { cards: MemoCard[];
         {cards.map((c, i) => {
           const face = retournees[i];
           return (
-            <button
+            <div
               key={i}
+              role="button"
+              tabIndex={0}
               onClick={() => setRetournees({ ...retournees, [i]: !face })}
-              className={`min-h-[9rem] rounded-2xl border p-4 text-left transition ${
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") setRetournees({ ...retournees, [i]: !face });
+              }}
+              className={`min-h-[9rem] cursor-pointer rounded-2xl border p-4 text-left transition ${
                 face ? "border-brand-300 bg-brand-50" : "border-slate-200 bg-white hover:border-brand-300"
               }`}
             >
@@ -40,10 +46,10 @@ export function MemoCards({ cards, titre, lang = "fr-FR" }: { cards: MemoCard[];
                 {face ? "Réponse" : "Question"}
               </span>
               <p className={`mt-2 ${face ? "text-brand-900" : "font-semibold text-slate-800"}`}>
-                {face ? c.verso : c.recto}
+                <MotAudio texte={face ? c.verso : c.recto} lang={lang} />
               </p>
               <span className="mt-3 block text-xs text-slate-400">↻ retourner</span>
-            </button>
+            </div>
           );
         })}
       </div>

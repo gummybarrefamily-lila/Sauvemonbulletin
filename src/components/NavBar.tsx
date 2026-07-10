@@ -23,7 +23,7 @@ export function NavBar() {
             Brevet blanc
           </Link>
           <Link href="/mes-notes" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
-            Mes notes
+            Mon bloc-notes
           </Link>
           <Link href="/bilan" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
             Bilan

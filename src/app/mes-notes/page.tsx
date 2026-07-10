@@ -67,7 +67,7 @@ export default function PageMesNotes() {
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900">📝 Mes notes</h1>
+            <h1 className="text-3xl font-bold text-slate-900">📝 Mon bloc-notes</h1>
             <p className="mt-1 text-slate-500">Tes réflexions, organisées par matière et par chapitre.</p>
           </div>
           <button

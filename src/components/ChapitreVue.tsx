@@ -8,9 +8,10 @@ import { Quiz } from "./Quiz";
 import { VoiceRecorder } from "./VoiceRecorder";
 import { MemoCards } from "./MemoCards";
 import { BlocNotes } from "./BlocNotes";
+import { MotAudio } from "./MotAudio";
 import { Examen } from "./Examen";
 
-type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens";
+type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens" | "notes";
 
 const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "cours", label: "Cours", emoji: "🎬" },
@@ -18,6 +19,7 @@ const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "memo", label: "Cartes mémo", emoji: "🃏" },
   { id: "exercices", label: "Exercices", emoji: "✏️" },
   { id: "examens", label: "Examens", emoji: "🎯" },
+  { id: "notes", label: "Bloc-notes", emoji: "📔" },
 ];
 
 export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
@@ -45,9 +47,11 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
     }
   }
 
+  const noteId = `${chapitre.matiere}--${chapitre.niveau}--${chapitre.slug}`;
+
   return (
     <div className="mt-6">
-      <BlocNotes id={`${chapitre.matiere}--${chapitre.niveau}--${chapitre.slug}`} titre={chapitre.titre} />
+      {onglet !== "notes" && <BlocNotes id={noteId} titre={chapitre.titre} />}
       <div className="mb-6 flex flex-wrap gap-1.5 border-b border-slate-200 pb-2">
         {ONGLETS.map((o) => (
           <button
@@ -73,7 +77,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
               ))}
             </ul>
           </div>
-          <CoursSlides slides={chapitre.slides} idBase={chapitre.slug} />
+          <CoursSlides slides={chapitre.slides} idBase={chapitre.slug} lang={langue} />
         </div>
       )}
 
@@ -92,7 +96,9 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
                   {s.points.map((p, k) => (
                     <li key={k} className="flex items-start gap-2">
                       <span className="mt-1 text-brand-500">▸</span>
-                      <span>{p}</span>
+                      <span>
+                        <MotAudio texte={p} lang={langue} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -143,6 +149,16 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
               ))}
             </ul>
           </div>
+        </div>
+      )}
+
+      {onglet === "notes" && (
+        <div>
+          <p className="mb-4 text-sm text-slate-500">
+            Écris ici tes réflexions et les points à retenir pour ce chapitre. Elles sont enregistrées sur
+            ton appareil et regroupées dans « Mon bloc-notes » (dans le menu), où tu peux tout télécharger.
+          </p>
+          <BlocNotes id={noteId} titre={chapitre.titre} variant="inline" />
         </div>
       )}
 
