@@ -22,6 +22,9 @@ export function NavBar() {
           <Link href="/brevet" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 sm:block">
             Brevet blanc
           </Link>
+          <Link href="/mes-notes" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
+            Mes notes
+          </Link>
           <Link href="/bilan" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
             Bilan
           </Link>

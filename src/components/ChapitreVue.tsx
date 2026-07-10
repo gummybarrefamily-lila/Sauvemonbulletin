@@ -7,6 +7,7 @@ import { CoursSlides } from "./CoursSlides";
 import { Quiz } from "./Quiz";
 import { VoiceRecorder } from "./VoiceRecorder";
 import { MemoCards } from "./MemoCards";
+import { BlocNotes } from "./BlocNotes";
 import { Examen } from "./Examen";
 
 type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens";
@@ -46,6 +47,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
 
   return (
     <div className="mt-6">
+      <BlocNotes id={`${chapitre.matiere}--${chapitre.niveau}--${chapitre.slug}`} titre={chapitre.titre} />
       <div className="mb-6 flex flex-wrap gap-1.5 border-b border-slate-200 pb-2">
         {ONGLETS.map((o) => (
           <button
