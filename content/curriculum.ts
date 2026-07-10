@@ -78,15 +78,15 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   maths: {
     "5eme": [
       { slug: "fractions", titre: "Les fractions", disponible: true },
-      { slug: "enchainements-operations", titre: "Enchaînements d'opérations et priorités", disponible: false },
-      { slug: "nombres-relatifs", titre: "Les nombres relatifs", disponible: false },
-      { slug: "calcul-litteral-initiation", titre: "Initiation au calcul littéral", disponible: false },
-      { slug: "symetrie-centrale", titre: "La symétrie centrale", disponible: false },
-      { slug: "triangles", titre: "Les triangles : construction et angles", disponible: false },
-      { slug: "parallelogrammes", titre: "Les parallélogrammes", disponible: false },
-      { slug: "proportionnalite", titre: "La proportionnalité", disponible: false },
-      { slug: "statistiques", titre: "Statistiques : moyenne et effectifs", disponible: false },
-      { slug: "aires-perimetres", titre: "Aires et périmètres", disponible: false },
+      { slug: "enchainements-operations", titre: "Enchaînements d'opérations et priorités", disponible: true },
+      { slug: "nombres-relatifs", titre: "Les nombres relatifs", disponible: true },
+      { slug: "calcul-litteral-initiation", titre: "Initiation au calcul littéral", disponible: true },
+      { slug: "symetrie-centrale", titre: "La symétrie centrale", disponible: true },
+      { slug: "triangles", titre: "Les triangles : construction et angles", disponible: true },
+      { slug: "parallelogrammes", titre: "Les parallélogrammes", disponible: true },
+      { slug: "proportionnalite", titre: "La proportionnalité", disponible: true },
+      { slug: "statistiques", titre: "Statistiques : moyenne et effectifs", disponible: true },
+      { slug: "aires-perimetres", titre: "Aires et périmètres", disponible: true },
     ],
     "4eme": [
       { slug: "relatifs-multiplication-division", titre: "Nombres relatifs : multiplication et division", disponible: false },
@@ -116,13 +116,13 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   francais: {
     "5eme": [
       { slug: "classes-grammaticales", titre: "Les classes grammaticales", disponible: true },
-      { slug: "recit-aventure", titre: "Le récit d'aventures", disponible: false },
-      { slug: "roman-chevalerie", titre: "Le roman de chevalerie", disponible: false },
-      { slug: "imparfait-passe-simple", titre: "Imparfait et passé simple", disponible: false },
-      { slug: "poesie-voyage", titre: "La poésie du voyage", disponible: false },
-      { slug: "fonctions-grammaticales", titre: "Les fonctions grammaticales", disponible: false },
-      { slug: "theatre-comedie", titre: "Le théâtre : la comédie", disponible: false },
-      { slug: "accords-sujet-verbe", titre: "Les accords sujet-verbe et dans le GN", disponible: false },
+      { slug: "recit-aventure", titre: "Le récit d'aventures", disponible: true },
+      { slug: "roman-chevalerie", titre: "Le roman de chevalerie", disponible: true },
+      { slug: "imparfait-passe-simple", titre: "Imparfait et passé simple", disponible: true },
+      { slug: "poesie-voyage", titre: "La poésie du voyage", disponible: true },
+      { slug: "fonctions-grammaticales", titre: "Les fonctions grammaticales", disponible: true },
+      { slug: "theatre-comedie", titre: "Le théâtre : la comédie", disponible: true },
+      { slug: "accords-sujet-verbe", titre: "Les accords sujet-verbe et dans le GN", disponible: true },
     ],
     "4eme": [
       { slug: "lettre-journal-intime", titre: "La lettre et le journal intime", disponible: false },
@@ -148,11 +148,11 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   "physique-chimie": {
     "5eme": [
       { slug: "etats-de-leau", titre: "L'eau et ses états", disponible: true },
-      { slug: "melanges-corps-purs", titre: "Mélanges et corps purs", disponible: false },
-      { slug: "circuits-electriques", titre: "Les circuits électriques", disponible: false },
-      { slug: "sources-lumiere", titre: "Sources et propagation de la lumière", disponible: false },
-      { slug: "mouvement-vitesse", titre: "Mouvement et vitesse", disponible: false },
-      { slug: "systeme-solaire", titre: "La Terre dans le système solaire", disponible: false },
+      { slug: "melanges-corps-purs", titre: "Mélanges et corps purs", disponible: true },
+      { slug: "circuits-electriques", titre: "Les circuits électriques", disponible: true },
+      { slug: "sources-lumiere", titre: "Sources et propagation de la lumière", disponible: true },
+      { slug: "mouvement-vitesse", titre: "Mouvement et vitesse", disponible: true },
+      { slug: "systeme-solaire", titre: "La Terre dans le système solaire", disponible: true },
     ],
     "4eme": [
       { slug: "transformations-chimiques", titre: "Les transformations chimiques", disponible: false },
@@ -174,10 +174,10 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   svt: {
     "5eme": [
       { slug: "nutrition-organismes", titre: "La nutrition des organismes", disponible: true },
-      { slug: "respiration-milieux", titre: "La respiration dans différents milieux", disponible: false },
-      { slug: "geologie-externe", titre: "Géologie externe : érosion et paysages", disponible: false },
-      { slug: "reproduction-vegetale", titre: "La reproduction des végétaux", disponible: false },
-      { slug: "besoins-organes", titre: "Les besoins des organes", disponible: false },
+      { slug: "respiration-milieux", titre: "La respiration dans différents milieux", disponible: true },
+      { slug: "geologie-externe", titre: "Géologie externe : érosion et paysages", disponible: true },
+      { slug: "reproduction-vegetale", titre: "La reproduction des végétaux", disponible: true },
+      { slug: "besoins-organes", titre: "Les besoins des organes", disponible: true },
     ],
     "4eme": [
       { slug: "seismes-volcans", titre: "Séismes et volcans : la tectonique", disponible: true },
@@ -197,11 +197,11 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   "histoire-geo": {
     "5eme": [
       { slug: "byzance-carolingiens", titre: "Byzance et l'Europe carolingienne", disponible: true },
-      { slug: "islam-medieval", titre: "La naissance de l'islam et ses empires", disponible: false },
-      { slug: "feodalite", titre: "Seigneurs et paysans : la féodalité", disponible: false },
-      { slug: "grandes-decouvertes", titre: "Les grandes découvertes", disponible: false },
-      { slug: "croissance-demographique", titre: "La croissance démographique et ses effets", disponible: false },
-      { slug: "ressources-eau-energie", titre: "L'eau et l'énergie : des ressources à ménager", disponible: false },
+      { slug: "islam-medieval", titre: "La naissance de l'islam et ses empires", disponible: true },
+      { slug: "feodalite", titre: "Seigneurs et paysans : la féodalité", disponible: true },
+      { slug: "grandes-decouvertes", titre: "Les grandes découvertes", disponible: true },
+      { slug: "croissance-demographique", titre: "La croissance démographique et ses effets", disponible: true },
+      { slug: "ressources-eau-energie", titre: "L'eau et l'énergie : des ressources à ménager", disponible: true },
     ],
     "4eme": [
       { slug: "traites-negrieres", titre: "Bourgeoisies, commerce et traites négrières", disponible: false },
@@ -224,10 +224,10 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   chinois: {
     "5eme": [
       { slug: "hsk2-se-presenter", titre: "HSK 2 — Se présenter et parler de soi", disponible: true },
-      { slug: "hsk2-famille-ecole", titre: "HSK 2 — La famille et l'école", disponible: false },
-      { slug: "hsk2-quotidien", titre: "HSK 2 — La vie quotidienne : heures et dates", disponible: false },
-      { slug: "hsk2-achats", titre: "HSK 2 — Faire des achats", disponible: false },
-      { slug: "hsk3-preparation", titre: "Vers le HSK 3 — structures et 300 premiers mots", disponible: false },
+      { slug: "hsk2-famille-ecole", titre: "HSK 2 — La famille et l'école", disponible: true },
+      { slug: "hsk2-quotidien", titre: "HSK 2 — La vie quotidienne : heures et dates", disponible: true },
+      { slug: "hsk2-achats", titre: "HSK 2 — Faire des achats", disponible: true },
+      { slug: "hsk3-preparation", titre: "Vers le HSK 3 — structures et 300 premiers mots", disponible: true },
     ],
     "4eme": [
       { slug: "hsk3-voyages", titre: "HSK 3 — Voyager et se déplacer", disponible: true },
@@ -245,9 +245,9 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   russe: {
     "5eme": [
       { slug: "alphabet-cyrillique", titre: "L'alphabet cyrillique : lire et écrire", disponible: true },
-      { slug: "se-presenter", titre: "Se présenter : premiers dialogues", disponible: false },
-      { slug: "nombres-age", titre: "Les nombres et l'âge", disponible: false },
-      { slug: "vocabulaire-danse-1", titre: "Danse-études — le vocabulaire du studio", disponible: false },
+      { slug: "se-presenter", titre: "Se présenter : premiers dialogues", disponible: true },
+      { slug: "nombres-age", titre: "Les nombres et l'âge", disponible: true },
+      { slug: "vocabulaire-danse-1", titre: "Danse-études — le vocabulaire du studio", disponible: true },
     ],
     "4eme": [
       { slug: "conversation-quotidien", titre: "Conversation : la vie quotidienne", disponible: true },
@@ -265,8 +265,8 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   "histoire-danse": {
     "5eme": [
       { slug: "naissance-ballet", titre: "La naissance du ballet : des cours royales à l'Opéra", disponible: true },
-      { slug: "danses-anciennes", titre: "Danses anciennes et danses traditionnelles", disponible: false },
-      { slug: "vocabulaire-classique", titre: "Le vocabulaire de la danse classique", disponible: false },
+      { slug: "danses-anciennes", titre: "Danses anciennes et danses traditionnelles", disponible: true },
+      { slug: "vocabulaire-classique", titre: "Le vocabulaire de la danse classique", disponible: true },
     ],
     "4eme": [
       { slug: "ballet-romantique", titre: "Le ballet romantique : Giselle et les Sylphides", disponible: true },

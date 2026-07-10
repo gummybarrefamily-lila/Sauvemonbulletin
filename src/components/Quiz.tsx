@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import type { Question, Difficulte } from "@content/types";
-import { AudioPlayer } from "./AudioPlayer";
 
 const COULEUR_DIFF: Record<Difficulte, string> = {
   facile: "bg-green-100 text-green-800",
@@ -190,11 +189,6 @@ function OuverteBlock({
           <button onClick={() => setMontre(!montre)} className="text-xs font-semibold text-brand-600 hover:underline">
             {montre ? "Cacher" : "Voir la réponse attendue"}
           </button>
-          {montre && (
-            <span className="flex items-center gap-1.5 text-xs text-slate-500">
-              <AudioPlayer texte={q.reponse} compact label="Lire" />
-            </span>
-          )}
         </div>
       )}
       {montre && !termine && (

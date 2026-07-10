@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import type { Chapitre } from "@content/types";
 import { CoursSlides } from "./CoursSlides";
 import { Quiz } from "./Quiz";
-import { AudioPlayer } from "./AudioPlayer";
+import { VoiceRecorder } from "./VoiceRecorder";
 import { MemoCards } from "./MemoCards";
 import { Examen } from "./Examen";
 
@@ -71,7 +71,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
               ))}
             </ul>
           </div>
-          <CoursSlides slides={chapitre.slides} lang={langue} />
+          <CoursSlides slides={chapitre.slides} idBase={chapitre.slug} />
         </div>
       )}
 
@@ -79,7 +79,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
         <div className="card p-6">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-slate-900">Fiche de révision</h2>
-            <AudioPlayer texte={chapitre.fiche.audio} label="Écouter la fiche" />
+            <VoiceRecorder id={`${chapitre.slug}-fiche`} label="Lire la fiche & m'enregistrer" />
           </div>
           <p className="mt-3 rounded-xl bg-slate-50 p-3 text-slate-700">{chapitre.fiche.intro}</p>
           <div className="prose-fiche mt-4">
