@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  motDePasse    String
+  prenom        String
+  niveau        String   @default("5eme") // 5eme | 4eme | 3eme
+  emailParent   String?
+  danseEtudes   Boolean  @default(false)
+  matieres      String   @default("") // ids de matières suivies, séparés par des virgules
+  creeLe        DateTime @default(now())
+
+  activites  Activite[]
+  revisions  RevisionProgrammee[]
+}
+
+/// Toute activité de l'élève : exercice, examen, automatismes, bilan...
+model Activite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // cours | fiche | exercices | revision | examen | automatismes | hebdo | bilan | brevet
+  matiere   String
+  niveau    String
+  chapitre  String?  // slug du chapitre concerné
+  score     Int      @default(0)
+  scoreMax  Int      @default(0)
+  details   String?  // JSON : détail par chapitre pour les bilans
+  date      DateTime @default(now())
+
+  @@index([userId, date])
+}
+
+/// Révision programmée automatiquement après un bilan (faiblesse détectée).
+model RevisionProgrammee {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matiere   String
+  niveau    String
+  chapitre  String
+  raison    String   // ex : "Score 40% au bilan du 12/09"
+  prevueLe  DateTime
+  faite     Boolean  @default(false)
+  creeLe    DateTime @default(now())
+
+  @@index([userId, prevueLe])
+}
