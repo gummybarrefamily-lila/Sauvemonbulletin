@@ -14,7 +14,7 @@ export default function Matieres() {
         <p className="mt-2 text-slate-500">Choisis une matière pour accéder aux chapitres, cours, fiches et exercices.</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {MATIERES.map((m) => (
-            <Link key={m.id} href={`/matieres/${m.id}`} className="card group flex flex-col p-6 transition hover:-translate-y-1 hover:shadow-md">
+            <Link key={m.id} href={`/matiere?m=${m.id}`} className="card group flex flex-col p-6 transition hover:-translate-y-1 hover:shadow-md">
               <span className="text-4xl">{m.emoji}</span>
               <h2 className="mt-3 text-lg font-bold text-slate-800 group-hover:text-brand-700">{m.nom}</h2>
               <p className="mt-1 text-sm text-slate-500">{m.description}</p>

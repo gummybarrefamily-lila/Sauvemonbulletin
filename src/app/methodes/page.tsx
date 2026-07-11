@@ -32,7 +32,7 @@ export default function PageMethodes() {
               </h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {fiches.map((m) => (
-                  <Link key={m.slug} href={`/methodes/${m.slug}`} className="card group flex items-start gap-3 p-5 transition hover:-translate-y-0.5 hover:shadow-md">
+                  <Link key={m.slug} href={`/methode?s=${m.slug}`} className="card group flex items-start gap-3 p-5 transition hover:-translate-y-0.5 hover:shadow-md">
                     <span className="text-3xl">{m.emoji}</span>
                     <div>
                       <h3 className="font-bold text-slate-800 group-hover:text-brand-700">{m.titre}</h3>

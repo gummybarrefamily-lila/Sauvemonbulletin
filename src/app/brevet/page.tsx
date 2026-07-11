@@ -29,7 +29,7 @@ export default function PageBrevet() {
               {groupe.liste.map((b) => {
                 const info = matiereInfo(b.matiere);
                 return (
-                  <Link key={b.slug} href={`/brevet/${b.slug}`} className="card group flex items-center justify-between p-5 transition hover:-translate-y-0.5 hover:shadow-md">
+                  <Link key={b.slug} href={`/sujet-brevet?s=${b.slug}`} className="card group flex items-center justify-between p-5 transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-3">
                       <span className="text-3xl">{info.emoji}</span>
                       <div>
