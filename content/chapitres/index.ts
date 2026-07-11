@@ -7,6 +7,14 @@ import ch_chinois_5eme_hsk2_famille_ecole from "./chinois--5eme--hsk2-famille-ec
 import ch_chinois_5eme_hsk2_quotidien from "./chinois--5eme--hsk2-quotidien";
 import ch_chinois_5eme_hsk2_se_presenter from "./chinois--5eme--hsk2-se-presenter";
 import ch_chinois_5eme_hsk3_preparation from "./chinois--5eme--hsk3-preparation";
+import ch_espagnol_3eme_vacaciones_viajes from "./espagnol--3eme--vacaciones-viajes";
+import ch_espagnol_4eme_rutina_diaria from "./espagnol--4eme--rutina-diaria";
+import ch_espagnol_5eme_alfabeto_pronunciacion from "./espagnol--5eme--alfabeto-pronunciacion";
+import ch_espagnol_5eme_el_instituto from "./espagnol--5eme--el-instituto";
+import ch_espagnol_5eme_gustos_aficiones from "./espagnol--5eme--gustos-aficiones";
+import ch_espagnol_5eme_la_familia from "./espagnol--5eme--la-familia";
+import ch_espagnol_5eme_numeros_edad from "./espagnol--5eme--numeros-edad";
+import ch_espagnol_5eme_saludos_presentarse from "./espagnol--5eme--saludos-presentarse";
 import ch_francais_3eme_autobiographie from "./francais--3eme--autobiographie";
 import ch_francais_4eme_recit_fantastique from "./francais--4eme--recit-fantastique";
 import ch_francais_5eme_accords_sujet_verbe from "./francais--5eme--accords-sujet-verbe";
@@ -72,6 +80,14 @@ export const CHAPITRES: Chapitre[] = [
   ch_chinois_5eme_hsk2_quotidien,
   ch_chinois_5eme_hsk2_se_presenter,
   ch_chinois_5eme_hsk3_preparation,
+  ch_espagnol_3eme_vacaciones_viajes,
+  ch_espagnol_4eme_rutina_diaria,
+  ch_espagnol_5eme_alfabeto_pronunciacion,
+  ch_espagnol_5eme_el_instituto,
+  ch_espagnol_5eme_gustos_aficiones,
+  ch_espagnol_5eme_la_familia,
+  ch_espagnol_5eme_numeros_edad,
+  ch_espagnol_5eme_saludos_presentarse,
   ch_francais_3eme_autobiographie,
   ch_francais_4eme_recit_fantastique,
   ch_francais_5eme_accords_sujet_verbe,

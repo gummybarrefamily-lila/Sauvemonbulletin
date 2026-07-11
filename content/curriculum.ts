@@ -57,6 +57,13 @@ export const MATIERES: MatiereInfo[] = [
     description: "Alphabet cyrillique et conversation, avec un focus danse-études.",
   },
   {
+    id: "espagnol",
+    nom: "Espagnol LV2",
+    emoji: "🇪🇸",
+    couleur: "bg-orange-100 text-orange-800 border-orange-200",
+    description: "Deuxième langue vivante : de l'alphabet à la conversation courante (A1 vers A2).",
+  },
+  {
     id: "histoire-danse",
     nom: "Histoire de la danse",
     emoji: "🩰",
@@ -260,6 +267,30 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
       { slug: "cas-genitif-datif", titre: "Les cas : génitif et datif", disponible: false },
       { slug: "aspect-verbal", titre: "L'aspect verbal : perfectif et imperfectif", disponible: false },
       { slug: "vocabulaire-danse-3", titre: "Danse-études — audition et scène en russe", disponible: false },
+    ],
+  },
+  espagnol: {
+    "5eme": [
+      { slug: "saludos-presentarse", titre: "Saludos : se présenter", disponible: true },
+      { slug: "alfabeto-pronunciacion", titre: "L'alphabet et la prononciation", disponible: true },
+      { slug: "la-familia", titre: "La famille", disponible: true },
+      { slug: "numeros-edad", titre: "Les nombres et l'âge", disponible: true },
+      { slug: "gustos-aficiones", titre: "Les goûts et les loisirs (gustar)", disponible: true },
+      { slug: "el-instituto", titre: "L'école et l'emploi du temps", disponible: true },
+    ],
+    "4eme": [
+      { slug: "rutina-diaria", titre: "La routine quotidienne", disponible: true },
+      { slug: "la-ciudad", titre: "La ville et les directions", disponible: false },
+      { slug: "la-comida", titre: "La nourriture et le restaurant", disponible: false },
+      { slug: "ropa-compras", titre: "Les vêtements et les achats", disponible: false },
+      { slug: "preterito", titre: "Parler au passé (pretérito)", disponible: false },
+    ],
+    "3eme": [
+      { slug: "vacaciones-viajes", titre: "Vacances et voyages", disponible: true },
+      { slug: "medio-ambiente", titre: "L'environnement", disponible: false },
+      { slug: "futuro-planes", titre: "Le futur et les projets", disponible: false },
+      { slug: "cultura-hispanica", titre: "La culture du monde hispanique", disponible: false },
+      { slug: "subjuntivo-inicio", titre: "Introduction au subjonctif", disponible: false },
     ],
   },
   "histoire-danse": {

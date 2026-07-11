@@ -11,7 +11,7 @@ import { BlocNotes } from "./BlocNotes";
 import { MotAudio } from "./MotAudio";
 import { Examen } from "./Examen";
 
-type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens" | "notes";
+type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens";
 
 const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "cours", label: "Cours", emoji: "🎬" },
@@ -19,11 +19,11 @@ const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "memo", label: "Cartes mémo", emoji: "🃏" },
   { id: "exercices", label: "Exercices", emoji: "✏️" },
   { id: "examens", label: "Examens", emoji: "🎯" },
-  { id: "notes", label: "Bloc-notes", emoji: "📔" },
 ];
 
 export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
   const [onglet, setOnglet] = useState<Onglet>("cours");
+  const [notesOuvert, setNotesOuvert] = useState(false);
   const { data: session } = useSession();
   const langue = chapitre.langueVoix ?? "fr-FR";
 
@@ -50,22 +50,33 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
   const noteId = `${chapitre.matiere}--${chapitre.niveau}--${chapitre.slug}`;
 
   return (
-    <div className="mt-6">
-      {onglet !== "notes" && <BlocNotes id={noteId} titre={chapitre.titre} />}
-      <div className="mb-6 flex flex-wrap gap-1.5 border-b border-slate-200 pb-2">
-        {ONGLETS.map((o) => (
+    <div className="mt-6 lg:flex lg:gap-6">
+      <div className="min-w-0 flex-1">
+        <div className="mb-6 flex flex-wrap items-center gap-1.5 border-b border-slate-200 pb-2">
+          {ONGLETS.map((o) => (
+            <button
+              key={o.id}
+              onClick={() => setOnglet(o.id)}
+              className={`rounded-lg px-3.5 py-2 text-sm font-semibold transition ${
+                onglet === o.id ? "bg-brand-600 text-white" : "text-slate-600 hover:bg-slate-100"
+              }`}
+            >
+              <span className="mr-1.5">{o.emoji}</span>
+              {o.label}
+            </button>
+          ))}
           <button
-            key={o.id}
-            onClick={() => setOnglet(o.id)}
-            className={`rounded-lg px-3.5 py-2 text-sm font-semibold transition ${
-              onglet === o.id ? "bg-brand-600 text-white" : "text-slate-600 hover:bg-slate-100"
+            onClick={() => setNotesOuvert((v) => !v)}
+            className={`ml-auto rounded-lg px-3.5 py-2 text-sm font-semibold transition ${
+              notesOuvert
+                ? "bg-brand-600 text-white"
+                : "border border-brand-200 text-brand-700 hover:bg-brand-50"
             }`}
           >
-            <span className="mr-1.5">{o.emoji}</span>
-            {o.label}
+            <span className="mr-1.5">📔</span>
+            {notesOuvert ? "Masquer le bloc-notes" : "Bloc-notes"}
           </button>
-        ))}
-      </div>
+        </div>
 
       {onglet === "cours" && (
         <div>
@@ -152,20 +163,24 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
         </div>
       )}
 
-      {onglet === "notes" && (
-        <div>
-          <p className="mb-4 text-sm text-slate-500">
-            Écris ici tes réflexions et les points à retenir pour ce chapitre. Elles sont enregistrées sur
-            ton appareil et regroupées dans « Mon bloc-notes » (dans le menu), où tu peux tout télécharger.
+        {!session && (
+          <p className="mt-6 text-center text-xs text-slate-400">
+            💡 Connecte-toi pour enregistrer ta progression et recevoir des révisions personnalisées.
           </p>
-          <BlocNotes id={noteId} titre={chapitre.titre} variant="inline" />
-        </div>
-      )}
+        )}
+      </div>
 
-      {!session && (
-        <p className="mt-6 text-center text-xs text-slate-400">
-          💡 Connecte-toi pour enregistrer ta progression et recevoir des révisions personnalisées.
-        </p>
+      {notesOuvert && (
+        <aside className="fixed inset-x-0 bottom-0 z-40 max-h-[70vh] overflow-auto border-t border-slate-200 bg-white p-3 shadow-2xl lg:static lg:z-auto lg:max-h-none lg:w-96 lg:shrink-0 lg:overflow-visible lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none">
+          <div className="lg:sticky lg:top-20">
+            <BlocNotes
+              id={noteId}
+              titre={chapitre.titre}
+              variant="inline"
+              onClose={() => setNotesOuvert(false)}
+            />
+          </div>
+        </aside>
       )}
     </div>
   );

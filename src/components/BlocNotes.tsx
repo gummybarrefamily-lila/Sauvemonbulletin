@@ -15,10 +15,12 @@ export function BlocNotes({
   id,
   titre,
   variant = "flottant",
+  onClose,
 }: {
   id: string;
   titre: string;
   variant?: "flottant" | "inline";
+  onClose?: () => void;
 }) {
   const [ouvert, setOuvert] = useState(false);
   const [texte, setTexte] = useState("");
@@ -73,16 +75,25 @@ export function BlocNotes({
       <div className="card overflow-hidden">
         <div className="flex items-center justify-between gap-2 border-b border-slate-100 px-4 py-3">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">📝 Mon bloc-notes</h2>
+            <h2 className="text-lg font-bold text-slate-900">📝 Mon bloc-notes</h2>
             <p className="text-xs text-slate-400">{titre}</p>
           </div>
-          <Link href="/mes-notes" className="btn-ghost text-sm">
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="rounded-lg px-2 py-1 text-slate-400 hover:bg-slate-100"
+              aria-label="Masquer le bloc-notes"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <div className="[&>textarea]:h-72 lg:[&>textarea]:h-[26rem]">{zoneTexte}</div>
+        <div className="flex items-center justify-between border-t border-slate-100 px-4 py-2 text-xs text-slate-400">
+          <span>{sauve ? "Enregistré ✓ (sur cet appareil)" : "Enregistrement automatique…"}</span>
+          <Link href="/mes-notes" className="font-semibold text-brand-600 hover:underline">
             Tout voir / télécharger →
           </Link>
-        </div>
-        <div className="[&>textarea]:h-72">{zoneTexte}</div>
-        <div className="border-t border-slate-100 px-4 py-2 text-xs text-slate-400">
-          {sauve ? "Enregistré ✓ (sur cet appareil)" : "Enregistrement automatique…"}
         </div>
       </div>
     );
