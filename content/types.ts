@@ -12,6 +12,7 @@ export type MatiereId =
   | "histoire-geo"
   | "chinois"
   | "russe"
+  | "espagnol"
   | "histoire-danse";
 
 export type Difficulte = "facile" | "moyen" | "avance";

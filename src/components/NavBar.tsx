@@ -22,6 +22,15 @@ export function NavBar() {
           <Link href="/brevet" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 sm:block">
             Brevet blanc
           </Link>
+          <Link href="/problemes-maths" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
+            Problèmes maths
+          </Link>
+          <Link href="/dictee" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
+            Dictée
+          </Link>
+          <Link href="/mes-notes" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
+            Mon bloc-notes
+          </Link>
           <Link href="/bilan" className="hidden rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 lg:block">
             Bilan
           </Link>

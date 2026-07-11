@@ -1,0 +1,450 @@
+import type { Chapitre } from "../types";
+
+export const chapitre: Chapitre = {
+  slug: "systeme-solaire",
+  titre: "La Terre dans le système solaire",
+  matiere: "physique-chimie",
+  niveau: "5eme",
+  description:
+    "Découvrir l'organisation du système solaire autour du Soleil, distinguer étoile et planète, comprendre les mouvements de rotation et de révolution de la Terre, l'origine des saisons, les phases de la Lune et la gravitation universelle.",
+  objectifs: [
+    "Décrire l'organisation du système solaire et distinguer une étoile d'une planète",
+    "Différencier les planètes telluriques et les planètes gazeuses",
+    "Expliquer le mouvement de rotation de la Terre et l'alternance jour/nuit",
+    "Expliquer le mouvement de révolution de la Terre et la véritable origine des saisons",
+    "Décrire le mouvement et les phases de la Lune, et comprendre la gravitation universelle",
+  ],
+  slides: [
+    {
+      titre: "Le Soleil, une étoile",
+      illustration: "🌟",
+      visuel: "Étoile = produit sa propre lumière",
+      contenu: [
+        "Le Soleil est une étoile : il produit lui-même sa lumière",
+        "Cette lumière vient de réactions au cœur du Soleil (fusion nucléaire)",
+        "Une planète, elle, ne produit pas de lumière",
+        "Une planète est visible car elle diffuse la lumière reçue d'une étoile",
+      ],
+      voixOff:
+        "Au centre de notre système, il y a le Soleil, qui est une étoile. Une étoile produit elle-même sa propre lumière, grâce à des réactions qui se déroulent en son cœur. Une planète, au contraire, ne produit aucune lumière : si on peut la voir, c'est parce qu'elle renvoie la lumière qu'elle reçoit d'une étoile, comme un miroir. C'est cette différence qui distingue une étoile d'une planète.",
+    },
+    {
+      titre: "Le système solaire",
+      illustration: "🪐",
+      visuel: "Soleil + 8 planètes + satellites + astéroïdes + comètes",
+      contenu: [
+        "Le système solaire, c'est le Soleil et tout ce qui gravite autour de lui",
+        "8 planètes, leurs satellites naturels (comme la Lune), des astéroïdes, des comètes",
+        "Les distances y sont immenses : on les mesure parfois en unités astronomiques (UA)",
+        "1 UA ≈ 150 millions de km, c'est la distance moyenne Terre-Soleil",
+      ],
+      voixOff:
+        "Le système solaire, c'est l'ensemble formé par le Soleil et par tous les objets qui tournent autour de lui : huit planètes, leurs satellites naturels comme notre Lune, mais aussi des astéroïdes et des comètes. Les distances dans le système solaire sont immenses, alors on utilise parfois une unité pratique, l'unité astronomique. Une unité astronomique vaut environ cent cinquante millions de kilomètres : c'est la distance moyenne qui sépare la Terre du Soleil.",
+    },
+    {
+      titre: "Les planètes telluriques",
+      illustration: "🪨",
+      visuel: "Mercure • Vénus • Terre • Mars",
+      contenu: [
+        "Ce sont les 4 planètes les plus proches du Soleil",
+        "Mercure, Vénus, Terre, Mars",
+        "Elles sont petites, rocheuses et denses",
+        "On les appelle aussi planètes rocheuses",
+      ],
+      voixOff:
+        "Les quatre planètes les plus proches du Soleil sont Mercure, Vénus, la Terre et Mars. On les appelle les planètes telluriques, ou planètes rocheuses, parce qu'elles ont une surface solide faite de roches. Ce sont des planètes plutôt petites, mais très denses.",
+    },
+    {
+      titre: "Les planètes géantes gazeuses",
+      illustration: "🌀",
+      visuel: "Jupiter • Saturne • Uranus • Neptune",
+      contenu: [
+        "Ce sont les 4 planètes les plus éloignées du Soleil",
+        "Jupiter, Saturne, Uranus, Neptune",
+        "Elles sont très grandes mais peu denses, faites surtout de gaz",
+        "Jupiter est la plus grande planète du système solaire",
+      ],
+      voixOff:
+        "Plus loin du Soleil se trouvent les quatre planètes géantes gazeuses : Jupiter, Saturne, Uranus et Neptune. Elles sont beaucoup plus grandes que les planètes telluriques, mais elles sont faites surtout de gaz, ce qui les rend peu denses. Jupiter, la plus grande de toutes les planètes du système solaire, pourrait à elle seule contenir plus de mille fois le volume de la Terre.",
+    },
+    {
+      titre: "La rotation de la Terre : jour et nuit",
+      illustration: "🔄",
+      visuel: "1 tour sur elle-même en 24 h",
+      contenu: [
+        "La Terre tourne sur elle-même autour de l'axe des pôles",
+        "Un tour complet dure environ 24 heures : c'est un jour",
+        "La moitié éclairée par le Soleil vit le jour",
+        "La moitié à l'ombre vit la nuit",
+      ],
+      voixOff:
+        "La Terre tourne sur elle-même, autour d'un axe qui passe par le pôle Nord et le pôle Sud : c'est le mouvement de rotation. Un tour complet dure environ vingt-quatre heures, ce qui correspond à une journée. À chaque instant, la moitié de la Terre tournée vers le Soleil est éclairée : c'est le jour. L'autre moitié, dans l'ombre, vit la nuit. C'est la rotation de la Terre qui explique l'alternance entre le jour et la nuit.",
+    },
+    {
+      titre: "La révolution de la Terre : les saisons",
+      illustration: "☀️",
+      visuel: "1 tour autour du Soleil en 365,25 jours",
+      contenu: [
+        "La Terre tourne aussi autour du Soleil : c'est la révolution",
+        "Un tour complet dure environ 365,25 jours, soit une année",
+        "L'axe de la Terre est incliné d'environ 23,5°",
+        "⚠️ Les saisons sont dues à cette inclinaison, PAS à la distance au Soleil",
+      ],
+      voixOff:
+        "En plus de tourner sur elle-même, la Terre tourne aussi autour du Soleil : c'est le mouvement de révolution, qui dure environ trois cent soixante-cinq jours et quart, c'est-à-dire une année. Attention à un piège très fréquent : ce n'est pas parce que la Terre se rapproche du Soleil qu'il fait plus chaud en été ! En réalité, les saisons sont dues à l'inclinaison de l'axe de la Terre, d'environ vingt-trois virgule cinq degrés par rapport à son plan de trajectoire. Cette inclinaison fait que les rayons du Soleil arrivent plus ou moins directement selon la période de l'année, et que la durée du jour varie.",
+    },
+    {
+      titre: "La Lune, satellite de la Terre",
+      illustration: "🌙",
+      visuel: "1 tour autour de la Terre en 29,5 jours",
+      contenu: [
+        "La Lune est le satellite naturel de la Terre",
+        "Elle tourne autour de la Terre en environ 29,5 jours",
+        "Elle ne produit pas de lumière : elle diffuse celle du Soleil",
+        "On voit une portion variable de sa face éclairée : ce sont les phases de la Lune",
+      ],
+      voixOff:
+        "La Lune est le satellite naturel de la Terre : elle tourne autour de notre planète en environ vingt-neuf jours et demi. Comme une planète, la Lune ne produit aucune lumière propre : elle se contente de renvoyer la lumière qu'elle reçoit du Soleil. Selon les positions du Soleil, de la Terre et de la Lune, on voit depuis la Terre une portion plus ou moins grande de sa face éclairée : c'est ce qui crée les phases de la Lune, comme la nouvelle lune, le premier quartier, la pleine lune et le dernier quartier.",
+    },
+    {
+      titre: "La gravitation universelle",
+      illustration: "🧲",
+      visuel: "Attraction entre 2 objets ⇔ masse et distance",
+      contenu: [
+        "Tous les objets s'attirent mutuellement : c'est la gravitation",
+        "Cette attraction dépend de la masse des objets et de la distance entre eux",
+        "Elle maintient les planètes en orbite autour du Soleil",
+        "Elle maintient aussi la Lune en orbite autour de la Terre, et nous garde au sol",
+      ],
+      voixOff:
+        "Tous les objets de l'Univers s'attirent mutuellement : c'est la gravitation universelle. Cette force d'attraction est plus grande quand les objets sont plus massifs, et plus faible quand ils sont plus éloignés. C'est cette force de gravitation qui maintient les planètes en orbite autour du Soleil, qui garde la Lune en orbite autour de la Terre, et qui nous maintient les pieds sur le sol, sous la forme de notre poids.",
+    },
+    {
+      titre: "Ce qu'il faut retenir",
+      illustration: "🏆",
+      visuel: "📌",
+      contenu: [
+        "Le Soleil est une étoile ; les 8 planètes tournent autour de lui",
+        "4 planètes telluriques (rocheuses) puis 4 planètes géantes gazeuses",
+        "Rotation (24 h, jour/nuit) ≠ Révolution (365,25 jours, année)",
+        "Saisons = inclinaison de l'axe, pas distance au Soleil ; gravitation = attraction entre tous les objets",
+      ],
+      voixOff:
+        "Résumons. Le Soleil est une étoile, au centre du système solaire, autour duquel tournent huit planètes : d'abord les quatre planètes telluriques, rocheuses, puis les quatre planètes géantes gazeuses. La Terre tourne sur elle-même en environ vingt-quatre heures, ce qui donne le jour et la nuit : c'est la rotation. Elle tourne aussi autour du Soleil en environ trois cent soixante-cinq jours, ce qui donne l'année : c'est la révolution. Les saisons viennent de l'inclinaison de l'axe de la Terre, surtout pas de sa distance au Soleil. Enfin, la gravitation universelle attire tous les objets entre eux, et c'est elle qui maintient l'ordre dans le système solaire. Bravo, tu connais maintenant l'essentiel sur la Terre dans le système solaire !",
+    },
+  ],
+  fiche: {
+    intro:
+      "Le système solaire est formé du Soleil, une étoile, et de tous les objets qui gravitent autour de lui, dont la Terre. La Terre tourne sur elle-même (rotation) et autour du Soleil (révolution), et c'est l'inclinaison de son axe, et non sa distance au Soleil, qui provoque les saisons.",
+    sections: [
+      {
+        titre: "Le Soleil et le système solaire",
+        points: [
+          "Le Soleil est une étoile : il produit sa propre lumière (fusion nucléaire en son cœur)",
+          "Une planète ne produit pas de lumière : elle diffuse celle reçue du Soleil",
+          "Le système solaire = le Soleil + 8 planètes + leurs satellites + astéroïdes + comètes",
+          "Les distances sont immenses : 1 unité astronomique (UA) ≈ 150 millions de km (distance Terre-Soleil)",
+        ],
+      },
+      {
+        titre: "Les 8 planètes",
+        points: [
+          "Dans l'ordre depuis le Soleil : Mercure, Vénus, Terre, Mars, puis Jupiter, Saturne, Uranus, Neptune",
+          "Planètes telluriques (Mercure, Vénus, Terre, Mars) : petites, rocheuses, denses",
+          "Planètes géantes gazeuses (Jupiter, Saturne, Uranus, Neptune) : grandes, faites surtout de gaz, peu denses",
+        ],
+      },
+      {
+        titre: "Rotation et révolution de la Terre",
+        points: [
+          "Rotation : la Terre tourne sur elle-même autour de l'axe des pôles en environ 24 heures → alternance jour/nuit",
+          "Révolution : la Terre tourne autour du Soleil en environ 365,25 jours → une année",
+          "Saisons : dues à l'inclinaison de l'axe de la Terre (environ 23,5°) par rapport au plan de son orbite",
+          "⚠️ Les saisons ne sont PAS dues à la distance entre la Terre et le Soleil",
+        ],
+      },
+      {
+        titre: "La Lune et la gravitation universelle",
+        points: [
+          "La Lune est le satellite naturel de la Terre : elle tourne autour d'elle en environ 29,5 jours",
+          "La Lune ne produit pas de lumière propre, elle diffuse la lumière du Soleil",
+          "Les phases de la Lune (nouvelle lune, premier quartier, pleine lune, dernier quartier) dépendent des positions relatives Soleil-Terre-Lune",
+          "Gravitation universelle : tous les objets s'attirent, selon leur masse et leur distance ; elle maintient les planètes et satellites en orbite, et nous garde au sol",
+        ],
+      },
+    ],
+    audio:
+      "Fiche de révision : la Terre dans le système solaire. Le Soleil est une étoile : il produit lui-même sa lumière, grâce à des réactions en son cœur. Une planète, elle, ne produit pas de lumière : elle diffuse celle qu'elle reçoit du Soleil. Le système solaire est formé du Soleil et de tout ce qui gravite autour de lui : huit planètes, leurs satellites naturels, des astéroïdes et des comètes. Les distances y sont immenses, et on les exprime parfois en unités astronomiques : une unité astronomique vaut environ cent cinquante millions de kilomètres, la distance moyenne entre la Terre et le Soleil. Dans l'ordre depuis le Soleil, on trouve d'abord les quatre planètes telluriques, petites et rocheuses : Mercure, Vénus, la Terre et Mars. Puis viennent les quatre planètes géantes gazeuses, grandes mais peu denses : Jupiter, Saturne, Uranus et Neptune. La Terre a deux mouvements à ne pas confondre. La rotation, c'est le tour que la Terre fait sur elle-même en environ vingt-quatre heures, ce qui explique l'alternance entre le jour et la nuit. La révolution, c'est le tour que la Terre fait autour du Soleil en environ trois cent soixante-cinq jours et quart, ce qui correspond à une année. Les saisons sont dues à l'inclinaison de l'axe de la Terre, d'environ vingt-trois virgule cinq degrés, et surtout pas à la distance entre la Terre et le Soleil. Enfin, la Lune est le satellite naturel de la Terre : elle tourne autour d'elle en environ vingt-neuf jours et demi, ne produit aucune lumière propre, et ses phases s'expliquent par les positions relatives du Soleil, de la Terre et de la Lune. Tout cet équilibre est maintenu grâce à la gravitation universelle, la force qui attire entre eux tous les objets de l'Univers, selon leur masse et la distance qui les sépare.",
+  },
+  memoCards: [
+    { recto: "Qu'est-ce qui distingue une étoile d'une planète ?", verso: "Une étoile produit sa propre lumière (comme le Soleil). Une planète n'en produit pas : elle diffuse la lumière reçue d'une étoile." },
+    { recto: "Que contient le système solaire ?", verso: "Le Soleil (étoile) et tout ce qui gravite autour : 8 planètes, leurs satellites naturels, des astéroïdes, des comètes." },
+    { recto: "Cite les 4 planètes telluriques, dans l'ordre depuis le Soleil.", verso: "Mercure, Vénus, Terre, Mars : petites, rocheuses et denses." },
+    { recto: "Cite les 4 planètes géantes gazeuses, dans l'ordre depuis le Soleil.", verso: "Jupiter, Saturne, Uranus, Neptune : grandes, faites surtout de gaz, peu denses." },
+    { recto: "Rotation de la Terre : quoi et en combien de temps ?", verso: "La Terre tourne sur elle-même en environ 24 heures : cela explique l'alternance jour/nuit." },
+    { recto: "Révolution de la Terre : quoi et en combien de temps ?", verso: "La Terre tourne autour du Soleil en environ 365,25 jours : cela correspond à une année." },
+    { recto: "Qu'est-ce qui cause vraiment les saisons ?", verso: "L'inclinaison de l'axe de la Terre (≈ 23,5°) — PAS la distance entre la Terre et le Soleil." },
+    { recto: "La Lune tourne autour de la Terre en combien de temps ?", verso: "Environ 29,5 jours (un mois lunaire). Elle ne produit pas de lumière, elle diffuse celle du Soleil." },
+    { recto: "Qu'est-ce que la gravitation universelle ?", verso: "L'attraction mutuelle entre tous les objets, qui dépend de leur masse et de la distance qui les sépare." },
+  ],
+  exercices: [
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Le Soleil est :",
+      choix: ["une planète", "un satellite", "une étoile", "un astéroïde"],
+      bonneReponse: 2,
+      explication: "Le Soleil est une étoile : il produit lui-même sa propre lumière, contrairement aux planètes.",
+    },
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Combien de planètes compte le système solaire ?",
+      choix: ["6", "7", "8", "9"],
+      bonneReponse: 2,
+      explication: "Le système solaire compte 8 planètes, de Mercure jusqu'à Neptune.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "facile",
+      question: "Comment s'appelle le satellite naturel de la Terre ?",
+      reponse: "La Lune",
+      explication: "La Lune tourne autour de la Terre en environ 29,5 jours et ne produit pas de lumière propre.",
+    },
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "La rotation de la Terre sur elle-même dure environ :",
+      choix: ["24 heures", "29,5 jours", "365,25 jours", "12 heures"],
+      bonneReponse: 0,
+      explication: "Un tour complet de la Terre sur elle-même dure environ 24 heures : cela explique l'alternance jour/nuit.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "facile",
+      question: "Pourquoi une planète comme la Terre est-elle visible depuis l'espace, alors qu'elle ne produit pas de lumière ?",
+      reponse: "Parce qu'elle diffuse (renvoie) la lumière qu'elle reçoit du Soleil.",
+      explication: "Contrairement à une étoile, une planète n'émet pas sa propre lumière ; elle est visible car elle réfléchit la lumière d'une étoile.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Parmi ces planètes, laquelle est une planète tellurique (rocheuse) ?",
+      choix: ["Jupiter", "Saturne", "Mars", "Neptune"],
+      bonneReponse: 2,
+      explication: "Mars fait partie des 4 planètes telluriques (Mercure, Vénus, Terre, Mars), petites et rocheuses.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Quelle est la différence entre la rotation et la révolution de la Terre ?",
+      reponse: "La rotation est le tour que la Terre fait sur elle-même en 24 h (jour/nuit). La révolution est le tour que la Terre fait autour du Soleil en 365,25 jours (l'année).",
+      explication: "Il ne faut pas confondre ces deux mouvements : rotation = jour/nuit, révolution = année.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Les saisons sont dues :",
+      choix: [
+        "à la distance variable entre la Terre et le Soleil",
+        "à l'inclinaison de l'axe de rotation de la Terre",
+        "à la vitesse de rotation de la Terre",
+        "à la Lune",
+      ],
+      bonneReponse: 1,
+      explication: "C'est l'inclinaison de l'axe de la Terre (environ 23,5°) qui fait varier l'angle des rayons du Soleil et la durée d'ensoleillement selon les saisons, pas la distance au Soleil.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Un camarade affirme : « Il fait plus chaud en été parce que la Terre est plus proche du Soleil. » Corrige cette erreur.",
+      reponse: "C'est faux : la distance Terre-Soleil ne provoque pas les saisons. Les saisons viennent de l'inclinaison de l'axe de la Terre, qui fait varier l'angle d'arrivée des rayons du Soleil selon la période de l'année.",
+      explication: "C'est une erreur très fréquente. La cause réelle des saisons est l'inclinaison de l'axe terrestre, pas la distance au Soleil.",
+    },
+    {
+      type: "qcm",
+      difficulte: "avance",
+      question: "La force qui maintient la Lune en orbite autour de la Terre et les planètes en orbite autour du Soleil s'appelle :",
+      choix: ["la révolution", "la gravitation universelle", "la fusion nucléaire", "la rotation"],
+      bonneReponse: 1,
+      explication: "La gravitation universelle est la force d'attraction qui s'exerce entre tous les objets ayant une masse ; c'est elle qui maintient les orbites.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "De quoi dépend l'intensité de la force de gravitation entre deux objets ? Donne un exemple concret dans le système solaire.",
+      reponse: "Elle dépend de la masse des deux objets et de la distance qui les sépare : plus les objets sont massifs et proches, plus l'attraction est forte. Exemple : la gravitation du Soleil, très massif, maintient les planètes en orbite autour de lui.",
+      explication: "La gravitation universelle s'applique à tous les objets de l'Univers, mais son effet n'est perceptible que pour des objets très massifs comme les planètes et les étoiles, ou à faible distance.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "Explique pourquoi on voit la Lune changer d'aspect au cours du mois (phases de la Lune).",
+      reponse: "La Lune ne produit pas de lumière : une moitié est toujours éclairée par le Soleil. Selon les positions relatives du Soleil, de la Terre et de la Lune, on voit depuis la Terre une portion plus ou moins grande de cette face éclairée, ce qui donne les phases (nouvelle lune, premier quartier, pleine lune, dernier quartier).",
+      explication: "Les phases ne sont pas dues à une ombre de la Terre sur la Lune (cela, c'est une éclipse), mais à la géométrie Soleil-Terre-Lune qui change chaque jour.",
+    },
+  ],
+  revisionFinChapitre: [
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Quel est le point commun entre Mercure, Vénus, la Terre et Mars ?",
+      choix: ["Ce sont des étoiles", "Ce sont des planètes telluriques", "Ce sont des satellites", "Ce sont des géantes gazeuses"],
+      bonneReponse: 1,
+      explication: "Ces quatre planètes proches du Soleil sont petites, rocheuses et denses : ce sont les planètes telluriques.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "facile",
+      question: "Combien de temps dure environ la révolution de la Terre autour du Soleil ?",
+      reponse: "Environ 365,25 jours (une année)",
+      explication: "C'est le temps que met la Terre pour faire un tour complet autour du Soleil.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "L'alternance entre le jour et la nuit s'explique par :",
+      choix: ["la révolution de la Terre", "la rotation de la Terre sur elle-même", "les phases de la Lune", "la distance au Soleil"],
+      bonneReponse: 1,
+      explication: "C'est la rotation de la Terre sur elle-même, en environ 24 heures, qui fait alterner jour et nuit.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Vrai ou faux : la Terre est plus proche du Soleil en été. Justifie.",
+      reponse: "Faux. Les saisons sont dues à l'inclinaison de l'axe de la Terre, pas à sa distance au Soleil.",
+      explication: "C'est une confusion fréquente à corriger : la distance Terre-Soleil ne détermine pas les saisons.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "Qu'est-ce que la gravitation universelle, et donne deux exemples de son effet dans le système solaire.",
+      reponse: "C'est la force d'attraction qui s'exerce entre tous les objets, selon leur masse et leur distance. Exemples : elle maintient les planètes en orbite autour du Soleil, et la Lune en orbite autour de la Terre.",
+      explication: "La gravitation universelle explique aussi pourquoi les objets ont un poids et restent au sol.",
+    },
+  ],
+  examens: [
+    {
+      titre: "Examen 1 — La Terre dans le système solaire",
+      dureeMinutes: 30,
+      questions: [
+        {
+          type: "qcm",
+          difficulte: "facile",
+          question: "Une étoile se distingue d'une planète car elle :",
+          choix: ["est toujours plus grosse", "produit sa propre lumière", "tourne plus vite", "n'a pas de satellite"],
+          bonneReponse: 1,
+          explication: "Une étoile comme le Soleil produit elle-même sa lumière ; une planète ne fait que la diffuser.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "facile",
+          question: "Cite dans l'ordre les 4 planètes telluriques, en partant de la plus proche du Soleil.",
+          reponse: "Mercure, Vénus, Terre, Mars",
+          explication: "Ce sont les 4 planètes rocheuses les plus proches du Soleil.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Le mouvement de révolution de la Terre correspond :",
+          choix: ["au jour et à la nuit", "à l'année", "aux phases de la Lune", "à la gravitation"],
+          bonneReponse: 1,
+          explication: "La révolution, le tour de la Terre autour du Soleil en environ 365,25 jours, correspond à une année.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "moyen",
+          question: "Explique la véritable cause des saisons sur Terre.",
+          reponse: "Les saisons sont dues à l'inclinaison de l'axe de rotation de la Terre (environ 23,5°) par rapport au plan de son orbite, ce qui fait varier l'angle d'arrivée des rayons du Soleil et la durée d'ensoleillement au cours de l'année.",
+          explication: "Ce n'est pas la distance Terre-Soleil qui varie de façon significative selon les saisons, contrairement à une idée reçue.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "La Lune est visible depuis la Terre car :",
+          choix: ["elle produit sa propre lumière", "elle diffuse la lumière du Soleil", "elle brille la nuit uniquement", "elle est une étoile"],
+          bonneReponse: 1,
+          explication: "Comme une planète, la Lune ne produit pas de lumière : elle renvoie celle qu'elle reçoit du Soleil.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "avance",
+          question: "Un élève dit : « Les planètes tournent autour du Soleil sans raison, elles flottent simplement dans l'espace. » Corrige et complète cette affirmation avec la notion scientifique adaptée.",
+          reponse: "C'est incomplet : les planètes restent en orbite grâce à la gravitation universelle, la force d'attraction qui s'exerce entre tous les objets massifs, ici entre le Soleil et chaque planète, en fonction de leur masse et de leur distance.",
+          explication: "La gravitation universelle est la notion clé qui explique pourquoi les planètes ne s'échappent pas dans l'espace : elles sont attirées en permanence par le Soleil.",
+        },
+      ],
+    },
+    {
+      titre: "Examen 2 — La Terre dans le système solaire",
+      dureeMinutes: 30,
+      questions: [
+        {
+          type: "qcm",
+          difficulte: "facile",
+          question: "Le système solaire est composé du Soleil et :",
+          choix: [
+            "uniquement des 8 planètes",
+            "des 8 planètes, de leurs satellites, d'astéroïdes et de comètes",
+            "uniquement de la Terre et de la Lune",
+            "d'autres étoiles",
+          ],
+          bonneReponse: 1,
+          explication: "Le système solaire regroupe le Soleil et tous les objets qui gravitent autour de lui : planètes, satellites, astéroïdes, comètes.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "facile",
+          question: "Cite dans l'ordre les 4 planètes géantes gazeuses, en partant de la plus proche du Soleil.",
+          reponse: "Jupiter, Saturne, Uranus, Neptune",
+          explication: "Ce sont les 4 planètes les plus éloignées du Soleil, grandes et faites surtout de gaz.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "En combien de temps environ la Lune fait-elle un tour complet autour de la Terre ?",
+          choix: ["24 heures", "7 jours", "29,5 jours", "365,25 jours"],
+          bonneReponse: 2,
+          explication: "La Lune tourne autour de la Terre en environ 29,5 jours, ce qui correspond à un mois lunaire.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "moyen",
+          question: "Quelle est l'unité utilisée pour comparer les grandes distances dans le système solaire, et à combien de kilomètres correspond-elle environ ?",
+          reponse: "L'unité astronomique (UA), qui vaut environ 150 millions de kilomètres — la distance moyenne entre la Terre et le Soleil.",
+          explication: "Cette unité permet de comparer facilement les distances entre les objets du système solaire sans manipuler de très grands nombres.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Pourquoi le jour et la nuit alternent-ils sur Terre ?",
+          choix: [
+            "Parce que le Soleil s'éteint la nuit",
+            "Parce que la Terre tourne sur elle-même, et une moitié seulement est éclairée à la fois",
+            "Parce que la Terre s'approche et s'éloigne du Soleil",
+            "Parce que la Lune cache le Soleil chaque nuit",
+          ],
+          bonneReponse: 1,
+          explication: "La rotation de la Terre sur elle-même fait qu'à chaque instant, une moitié de la Terre est éclairée (jour) et l'autre est dans l'ombre (nuit).",
+        },
+        {
+          type: "ouverte",
+          difficulte: "avance",
+          question: "Explique pourquoi les planètes telluriques et les planètes géantes gazeuses ont des caractéristiques si différentes, en citant un exemple de chaque groupe.",
+          reponse: "Les planètes telluriques (par exemple la Terre) sont petites, rocheuses et denses, tandis que les planètes géantes gazeuses (par exemple Jupiter) sont beaucoup plus grandes mais composées surtout de gaz, donc peu denses.",
+          explication: "Cette distinction est une classification fondamentale des 8 planètes du système solaire, liée à leur composition et à leur position par rapport au Soleil.",
+        },
+      ],
+    },
+  ],
+  syntheseRevisions: [
+    "Le Soleil est une étoile (il produit sa propre lumière) ; les 8 planètes, elles, diffusent la lumière qu'elles reçoivent de lui.",
+    "Dans l'ordre depuis le Soleil : 4 planètes telluriques rocheuses (Mercure, Vénus, Terre, Mars), puis 4 planètes géantes gazeuses (Jupiter, Saturne, Uranus, Neptune).",
+    "Rotation de la Terre (≈ 24 h) → alternance jour/nuit. Révolution de la Terre autour du Soleil (≈ 365,25 jours) → l'année. Ne pas confondre les deux.",
+    "Les saisons sont dues à l'inclinaison de l'axe de la Terre (≈ 23,5°), et non à une variation de la distance Terre-Soleil.",
+    "La Lune tourne autour de la Terre en ≈ 29,5 jours, ne produit pas de lumière propre, et ses phases s'expliquent par les positions relatives Soleil-Terre-Lune.",
+    "La gravitation universelle attire entre eux tous les objets selon leur masse et leur distance : elle maintient les orbites des planètes et des satellites, et nous garde au sol.",
+  ],
+};
+
+export default chapitre;
