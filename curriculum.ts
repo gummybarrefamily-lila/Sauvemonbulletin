@@ -293,30 +293,6 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
       { slug: "subjuntivo-inicio", titre: "Introduction au subjonctif", disponible: true },
     ],
   },
-  espagnol: {
-    "5eme": [
-      { slug: "saludos-presentarse", titre: "Saludos : se présenter", disponible: true },
-      { slug: "alfabeto-pronunciacion", titre: "L'alphabet et la prononciation", disponible: true },
-      { slug: "la-familia", titre: "La famille", disponible: true },
-      { slug: "numeros-edad", titre: "Les nombres et l'âge", disponible: true },
-      { slug: "gustos-aficiones", titre: "Les goûts et les loisirs (gustar)", disponible: true },
-      { slug: "el-instituto", titre: "L'école et l'emploi du temps", disponible: true },
-    ],
-    "4eme": [
-      { slug: "rutina-diaria", titre: "La routine quotidienne", disponible: true },
-      { slug: "la-ciudad", titre: "La ville et les directions", disponible: false },
-      { slug: "la-comida", titre: "La nourriture et le restaurant", disponible: false },
-      { slug: "ropa-compras", titre: "Les vêtements et les achats", disponible: false },
-      { slug: "preterito", titre: "Parler au passé (pretérito)", disponible: false },
-    ],
-    "3eme": [
-      { slug: "vacaciones-viajes", titre: "Vacances et voyages", disponible: true },
-      { slug: "medio-ambiente", titre: "L'environnement", disponible: false },
-      { slug: "futuro-planes", titre: "Le futur et les projets", disponible: false },
-      { slug: "cultura-hispanica", titre: "La culture du monde hispanique", disponible: false },
-      { slug: "subjuntivo-inicio", titre: "Introduction au subjonctif", disponible: false },
-    ],
-  },
   "histoire-danse": {
     "5eme": [
       { slug: "naissance-ballet", titre: "La naissance du ballet : des cours royales à l'Opéra", disponible: true },

@@ -308,7 +308,7 @@ export const CHAPITRES: Chapitre[] = [
   ch_svt_4eme_meteo_climat,
   ch_svt_4eme_reproduction_humaine,
   ch_svt_4eme_seismes_volcans,
-  ch_svt_4eme_systeme_nerveux
+  ch_svt_4eme_systeme_nerveux,
   ch_svt_5eme_besoins_organes,
   ch_svt_5eme_geologie_externe,
   ch_svt_5eme_nutrition_organismes,
