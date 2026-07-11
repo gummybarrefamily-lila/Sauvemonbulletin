@@ -1,0 +1,435 @@
+import type { Chapitre } from "../types";
+
+export const chapitre: Chapitre = {
+  slug: "circuits-electriques",
+  titre: "Les circuits électriques",
+  matiere: "physique-chimie",
+  niveau: "5eme",
+  description:
+    "Comprendre ce qu'est un circuit électrique fermé, reconnaître les dipôles et leurs symboles normalisés, distinguer circuit série et circuit en dérivation, connaître le danger du court-circuit et savoir mesurer l'intensité et la tension.",
+  objectifs: [
+    "Identifier les dipôles d'un circuit et connaître leurs symboles normalisés",
+    "Distinguer un circuit fermé (qui fonctionne) d'un circuit ouvert (qui ne fonctionne pas)",
+    "Différencier un circuit série d'un circuit en dérivation et leurs propriétés",
+    "Expliquer ce qu'est un court-circuit et pourquoi il est dangereux",
+    "Savoir comment brancher un ampèremètre et un voltmètre pour mesurer I et U",
+  ],
+  slides: [
+    {
+      titre: "Qu'est-ce qu'un circuit électrique ?",
+      illustration: "⚡",
+      visuel: "Générateur + Récepteur + Fils",
+      contenu: [
+        "Un circuit électrique est une chaîne fermée de dipôles reliés par des fils conducteurs",
+        "Il comprend toujours au moins un générateur (la pile) qui fait circuler le courant",
+        "Il comprend aussi au moins un récepteur (lampe, moteur...) qui utilise ce courant",
+        "Sans boucle complète, aucun courant ne circule",
+      ],
+      voixOff:
+        "Un circuit électrique, c'est une chaîne continue de dipôles reliés entre eux par des fils conducteurs, qui forme une boucle fermée. Il faut toujours au moins un générateur, comme une pile, qui fait circuler le courant. Et il faut au moins un récepteur, comme une lampe ou un moteur, qui utilise ce courant. Si la boucle n'est pas complète, rien ne se passe.",
+    },
+    {
+      titre: "Les dipôles et leurs symboles",
+      illustration: "🔌",
+      visuel: "Pile ⎓ • Lampe ⊗ • Interrupteur",
+      contenu: [
+        "Un dipôle est un objet relié au circuit par deux bornes",
+        "Pile (générateur) : un trait long et un trait court, côte à côte",
+        "Lampe : un cercle avec une croix à l'intérieur",
+        "Interrupteur, fil, moteur (M dans un cercle), DEL, résistor : chacun a son symbole normalisé",
+      ],
+      voixOff:
+        "Un dipôle est un composant électrique relié au reste du circuit par deux bornes. Chaque dipôle a un symbole normalisé, le même pour tout le monde. La pile se dessine avec un trait long, qui représente la borne plus, et un trait court, qui représente la borne moins. La lampe est un cercle avec une croix à l'intérieur. Il existe aussi des symboles pour l'interrupteur, le fil, le moteur, la diode électroluminescente et le résistor.",
+    },
+    {
+      titre: "Circuit fermé, circuit ouvert",
+      illustration: "🔓",
+      visuel: "Fermé = ça marche / Ouvert = rien",
+      contenu: [
+        "Circuit fermé : la boucle est complète, le courant circule, la lampe s'allume",
+        "Circuit ouvert : la boucle est interrompue (interrupteur ouvert, fil coupé), rien ne fonctionne",
+        "Un seul point de coupure suffit à arrêter tout le circuit série",
+        "L'interrupteur sert justement à ouvrir ou fermer le circuit à volonté",
+      ],
+      voixOff:
+        "Pour qu'un circuit fonctionne, il doit être fermé : la boucle formée par les dipôles et les fils doit être complète, sans aucune coupure. Si l'interrupteur est ouvert, ou si un fil est coupé, le circuit est ouvert et plus rien ne fonctionne : la lampe reste éteinte. C'est justement le rôle de l'interrupteur de fermer ou d'ouvrir le circuit quand on le souhaite.",
+    },
+    {
+      titre: "Le sens du courant",
+      illustration: "➡️",
+      visuel: "Borne + → Borne −",
+      contenu: [
+        "Le sens conventionnel du courant a été choisi par les scientifiques",
+        "À l'extérieur du générateur, le courant circule de la borne + vers la borne −",
+        "On représente ce sens par une flèche sur le schéma du circuit",
+        "C'est une convention : elle est la même pour tous les circuits",
+      ],
+      voixOff:
+        "Le courant électrique circule dans un sens précis, appelé le sens conventionnel du courant. À l'extérieur du générateur, c'est-à-dire dans les fils et les récepteurs, le courant circule toujours de la borne plus vers la borne moins de la pile. On représente ce sens par une petite flèche sur le schéma. C'est une convention, choisie une fois pour toutes, que tous les scientifiques utilisent.",
+    },
+    {
+      titre: "Le circuit en série",
+      illustration: "➖",
+      visuel: "Un seul chemin possible",
+      contenu: [
+        "Dans un circuit série, les dipôles sont branchés les uns à la suite des autres",
+        "Il n'existe qu'un seul chemin possible pour le courant",
+        "Si un dipôle est débranché, grillé, ou si l'interrupteur s'ouvre, tout le circuit s'arrête",
+        "L'intensité du courant est la même en tout point du circuit série",
+      ],
+      voixOff:
+        "Dans un circuit série, tous les dipôles sont branchés les uns après les autres, à la file, et il n'existe qu'un seul chemin pour le courant. C'est pour cela que si on débranche un seul dipôle, ou si une lampe grille, tout le circuit s'arrête d'un coup : plus rien ne fonctionne. Une propriété importante à retenir : dans un circuit série, l'intensité du courant est la même partout, en tout point du circuit.",
+    },
+    {
+      titre: "Le circuit en dérivation",
+      illustration: "🔀",
+      visuel: "Plusieurs branches",
+      contenu: [
+        "Dans un circuit en dérivation, il existe plusieurs branches en parallèle",
+        "Chaque récepteur peut être commandé indépendamment des autres",
+        "Si on débranche une lampe, les autres branches continuent de fonctionner",
+        "L'intensité totale se répartit entre les différentes branches",
+      ],
+      voixOff:
+        "Dans un circuit en dérivation, aussi appelé circuit parallèle, il existe plusieurs branches distinctes entre les deux bornes du générateur. L'avantage, c'est que chaque récepteur peut fonctionner de façon indépendante : si on débranche une lampe, ou si son interrupteur s'ouvre, les autres branches continuent de fonctionner normalement. L'intensité délivrée par le générateur se répartit entre les différentes branches du circuit.",
+    },
+    {
+      titre: "Le court-circuit : danger !",
+      illustration: "⚠️",
+      visuel: "Fil direct + à − = danger",
+      contenu: [
+        "Un court-circuit relie directement les deux bornes d'un générateur par un simple fil",
+        "L'intensité devient alors très forte, sans aucun récepteur pour la limiter",
+        "Conséquences : échauffement important, risque d'incendie, pile détériorée",
+        "Un court-circuit est toujours à éviter, dans un montage comme à la maison",
+      ],
+      voixOff:
+        "Un court-circuit se produit quand un simple fil relie directement la borne plus et la borne moins d'un générateur, sans passer par un récepteur qui limiterait le courant. L'intensité devient alors extrêmement forte, beaucoup trop forte. Cela provoque un échauffement important des fils, un risque d'incendie, et cela détériore rapidement la pile. Un court-circuit est dangereux et doit toujours être évité.",
+    },
+    {
+      titre: "Mesurer l'intensité et la tension",
+      illustration: "📟",
+      visuel: "Ampèremètre en série, Voltmètre en dérivation",
+      contenu: [
+        "L'intensité (I) se mesure en ampères (A) avec un ampèremètre",
+        "L'ampèremètre se branche EN SÉRIE, directement dans le circuit",
+        "La tension (U) se mesure en volts (V) avec un voltmètre",
+        "Le voltmètre se branche EN DÉRIVATION, aux bornes du dipôle étudié",
+      ],
+      voixOff:
+        "Pour mesurer l'intensité du courant, notée I et exprimée en ampères, on utilise un ampèremètre. Attention, il doit être branché en série, directement inséré dans le circuit, sur le chemin du courant. Pour mesurer la tension, notée U et exprimée en volts, on utilise un voltmètre. Lui, au contraire, se branche en dérivation, c'est-à-dire directement aux bornes du dipôle que l'on étudie, sans l'intégrer au chemin principal du courant.",
+    },
+    {
+      titre: "Ce qu'il faut retenir",
+      illustration: "🏆",
+      visuel: "📌",
+      contenu: [
+        "Circuit fermé = ça fonctionne ; circuit ouvert = rien ne fonctionne",
+        "Courant : de la borne + vers la borne − à l'extérieur du générateur",
+        "Série : un seul chemin, même intensité partout ; Dérivation : plusieurs branches indépendantes",
+        "Ampèremètre en série (I en A), voltmètre en dérivation (U en V) ; jamais de court-circuit",
+      ],
+      voixOff:
+        "Résumons ce chapitre. Un circuit doit être fermé pour fonctionner, et le courant circule toujours de la borne plus vers la borne moins à l'extérieur du générateur. Dans un circuit série, il n'y a qu'un seul chemin et l'intensité est la même partout. Dans un circuit en dérivation, plusieurs branches fonctionnent indépendamment les unes des autres. Pour mesurer, on branche l'ampèremètre en série et le voltmètre en dérivation. Et surtout, on évite toujours le court-circuit, qui est dangereux. Bravo, tu maîtrises maintenant les bases des circuits électriques !",
+    },
+  ],
+  fiche: {
+    intro:
+      "Un circuit électrique est une chaîne fermée de dipôles reliés par des fils conducteurs. Il faut connaître les symboles normalisés, la différence entre circuit série et circuit en dérivation, le danger du court-circuit, et savoir mesurer l'intensité et la tension.",
+    sections: [
+      {
+        titre: "Dipôles et symboles normalisés",
+        points: [
+          "Générateur (pile) : trait long (borne +) et trait court (borne −)",
+          "Lampe : cercle avec une croix à l'intérieur",
+          "Interrupteur, fil conducteur, moteur (M dans un cercle), résistor",
+          "DEL (diode électroluminescente) : dipôle polarisé, ne s'allume que si elle est branchée dans le bon sens",
+        ],
+      },
+      {
+        titre: "Circuit fermé et sens du courant",
+        points: [
+          "Circuit fermé : boucle complète, le courant circule, les récepteurs fonctionnent",
+          "Circuit ouvert (interrupteur ouvert, fil coupé) : le courant ne circule pas",
+          "Sens conventionnel du courant : à l'extérieur du générateur, de la borne + vers la borne −",
+        ],
+      },
+      {
+        titre: "Circuit série et circuit en dérivation",
+        points: [
+          "Série : dipôles à la suite, un seul chemin, même intensité en tout point",
+          "Série : un dipôle débranché ou grillé arrête tout le circuit",
+          "Dérivation : plusieurs branches, chaque récepteur peut être commandé indépendamment",
+          "Dérivation : l'intensité totale se répartit entre les branches",
+        ],
+      },
+      {
+        titre: "Court-circuit et mesures",
+        points: [
+          "Court-circuit : fil reliant directement les deux bornes du générateur, intensité très forte et dangereuse (échauffement, incendie, pile détériorée) — à éviter",
+          "Ampèremètre : mesure l'intensité I (en ampères, A), branché en série",
+          "Voltmètre : mesure la tension U (en volts, V), branché en dérivation aux bornes du dipôle",
+          "Sécurité : ne jamais toucher un fil dénudé, ne jamais manipuler le secteur 230 V",
+        ],
+      },
+    ],
+    audio:
+      "Fiche de révision : les circuits électriques. Un circuit électrique est une chaîne fermée de dipôles reliés par des fils conducteurs, comprenant au moins un générateur, comme une pile, et au moins un récepteur, comme une lampe ou un moteur. Chaque dipôle a un symbole normalisé : la pile se dessine avec un trait long pour la borne plus et un trait court pour la borne moins, la lampe est un cercle avec une croix, et il existe aussi des symboles pour l'interrupteur, le fil, le moteur, le résistor et la diode électroluminescente, qui est un dipôle polarisé ne s'allumant que dans un seul sens. Pour fonctionner, un circuit doit être fermé : si l'interrupteur est ouvert ou si un fil est coupé, aucun courant ne circule. Le sens conventionnel du courant va, à l'extérieur du générateur, de la borne plus vers la borne moins. Dans un circuit série, les dipôles sont branchés les uns après les autres, il n'existe qu'un seul chemin pour le courant, l'intensité est la même en tout point, et un seul dipôle débranché arrête tout le circuit. Dans un circuit en dérivation, il existe plusieurs branches, chaque récepteur peut être commandé indépendamment des autres, et l'intensité totale se répartit entre les branches. Un court-circuit, c'est un fil qui relie directement les deux bornes du générateur sans récepteur : l'intensité devient alors très forte et dangereuse, provoquant échauffement, risque d'incendie et détérioration de la pile, il faut toujours l'éviter. Enfin, on mesure l'intensité avec un ampèremètre branché en série, en ampères, et la tension avec un voltmètre branché en dérivation aux bornes du dipôle, en volts.",
+  },
+  memoCards: [
+    { recto: "Qu'est-ce qu'un circuit électrique ?", verso: "Une chaîne fermée de dipôles reliés par des fils conducteurs, avec au moins un générateur et un récepteur." },
+    { recto: "Symbole de la pile ?", verso: "Un trait long (borne +) et un trait court (borne −), côte à côte." },
+    { recto: "Sens conventionnel du courant à l'extérieur du générateur ?", verso: "De la borne + vers la borne −." },
+    { recto: "Circuit série : que se passe-t-il si on débranche une lampe ?", verso: "Tout le circuit s'arrête : il n'y a qu'un seul chemin pour le courant." },
+    { recto: "Circuit en dérivation : que se passe-t-il si on débranche une lampe ?", verso: "Les autres branches continuent de fonctionner normalement, car elles sont indépendantes." },
+    { recto: "Qu'est-ce qu'un court-circuit ?", verso: "Un fil qui relie directement les deux bornes d'un générateur : intensité très forte et dangereuse." },
+    { recto: "Comment brancher un ampèremètre ?", verso: "En série, directement dans le circuit, pour mesurer l'intensité I en ampères (A)." },
+    { recto: "Comment brancher un voltmètre ?", verso: "En dérivation, aux bornes du dipôle étudié, pour mesurer la tension U en volts (V)." },
+  ],
+  exercices: [
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Un circuit électrique fonctionne quand il est :",
+      choix: ["ouvert", "fermé", "coupé", "débranché"],
+      bonneReponse: 1,
+      explication: "Un circuit doit être fermé, c'est-à-dire former une boucle complète, pour que le courant puisse circuler.",
+    },
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Quel symbole représente une lampe ?",
+      choix: ["Un trait long et un trait court", "Un cercle avec une croix à l'intérieur", "Un triangle", "Deux lignes parallèles"],
+      bonneReponse: 1,
+      explication: "La lampe se représente par un cercle avec une croix à l'intérieur.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "facile",
+      question: "Cite les deux dipôles indispensables pour qu'un circuit électrique fonctionne.",
+      reponse: "Un générateur (par exemple une pile) et un récepteur (par exemple une lampe).",
+      explication: "Sans générateur, rien ne fait circuler le courant. Sans récepteur, le courant n'a rien à alimenter.",
+    },
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "À l'extérieur du générateur, le courant circule :",
+      choix: ["de la borne − vers la borne +", "de la borne + vers la borne −", "dans les deux sens en même temps", "cela dépend du dipôle"],
+      bonneReponse: 1,
+      explication: "Par convention, le sens du courant à l'extérieur du générateur va toujours de la borne + vers la borne −.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Dans un circuit série comportant deux lampes, si l'une d'elles grille :",
+      choix: ["seule cette lampe s'éteint", "les deux lampes s'éteignent", "les deux lampes brillent plus fort", "rien ne change"],
+      bonneReponse: 1,
+      explication: "En série, il n'y a qu'un seul chemin pour le courant : si une lampe grille, la boucle est coupée et tout le circuit s'arrête.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Explique pourquoi, dans un circuit en dérivation, on peut éteindre une lampe sans éteindre les autres.",
+      reponse: "Parce que chaque lampe est placée sur une branche indépendante : couper une branche n'empêche pas le courant de circuler dans les autres branches.",
+      explication: "C'est l'intérêt principal du circuit en dérivation : chaque récepteur peut être commandé séparément.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Un ampèremètre doit être branché :",
+      choix: ["en dérivation, aux bornes du générateur", "en série, dans le circuit", "en dehors du circuit", "uniquement sur une lampe allumée"],
+      bonneReponse: 1,
+      explication: "L'ampèremètre mesure l'intensité qui traverse le circuit : il doit donc être inséré en série, sur le chemin du courant.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Qu'est-ce qu'un court-circuit et pourquoi est-il dangereux ?",
+      reponse: "C'est un fil qui relie directement les deux bornes d'un générateur, sans passer par un récepteur. L'intensité devient alors très forte, ce qui provoque un échauffement dangereux, un risque d'incendie et détériore la pile.",
+      explication: "Sans récepteur pour limiter le courant, l'intensité augmente fortement : c'est pour cela qu'un court-circuit est toujours à éviter.",
+    },
+    {
+      type: "qcm",
+      difficulte: "avance",
+      question: "Un voltmètre est branché aux bornes d'une lampe éteinte dans un circuit en dérivation dont les autres lampes fonctionnent. Que peut-on dire de son branchement ?",
+      choix: ["Il est mal branché, un voltmètre ne se branche jamais aux bornes d'un dipôle", "Il est correctement branché : le voltmètre se branche toujours en dérivation", "Il faudrait le brancher en série pour que ça fonctionne", "Un voltmètre ne peut mesurer que des piles"],
+      bonneReponse: 1,
+      explication: "Le voltmètre se branche toujours en dérivation aux bornes du dipôle étudié, quel que soit l'état de ce dipôle.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "Dans un circuit série avec une pile, un interrupteur et deux lampes, on mesure l'intensité à trois endroits différents du circuit. Que peut-on dire des trois mesures obtenues ?",
+      reponse: "Les trois mesures sont identiques : dans un circuit série, l'intensité du courant est la même en tout point du circuit.",
+      explication: "C'est la loi d'unicité de l'intensité dans un circuit série : le courant ne se divise pas, il n'y a qu'un seul chemin.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "Une DEL (diode électroluminescente) ne s'allume pas dans un montage, alors que le circuit est bien fermé et que la pile fonctionne. Propose une explication et une solution.",
+      reponse: "La DEL est un dipôle polarisé : elle ne s'allume que si elle est branchée dans le bon sens. Il faut inverser le branchement de la DEL dans le circuit pour qu'elle s'allume.",
+      explication: "Contrairement à une lampe classique, la DEL ne fonctionne que dans un sens précis de branchement, contrôlé par le sens du courant.",
+    },
+    {
+      type: "qcm",
+      difficulte: "avance",
+      question: "Que se passe-t-il pour l'intensité totale débitée par le générateur quand on ajoute une deuxième lampe en dérivation dans un circuit qui en comportait déjà une ?",
+      choix: ["Elle diminue fortement", "Elle reste strictement identique", "Elle augmente, car le courant se répartit entre les deux branches", "Elle devient nulle"],
+      bonneReponse: 2,
+      explication: "Chaque branche supplémentaire ajoute son propre courant : l'intensité totale débitée par le générateur augmente et se répartit entre les branches.",
+    },
+  ],
+  revisionFinChapitre: [
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Quel appareil mesure la tension aux bornes d'un dipôle ?",
+      choix: ["L'ampèremètre", "Le voltmètre", "L'interrupteur", "Le générateur"],
+      bonneReponse: 1,
+      explication: "Le voltmètre mesure la tension U, en volts, et se branche en dérivation aux bornes du dipôle.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "facile",
+      question: "Comment appelle-t-on un circuit dans lequel il n'existe qu'un seul chemin pour le courant ?",
+      reponse: "Un circuit série.",
+      explication: "Dans un circuit série, tous les dipôles sont placés à la suite les uns des autres.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Dans un circuit en dérivation, si une branche est coupée :",
+      choix: ["tout le circuit s'arrête", "les autres branches continuent de fonctionner", "l'intensité devient infinie", "la pile explose"],
+      bonneReponse: 1,
+      explication: "Les branches d'un circuit en dérivation sont indépendantes : couper l'une d'elles n'affecte pas les autres.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question: "Pourquoi ne faut-il jamais réaliser un court-circuit ?",
+      reponse: "Parce que l'intensité devient très forte, ce qui échauffe les fils, présente un risque d'incendie et détériore la pile.",
+      explication: "Sans récepteur pour limiter le courant, l'intensité grimpe fortement dans un court-circuit.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question: "Un ampèremètre a été branché en dérivation aux bornes d'une lampe par erreur. Quelle est l'erreur commise et quel est le bon branchement ?",
+      reponse: "L'ampèremètre a été branché comme un voltmètre. Il doit être branché en série, inséré directement dans le circuit, et non en dérivation aux bornes d'un dipôle.",
+      explication: "L'ampèremètre mesure l'intensité qui circule : il doit être traversé par le courant, donc placé en série.",
+    },
+  ],
+  examens: [
+    {
+      titre: "Examen 1 — Les circuits électriques",
+      dureeMinutes: 30,
+      questions: [
+        {
+          type: "qcm",
+          difficulte: "facile",
+          question: "Un circuit électrique doit obligatoirement comporter :",
+          choix: ["deux lampes", "un générateur et un récepteur", "un voltmètre", "une DEL"],
+          bonneReponse: 1,
+          explication: "Il faut au moins un générateur (qui fait circuler le courant) et un récepteur (qui l'utilise).",
+        },
+        {
+          type: "ouverte",
+          difficulte: "facile",
+          question: "Que se passe-t-il si l'on ouvre l'interrupteur d'un circuit série ?",
+          reponse: "Le circuit devient ouvert : le courant ne circule plus et tous les récepteurs s'arrêtent.",
+          explication: "L'interrupteur ouvert interrompt la boucle du circuit : plus aucun courant ne peut circuler.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Dans un circuit série, l'intensité mesurée en différents points du circuit est :",
+          choix: ["toujours différente", "toujours la même", "nulle près du générateur", "plus forte près de la lampe"],
+          bonneReponse: 1,
+          explication: "C'est une propriété du circuit série : l'intensité est la même en tout point, il n'y a qu'un seul chemin pour le courant.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "moyen",
+          question: "Décris comment brancher un voltmètre pour mesurer la tension aux bornes d'une lampe.",
+          reponse: "On branche le voltmètre en dérivation, directement sur les deux bornes de la lampe, sans le connecter en série dans le circuit.",
+          explication: "Le voltmètre se branche toujours en dérivation aux bornes du dipôle dont on veut mesurer la tension.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Qu'est-ce qui distingue une DEL des autres dipôles comme la lampe ?",
+          choix: ["Elle ne consomme jamais de courant", "Elle est polarisée : elle ne s'allume que dans un sens", "Elle fonctionne uniquement en dérivation", "Elle ne peut pas être associée à une pile"],
+          bonneReponse: 1,
+          explication: "La DEL est un dipôle polarisé : si elle est branchée à l'envers, elle ne s'allume pas.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "avance",
+          question: "On réalise par erreur un fil reliant directement les deux bornes d'une pile, sans aucun récepteur. Nomme ce phénomène et explique ses conséquences.",
+          reponse: "C'est un court-circuit. L'intensité devient très forte car rien ne la limite, ce qui provoque un échauffement important, un risque d'incendie et une détérioration rapide de la pile.",
+          explication: "Sans récepteur pour limiter le courant, un court-circuit est toujours dangereux et doit être évité.",
+        },
+      ],
+    },
+    {
+      titre: "Examen 2 — Les circuits électriques",
+      dureeMinutes: 30,
+      questions: [
+        {
+          type: "qcm",
+          difficulte: "facile",
+          question: "Le symbole d'un interrupteur ouvert représente :",
+          choix: ["un circuit qui fonctionne toujours", "une coupure possible du circuit", "un générateur", "un voltmètre"],
+          bonneReponse: 1,
+          explication: "L'interrupteur permet d'ouvrir ou de fermer volontairement le circuit.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "facile",
+          question: "Dans quelle unité s'exprime l'intensité du courant électrique ?",
+          reponse: "En ampères (A).",
+          explication: "L'intensité, notée I, se mesure en ampères à l'aide d'un ampèremètre.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Deux lampes sont montées en dérivation aux bornes d'une pile. On débranche une lampe. L'autre lampe :",
+          choix: ["s'éteint aussi", "continue de briller", "brille beaucoup moins fort", "explose"],
+          bonneReponse: 1,
+          explication: "Les branches d'un circuit en dérivation sont indépendantes : l'autre lampe continue de fonctionner normalement.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "moyen",
+          question: "Explique la différence entre le branchement d'un ampèremètre et celui d'un voltmètre.",
+          reponse: "L'ampèremètre se branche en série, inséré directement dans le circuit, pour mesurer l'intensité. Le voltmètre se branche en dérivation, aux bornes d'un dipôle, pour mesurer la tension.",
+          explication: "Ces deux appareils de mesure ne se branchent jamais de la même façon : l'un est traversé par le courant, l'autre est placé en parallèle.",
+        },
+        {
+          type: "qcm",
+          difficulte: "moyen",
+          question: "Le sens conventionnel du courant, à l'extérieur du générateur, va :",
+          choix: ["de la borne + vers la borne −", "de la borne − vers la borne +", "il n'y a pas de sens défini", "cela dépend de la couleur des fils"],
+          bonneReponse: 0,
+          explication: "C'est une convention scientifique : le courant circule, à l'extérieur du générateur, de la borne + vers la borne −.",
+        },
+        {
+          type: "ouverte",
+          difficulte: "avance",
+          question: "Un circuit en dérivation comporte trois lampes identiques allumées. On mesure l'intensité totale débitée par le générateur, puis l'intensité dans chaque branche. Que peux-tu dire de la relation entre ces mesures ?",
+          reponse: "L'intensité totale débitée par le générateur se répartit entre les trois branches : elle est égale à la somme des intensités mesurées dans chaque branche.",
+          explication: "C'est la loi d'additivité des intensités dans un circuit en dérivation : l'intensité totale correspond à la somme des intensités des différentes branches.",
+        },
+      ],
+    },
+  ],
+  syntheseRevisions: [
+    "Un circuit électrique fermé forme une boucle continue de dipôles avec au moins un générateur et un récepteur ; un circuit ouvert ne fonctionne pas.",
+    "Chaque dipôle a un symbole normalisé à connaître : pile, lampe, interrupteur, fil, moteur, DEL (polarisée), résistor.",
+    "Le courant circule, à l'extérieur du générateur, de la borne + vers la borne − (sens conventionnel).",
+    "Circuit série : un seul chemin, même intensité partout, un dipôle en panne arrête tout ; circuit en dérivation : branches indépendantes, intensités qui s'additionnent.",
+    "Le court-circuit (fil reliant directement les deux bornes du générateur) est toujours dangereux et doit être évité.",
+    "Ampèremètre = intensité I (ampères, A), branché en série ; voltmètre = tension U (volts, V), branché en dérivation aux bornes du dipôle.",
+  ],
+};
+
+export default chapitre;
