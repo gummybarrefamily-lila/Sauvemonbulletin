@@ -51,16 +51,8 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
         </div>
       </div>
 
-      {/* Script à lire à voix haute + enregistrement de sa propre voix */}
-      <div className="mt-4 rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <h3 className="text-sm font-bold text-brand-800">🎙️ Lis ce texte à voix haute, puis réécoute-toi</h3>
-          <VoiceRecorder id={`${idBase}-slide-${i}`} />
-        </div>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">{slide.voixOff}</p>
-      </div>
-
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+      {/* Navigation directement sous la diapositive */}
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
         <button onClick={() => aller(i - 1)} disabled={i === 0} className="btn-ghost disabled:opacity-40">
           ← Précédent
         </button>
@@ -73,7 +65,7 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
         </button>
       </div>
 
-      <div className="mt-3 flex flex-wrap justify-center gap-1.5">
+      <div className="mt-2 flex flex-wrap justify-center gap-1.5">
         {slides.map((_, k) => (
           <button
             key={k}
@@ -82,6 +74,15 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
             aria-label={`Diapositive ${k + 1}`}
           />
         ))}
+      </div>
+
+      {/* Script à lire à voix haute + enregistrement de sa propre voix */}
+      <div className="mt-4 rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h3 className="text-sm font-bold text-brand-800">🎙️ Lis ce texte à voix haute, puis réécoute-toi</h3>
+          <VoiceRecorder id={`${idBase}-slide-${i}`} />
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-slate-600">{slide.voixOff}</p>
       </div>
     </div>
   );
