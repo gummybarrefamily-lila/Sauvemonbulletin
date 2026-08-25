@@ -27,7 +27,7 @@ export default function Accueil() {
         <section className="relative overflow-hidden bg-gradient-to-b from-brand-50 to-white">
           <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:py-24">
             <span className="inline-block rounded-full bg-brand-100 px-4 py-1.5 text-sm font-semibold text-brand-700">
-              5ème · 4ème · 3ème — Cycle 4
+              6ème · 5ème · 4ème · 3ème
             </span>
             <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
               Réviser le collège <span className="text-brand-600">autrement</span>

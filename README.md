@@ -1,6 +1,6 @@
 # 🎓 SauveMonBulletin
 
-Plateforme de révision pour le collège (5ème · 4ème · 3ème), inspirée de Save My Exams, couvrant le programme du cycle 4 : **français, mathématiques, physique-chimie, SVT, histoire-géographie, chinois LV1 (section internationale, HSK 2 → 5), russe LV2** et **histoire de la danse** (filière danse-études).
+Plateforme de révision pour le collège (6ème · 5ème · 4ème · 3ème), inspirée de Save My Exams, couvrant le programme du collège : **français, mathématiques, physique-chimie, SVT, histoire-géographie, chinois LV1 (section internationale, HSK 2 → 5), russe LV2** et **histoire de la danse** (filière danse-études).
 
 ## ✨ Ce que fait le site
 

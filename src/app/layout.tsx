@@ -7,7 +7,7 @@ import { TuteurWidget } from "@/components/TuteurWidget";
 export const metadata: Metadata = {
   title: "SauveMonBulletin — Réviser le collège autrement",
   description:
-    "Cours, fiches, cartes mémo, exercices, examens et brevets blancs pour la 5ème, la 4ème et la 3ème. Français, maths, physique-chimie, SVT, histoire-géo, chinois, russe et danse.",
+    "Cours, fiches, cartes mémo, exercices, examens et brevets blancs pour la 6ème, la 5ème, la 4ème et la 3ème. Français, maths, physique-chimie, SVT, histoire-géo, chinois, russe, espagnol et danse.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
