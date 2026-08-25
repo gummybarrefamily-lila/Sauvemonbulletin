@@ -21,12 +21,12 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
   return (
     <div>
       <div className="relative w-full rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-50 via-white to-slate-50 shadow-sm">
-        <div className="flex min-h-[20rem] flex-col p-6 sm:p-10">
-          <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-[24rem] flex-col p-6 sm:h-[26rem] sm:p-10">
+          <div className="mb-4 flex shrink-0 items-center gap-3">
             <span className="text-4xl">{slide.illustration ?? "📘"}</span>
             <h2 className="text-2xl font-extrabold text-brand-800 sm:text-3xl">{slide.titre}</h2>
           </div>
-          <div className="flex flex-1 flex-col justify-center gap-6 sm:flex-row sm:items-center">
+          <div className="flex min-h-0 flex-1 flex-col justify-center gap-6 overflow-y-auto sm:flex-row sm:items-center">
             <ul className="flex-1 space-y-3">
               {slide.contenu.map((c, k) => (
                 <li key={k} className="flex items-start gap-2.5 text-lg text-slate-700">
@@ -45,7 +45,7 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
               </div>
             )}
           </div>
-          <div className="mt-4 text-xs text-slate-400">
+          <div className="mt-4 shrink-0 text-xs text-slate-400">
             Diapositive {i + 1} / {slides.length}
           </div>
         </div>
