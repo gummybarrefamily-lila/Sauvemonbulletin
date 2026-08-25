@@ -265,13 +265,71 @@ const GENERATEURS: Record<Niveau, Generateur[]> = {
 };
 
 /** La série du jour : 10 automatismes déterministes pour une date et un niveau donnés. */
-export function serieDuJour(dateISO: string, niveau: Niveau): Automatisme[] {
+/** Date ISO (AAAA-MM-JJ) du jour précédent. */
+function jourPrecedent(dateISO: string): string | null {
+  const d = new Date(`${dateISO.slice(0, 10)}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return null;
+  d.setUTCDate(d.getUTCDate() - 1);
+  return d.toISOString().slice(0, 10);
+}
+
+/**
+ * Génère la série "brute" d'un jour : 10 questions toutes différentes,
+ * en faisant tourner les types d'exercices (pool mélangé puis parcouru en boucle)
+ * et en écartant les questions interdites (celles des jours précédents).
+ */
+function genererSerie(dateISO: string, niveau: Niveau, interdites: ReadonlySet<string>): Automatisme[] {
   const rng = creerRng(`${dateISO}--${niveau}`);
-  const pool = GENERATEURS[niveau];
+  const pool = [...GENERATEURS[niveau]];
+  // Mélange déterministe du pool pour varier l'ordre des types d'un jour à l'autre.
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
   const serie: Automatisme[] = [];
-  for (let i = 0; i < 10; i++) {
-    const g = pool[Math.floor(rng() * pool.length)];
-    serie.push(g(rng));
+  const vues = new Set<string>();
+  let idx = 0;
+  for (let essais = 0; serie.length < 10 && essais < 300; essais++) {
+    const g = pool[idx % pool.length];
+    idx++;
+    const a = g(rng);
+    if (vues.has(a.question) || interdites.has(a.question)) continue;
+    vues.add(a.question);
+    serie.push(a);
+  }
+  // Sécurité : si les exclusions empêchent d'atteindre 10, on complète en
+  // n'exigeant plus que l'unicité au sein de la série du jour.
+  for (let essais = 0; serie.length < 10 && essais < 300; essais++) {
+    const a = pool[idx % pool.length](rng);
+    idx++;
+    if (vues.has(a.question)) continue;
+    vues.add(a.question);
+    serie.push(a);
   }
   return serie;
+}
+
+/**
+ * La série du jour : 10 automatismes déterministes pour une date et un niveau donnés.
+ * Garanties : aucune question en double dans la série, et les questions des
+ * 3 jours précédents sont évitées (l'élève a du neuf chaque jour).
+ */
+export function serieDuJour(dateISO: string, niveau: Niveau): Automatisme[] {
+  // Reconstruit les séries des 3 jours précédents (chacune avec ses propres
+  // exclusions, comme l'élève les a vues) pour interdire leurs questions aujourd'hui.
+  const dates: string[] = [];
+  let d: string | null = dateISO;
+  for (let k = 0; k < 3; k++) {
+    d = jourPrecedent(d ?? "");
+    if (!d) break;
+    dates.unshift(d);
+  }
+  const fenetres: Set<string>[] = [];
+  for (const date of dates) {
+    const exclusions = new Set<string>(fenetres.flatMap((f) => Array.from(f)));
+    const s = genererSerie(date, niveau, exclusions);
+    fenetres.push(new Set(s.map((a) => a.question)));
+  }
+  const interdites = new Set<string>(fenetres.flatMap((f) => Array.from(f)));
+  return genererSerie(dateISO, niveau, interdites);
 }
