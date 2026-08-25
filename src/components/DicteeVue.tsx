@@ -26,6 +26,20 @@ export function DicteeVue() {
     };
   }, []);
 
+  // Ouvre par défaut la dictée de la semaine en cours (année scolaire : semaine 1 = début septembre).
+  useEffect(() => {
+    const maintenant = new Date();
+    const annee = maintenant.getMonth() >= 8 ? maintenant.getFullYear() : maintenant.getFullYear() - 1;
+    const rentree = new Date(annee, 8, 1);
+    const semaine = Math.max(1, Math.floor((maintenant.getTime() - rentree.getTime()) / 86400000 / 7) + 1);
+    const liste = DICTEES.filter((d) => d.niveau === niveau).sort((a, b) => a.semaine - b.semaine);
+    if (liste.length === 0) return;
+    let i = liste.findIndex((d) => d.semaine === semaine);
+    if (i < 0) i = (semaine - 1) % liste.length;
+    setIdx(i);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [niveau]);
+
   // Réinitialise quand on change de dictée.
   useEffect(() => {
     setSaisie("");

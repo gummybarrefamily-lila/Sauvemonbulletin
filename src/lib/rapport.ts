@@ -2,7 +2,27 @@ import { Resend } from "resend";
 import { prisma } from "./prisma";
 import { statsUtilisateur } from "./progression";
 import { matiereInfo } from "@content/curriculum";
-import type { MatiereId } from "@content/types";
+import { DICTEES, type Dictee } from "@content/dictees";
+import type { MatiereId, Niveau } from "@content/types";
+
+/**
+ * Numéro de semaine de l'année scolaire (1 = première semaine de septembre).
+ * Sert à choisir la dictée de la semaine ; boucle sur les semaines disponibles.
+ */
+function semaineScolaire(date: Date): number {
+  const annee = date.getMonth() >= 8 ? date.getFullYear() : date.getFullYear() - 1;
+  const rentree = new Date(annee, 8, 1); // 1er septembre
+  const jours = Math.floor((date.getTime() - rentree.getTime()) / 86400000);
+  return Math.max(1, Math.floor(jours / 7) + 1);
+}
+
+/** La dictée de la semaine pour un niveau donné (boucle si l'année dépasse le stock). */
+function dicteeDeLaSemaine(niveau: string, date: Date): Dictee | null {
+  const dispo = DICTEES.filter((d) => d.niveau === (niveau as Niveau)).sort((a, b) => a.semaine - b.semaine);
+  if (dispo.length === 0) return null;
+  const semaine = semaineScolaire(date);
+  return dispo.find((d) => d.semaine === semaine) ?? dispo[(semaine - 1) % dispo.length];
+}
 
 /** Construit et envoie le compte rendu hebdomadaire aux parents de tous les élèves. */
 export async function envoyerRapportsHebdo(): Promise<{ envoyes: number; erreurs: number }> {
@@ -28,7 +48,8 @@ export async function envoyerRapportsHebdo(): Promise<{ envoyes: number; erreurs
       where: { userId: eleve.id, faite: false },
     });
 
-    const html = genererHtmlRapport(eleve.prenom, activites, stats, revisions.length);
+    const dictee = dicteeDeLaSemaine(eleve.niveau, new Date());
+    const html = genererHtmlRapport(eleve.prenom, activites, stats, revisions.length, dictee);
 
     if (!resend) {
       // Mode non configuré : on n'envoie pas mais on ne casse pas.
@@ -54,7 +75,8 @@ function genererHtmlRapport(
   prenom: string,
   activites: { type: string; matiere: string; score: number; scoreMax: number; date: Date }[],
   stats: { matiere: string; activites: number; scoreMoyen: number }[],
-  revisionsEnAttente: number
+  revisionsEnAttente: number,
+  dictee: Dictee | null
 ): string {
   const nbActivites = activites.length;
   const lignesStats = stats
@@ -97,6 +119,28 @@ function genererHtmlRapport(
           <tbody>${lignesStats}</tbody>
         </table>`
             : `<p style="color:#6b7280;">Aucune activité notée cette semaine. Encouragez ${prenom} à se connecter !</p>`
+        }
+        ${
+          dictee
+            ? `<h2 style="font-size:16px;margin-top:28px;">✍️ La dictée de la semaine ${dictee.semaine}</h2>
+        <p style="font-size:14px;">À faire faire à ${prenom} : lisez le texte ci-dessous à voix haute (deux ou trois fois, lentement), pendant qu'il ou elle l'écrit. Puis corrigez ensemble à l'aide des pièges expliqués.</p>
+        <div style="background:#fdf7ee;border:1px solid #f0e0c8;border-radius:10px;padding:14px 16px;">
+          <p style="margin:0 0 4px;font-weight:bold;">${dictee.titre}</p>
+          <p style="margin:0 0 10px;font-size:12px;color:#92700c;font-style:italic;">${dictee.auteur}</p>
+          <p style="margin:0;font-size:14px;line-height:1.6;">${dictee.texte}</p>
+        </div>
+        ${
+          dictee.pointsVigilance.length > 0
+            ? `<p style="font-size:13px;margin:12px 0 4px;font-weight:bold;">💡 Les pièges à vérifier lors de la correction :</p>
+        <ul style="font-size:13px;color:#374151;margin:0;padding-left:18px;">
+          ${dictee.pointsVigilance
+            .map((p) => `<li style="margin-bottom:4px;"><strong>« ${p.extrait} »</strong> — ${p.explication}</li>`)
+            .join("")}
+        </ul>`
+            : ""
+        }
+        <p style="font-size:12px;color:#6b7280;margin-top:8px;">${prenom} peut aussi faire cette dictée en autonomie sur le site (rubrique « Dictée » : lecture audio et correction automatique).</p>`
+            : ""
         }
         <p style="margin-top:24px;font-size:13px;color:#6b7280;">
           Ce compte rendu est envoyé automatiquement chaque semaine. Les révisions personnalisées sont programmées selon les résultats aux examens bilan.
