@@ -3,6 +3,7 @@ import { authOptions } from "./auth";
 import { PROGRAMME, NIVEAUX } from "@content/curriculum";
 import { METHODES } from "@content/methodes";
 import { BREVETS_BLANCS } from "@content/brevet";
+import { COMPREHENSION } from "@content/comprehension";
 import type { MatiereId, Niveau } from "@content/types";
 
 /**
@@ -38,4 +39,9 @@ export function methodeGratuite(): string | null {
 /** Échantillon gratuit des brevets blancs : le premier sujet. */
 export function brevetGratuit(): string | null {
   return BREVETS_BLANCS[0]?.slug ?? null;
+}
+
+/** Échantillon gratuit de la section compréhension : la première fiche. */
+export function comprehensionGratuite(): string | null {
+  return COMPREHENSION[0]?.slug ?? null;
 }

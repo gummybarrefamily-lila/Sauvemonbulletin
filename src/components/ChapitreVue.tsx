@@ -9,9 +9,11 @@ import { VoiceRecorder } from "./VoiceRecorder";
 import { MemoCards } from "./MemoCards";
 import { BlocNotes } from "./BlocNotes";
 import { MotAudio } from "./MotAudio";
+import A_QUOI_CA_SERT from "@content/a-quoi-ca-sert";
+import { TelechargerFiche } from "./TelechargerFiche";
 import { Examen } from "./Examen";
 
-type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens";
+type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens" | "pourquoi";
 
 const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "cours", label: "Cours", emoji: "🎬" },
@@ -19,6 +21,7 @@ const ONGLETS: { id: Onglet; label: string; emoji: string }[] = [
   { id: "memo", label: "Cartes mémo", emoji: "🃏" },
   { id: "exercices", label: "Exercices", emoji: "✏️" },
   { id: "examens", label: "Examens", emoji: "🎯" },
+  { id: "pourquoi", label: "À quoi ça sert ?", emoji: "🤔" },
 ];
 
 export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
@@ -48,6 +51,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
   }
 
   const noteId = `${chapitre.matiere}--${chapitre.niveau}--${chapitre.slug}`;
+  const aQuoiCaSert = A_QUOI_CA_SERT[noteId];
 
   return (
     <div className="mt-6 lg:flex lg:gap-6">
@@ -96,7 +100,10 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
         <div className="card p-6">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-xl font-bold text-slate-900">Fiche de révision</h2>
-            <VoiceRecorder id={`${chapitre.slug}-fiche`} label="Lire la fiche & m'enregistrer" />
+            <div className="flex flex-wrap items-center gap-2">
+              <TelechargerFiche chapitre={chapitre} />
+              <VoiceRecorder id={`${chapitre.slug}-fiche`} label="Lire la fiche & m'enregistrer" />
+            </div>
           </div>
           <p className="mt-3 rounded-xl bg-slate-50 p-3 text-slate-700">{chapitre.fiche.intro}</p>
           <div className="prose-fiche mt-4">
@@ -159,6 +166,21 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
                 <li key={i}>• {s}</li>
               ))}
             </ul>
+          </div>
+        </div>
+      )}
+
+      {onglet === "pourquoi" && (
+        <div className="card p-8">
+          <div className="flex items-start gap-4">
+            <span className="text-5xl">🤔</span>
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">À quoi ça sert, concrètement ?</h2>
+              <p className="mt-4 text-lg leading-relaxed text-slate-700">
+                {aQuoiCaSert ??
+                  "L'explication arrive bientôt pour ce chapitre. En attendant : si c'est au programme, c'est que ça resservira — promis."}
+              </p>
+            </div>
           </div>
         </div>
       )}
