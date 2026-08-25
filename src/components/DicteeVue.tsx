@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { DICTEES } from "@content/dictees";
 import { diffDictee } from "@/lib/dictee-diff";
+import { InvitationCompte } from "./InvitationCompte";
 
 /** Dictée hebdomadaire : lue par l'ordinateur, l'élève tape, un correcteur repère les fautes. */
 export function DicteeVue() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const invite = status === "unauthenticated"; // visiteur sans compte : seule la 1ère dictée est ouverte
   const [niveau, setNiveau] = useState<"5eme" | "4eme" | "3eme">("5eme");
   const dictees = DICTEES.filter((d) => d.niveau === niveau).sort((a, b) => a.semaine - b.semaine);
   const [idx, setIdx] = useState(0);
   const dictee = dictees[idx];
+  const verrouille = invite && idx > 0;
 
   const [saisie, setSaisie] = useState("");
   const [corrige, setCorrige] = useState(false);
@@ -27,7 +30,12 @@ export function DicteeVue() {
   }, []);
 
   // Ouvre par défaut la dictée de la semaine en cours (année scolaire : semaine 1 = début septembre).
+  // Pour un visiteur sans compte, on reste sur la dictée d'essai (semaine 1).
   useEffect(() => {
+    if (status !== "authenticated") {
+      setIdx(0);
+      return;
+    }
     const maintenant = new Date();
     const annee = maintenant.getMonth() >= 8 ? maintenant.getFullYear() : maintenant.getFullYear() - 1;
     const rentree = new Date(annee, 8, 1);
@@ -38,7 +46,7 @@ export function DicteeVue() {
     if (i < 0) i = (semaine - 1) % liste.length;
     setIdx(i);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [niveau]);
+  }, [niveau, status]);
 
   // Réinitialise quand on change de dictée.
   useEffect(() => {
@@ -122,11 +130,21 @@ export function DicteeVue() {
                   i === idx ? "bg-brand-100 text-brand-800" : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                 }`}
               >
-                Semaine {d.semaine}
+                {invite && i > 0 ? "🔒 " : ""}Semaine {d.semaine}
               </button>
             ))}
           </div>
 
+          {invite && idx === 0 && (
+            <p className="rounded-xl bg-green-50 px-4 py-2 text-sm text-green-800">
+              🎁 Dictée d&apos;essai gratuite — crée un compte gratuit pour débloquer les 36 semaines.
+            </p>
+          )}
+
+          {verrouille ? (
+            <InvitationCompte contenu={`La dictée de la semaine ${dictee.semaine} est un contenu`} />
+          ) : (
+          <>
           <div className="card p-5">
             <h2 className="text-lg font-bold text-slate-900">Semaine {dictee.semaine} — {dictee.titre}</h2>
             {dictee.auteur && <p className="text-sm italic text-slate-400">{dictee.auteur}</p>}
@@ -231,6 +249,8 @@ export function DicteeVue() {
                 </div>
               )}
             </div>
+          )}
+          </>
           )}
         </div>
       )}

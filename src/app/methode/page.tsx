@@ -4,11 +4,28 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { ExercicePratique } from "@/components/ExercicePratique";
+import { InvitationCompte } from "@/components/InvitationCompte";
+import { estConnecte, methodeGratuite } from "@/lib/acces";
 import { METHODES } from "@content/methodes";
 
-export default function PageMethode({ searchParams }: { searchParams: { s?: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function PageMethode({ searchParams }: { searchParams: { s?: string } }) {
   const m = METHODES.find((x) => x.slug === searchParams.s);
   if (!m) notFound();
+
+  const connecte = await estConnecte();
+  if (!connecte && m.slug !== methodeGratuite()) {
+    return (
+      <div className="flex min-h-screen flex-col">
+        <NavBar />
+        <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-16">
+          <InvitationCompte contenu={`La fiche « ${m.titre} » est un contenu`} />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   const texteComplet = `${m.titre}. ${m.accroche} ${m.sections
     .map((s) => `${s.titre}. ${s.points.join(". ")}`)

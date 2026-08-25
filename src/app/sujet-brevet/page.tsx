@@ -3,13 +3,30 @@ import { notFound } from "next/navigation";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { SujetBrevet } from "@/components/SujetBrevet";
+import { InvitationCompte } from "@/components/InvitationCompte";
+import { brevetGratuit, estConnecte } from "@/lib/acces";
 import { BREVETS_BLANCS } from "@content/brevet";
 import { matiereInfo } from "@content/curriculum";
 
-export default function PageSujetBrevet({ searchParams }: { searchParams: { s?: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function PageSujetBrevet({ searchParams }: { searchParams: { s?: string } }) {
   const b = BREVETS_BLANCS.find((x) => x.slug === searchParams.s);
   if (!b) notFound();
   const info = matiereInfo(b.matiere);
+
+  const connecte = await estConnecte();
+  if (!connecte && b.slug !== brevetGratuit()) {
+    return (
+      <div className="flex min-h-screen flex-col">
+        <NavBar />
+        <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-16">
+          <InvitationCompte contenu={`Le sujet « ${b.titre} » est un contenu`} />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen flex-col">

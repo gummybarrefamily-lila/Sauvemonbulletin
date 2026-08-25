@@ -3,12 +3,17 @@ import { notFound } from "next/navigation";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { MATIERES, NIVEAUX, chapitresDe } from "@content/curriculum";
+import { chapitreGratuit, estConnecte } from "@/lib/acces";
 import type { MatiereId } from "@content/types";
 
-export default function PageMatiere({ searchParams }: { searchParams: { m?: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function PageMatiere({ searchParams }: { searchParams: { m?: string } }) {
   const info = MATIERES.find((x) => x.id === searchParams.m);
   if (!info) notFound();
   const matiere = info.id as MatiereId;
+  const connecte = await estConnecte();
+  const gratuit = chapitreGratuit(matiere);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -24,6 +29,17 @@ export default function PageMatiere({ searchParams }: { searchParams: { m?: stri
             <p className="text-slate-500">{info.description}</p>
           </div>
         </div>
+
+        {!connecte && (
+          <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900">
+            🎁 <strong>Essai libre :</strong> un chapitre de cette matière est ouvert à tous (badge « Essai
+            gratuit »). Pour débloquer tout le programme, la progression et les révisions personnalisées,{" "}
+            <Link href="/inscription" className="font-bold underline">
+              crée ton compte gratuit
+            </Link>
+            .
+          </div>
+        )}
 
         {matiere === "maths" && (
           <Link href={`/automatismes`} className="mt-6 flex items-center justify-between rounded-2xl border border-amber-200 bg-amber-50 p-4 hover:bg-amber-100">
@@ -57,9 +73,25 @@ export default function PageMatiere({ searchParams }: { searchParams: { m?: stri
                       <span className="font-medium text-slate-800">{c.titre}</span>
                     </div>
                     {c.disponible ? (
-                      <Link href={`/cours?m=${matiere}&n=${niv.id}&c=${c.slug}`} className="btn-primary px-3 py-1.5 text-sm">
-                        Ouvrir
-                      </Link>
+                      connecte || (gratuit && gratuit.niveau === niv.id && gratuit.slug === c.slug) ? (
+                        <span className="flex items-center gap-2">
+                          {!connecte && (
+                            <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
+                              Essai gratuit
+                            </span>
+                          )}
+                          <Link href={`/cours?m=${matiere}&n=${niv.id}&c=${c.slug}`} className="btn-primary px-3 py-1.5 text-sm">
+                            Ouvrir
+                          </Link>
+                        </span>
+                      ) : (
+                        <Link
+                          href={`/cours?m=${matiere}&n=${niv.id}&c=${c.slug}`}
+                          className="rounded-lg bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-500 hover:bg-slate-200"
+                        >
+                          🔒 Ouvrir
+                        </Link>
+                      )
                     ) : (
                       <span className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-400">Bientôt</span>
                     )}

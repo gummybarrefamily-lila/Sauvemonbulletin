@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { estConnecte, methodeGratuite } from "@/lib/acces";
 import { METHODES } from "@content/methodes";
 
 export const metadata = { title: "Méthodes & techniques — SauveMonBulletin" };
+export const dynamic = "force-dynamic";
 
 const CATEGORIES: Record<string, { nom: string; emoji: string }> = {
   apprentissage: { nom: "Apprendre efficacement", emoji: "🧠" },
@@ -12,7 +14,9 @@ const CATEGORIES: Record<string, { nom: string; emoji: string }> = {
   oral: { nom: "L'oral", emoji: "🎤" },
 };
 
-export default function PageMethodes() {
+export default async function PageMethodes() {
+  const connecte = await estConnecte();
+  const gratuite = methodeGratuite();
   return (
     <div className="flex min-h-screen flex-col">
       <NavBar />
@@ -35,8 +39,16 @@ export default function PageMethodes() {
                   <Link key={m.slug} href={`/methode?s=${m.slug}`} className="card group flex items-start gap-3 p-5 transition hover:-translate-y-0.5 hover:shadow-md">
                     <span className="text-3xl">{m.emoji}</span>
                     <div>
-                      <h3 className="font-bold text-slate-800 group-hover:text-brand-700">{m.titre}</h3>
+                      <h3 className="font-bold text-slate-800 group-hover:text-brand-700">
+                        {!connecte && m.slug !== gratuite ? "🔒 " : ""}
+                        {m.titre}
+                      </h3>
                       <p className="mt-1 text-sm text-slate-500">{m.accroche}</p>
+                      {!connecte && m.slug === gratuite && (
+                        <span className="mt-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
+                          Essai gratuit
+                        </span>
+                      )}
                     </div>
                   </Link>
                 ))}
