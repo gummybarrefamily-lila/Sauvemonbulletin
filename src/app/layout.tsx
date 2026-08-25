@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { TuteurWidget } from "@/components/TuteurWidget";
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <TuteurWidget />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
