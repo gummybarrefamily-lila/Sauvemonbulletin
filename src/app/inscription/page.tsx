@@ -77,6 +77,7 @@ export default function Inscription() {
                   onChange={(e) => setForm({ ...form, niveau: e.target.value })}
                   className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-brand-500 focus:outline-none"
                 >
+                  <option value="6eme">6ème</option>
                   <option value="5eme">5ème</option>
                   <option value="4eme">4ème</option>
                   <option value="3eme">3ème</option>

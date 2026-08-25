@@ -2,7 +2,7 @@
 // Tout le contenu (cours, fiches, cartes mémo, exercices, examens) est décrit
 // avec ces structures et stocké dans /content — versionnable et facile à enrichir.
 
-export type Niveau = "5eme" | "4eme" | "3eme";
+export type Niveau = "6eme" | "5eme" | "4eme" | "3eme";
 
 export type MatiereId =
   | "francais"

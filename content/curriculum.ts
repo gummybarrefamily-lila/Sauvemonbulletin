@@ -1,10 +1,16 @@
 import type { EntreeProgramme, MatiereId, MatiereInfo, Niveau } from "./types";
 
 export const NIVEAUX: { id: Niveau; nom: string }[] = [
+  { id: "6eme", nom: "6ème" },
   { id: "5eme", nom: "5ème" },
   { id: "4eme", nom: "4ème" },
   { id: "3eme", nom: "3ème" },
 ];
+
+/** Libellé affichable d'un niveau (ex. "6eme" -> "6ème"). */
+export function niveauLabel(niveau: Niveau): string {
+  return NIVEAUX.find((n) => n.id === niveau)?.nom ?? niveau;
+}
 
 export const MATIERES: MatiereInfo[] = [
   {
@@ -83,6 +89,16 @@ export function matiereInfo(id: MatiereId): MatiereInfo {
  */
 export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
   maths: {
+    "6eme": [
+      { slug: "nombres-entiers-decimaux", titre: "Nombres entiers et décimaux", disponible: true },
+      { slug: "fractions-initiation", titre: "Les fractions (initiation)", disponible: true },
+      { slug: "operations-nombres", titre: "Additionner, soustraire, multiplier, diviser", disponible: true },
+      { slug: "proportionnalite", titre: "Initiation à la proportionnalité", disponible: true },
+      { slug: "points-droites-segments", titre: "Points, droites, segments et milieux", disponible: true },
+      { slug: "angles", titre: "Les angles", disponible: true },
+      { slug: "perimetres-aires", titre: "Périmètres et aires", disponible: true },
+      { slug: "symetrie-axiale", titre: "La symétrie axiale", disponible: true },
+    ],
     "5eme": [
       { slug: "fractions", titre: "Les fractions", disponible: true },
       { slug: "enchainements-operations", titre: "Enchaînements d'opérations et priorités", disponible: true },
@@ -121,6 +137,15 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   francais: {
+    "6eme": [
+      { slug: "natures-classes-mots", titre: "Les natures (classes) de mots", disponible: true },
+      { slug: "conte-merveilleux", titre: "Le conte merveilleux", disponible: true },
+      { slug: "recits-creation", titre: "Récits de création et déluges", disponible: true },
+      { slug: "present-indicatif", titre: "Le présent de l'indicatif", disponible: true },
+      { slug: "odyssee", titre: "L'Odyssée d'Homère : monstres et héros", disponible: true },
+      { slug: "fables-poesie", titre: "Fables et poésie", disponible: true },
+      { slug: "phrase-ponctuation", titre: "La phrase et la ponctuation", disponible: true },
+    ],
     "5eme": [
       { slug: "classes-grammaticales", titre: "Les classes grammaticales", disponible: true },
       { slug: "recit-aventure", titre: "Le récit d'aventures", disponible: true },
@@ -153,6 +178,14 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   "physique-chimie": {
+    "6eme": [
+      { slug: "etats-matiere", titre: "La matière et ses états", disponible: true },
+      { slug: "melanges-solutions", titre: "Mélanges et solutions", disponible: true },
+      { slug: "eau-environnement", titre: "L'eau dans notre environnement", disponible: true },
+      { slug: "lumiere-ombres", titre: "Lumière, ombres et vision", disponible: true },
+      { slug: "circuits-simples", titre: "Les circuits électriques simples", disponible: true },
+      { slug: "mouvement-vitesse-6e", titre: "Décrire un mouvement", disponible: true },
+    ],
     "5eme": [
       { slug: "etats-de-leau", titre: "L'eau et ses états", disponible: true },
       { slug: "melanges-corps-purs", titre: "Mélanges et corps purs", disponible: true },
@@ -179,6 +212,14 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   svt: {
+    "6eme": [
+      { slug: "caracteristiques-vivant", titre: "Le vivant et ses caractéristiques", disponible: true },
+      { slug: "classification-vivant", titre: "Classer les êtres vivants", disponible: true },
+      { slug: "peuplement-milieux", titre: "Le peuplement des milieux au fil des saisons", disponible: true },
+      { slug: "besoins-vegetaux", titre: "Les besoins des végétaux", disponible: true },
+      { slug: "alimentation-digestion", titre: "L'alimentation humaine et la digestion", disponible: true },
+      { slug: "protection-environnement", titre: "Agir pour son environnement", disponible: true },
+    ],
     "5eme": [
       { slug: "nutrition-organismes", titre: "La nutrition des organismes", disponible: true },
       { slug: "respiration-milieux", titre: "La respiration dans différents milieux", disponible: true },
@@ -202,6 +243,16 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   "histoire-geo": {
+    "6eme": [
+      { slug: "prehistoire", titre: "La Préhistoire : les débuts de l'humanité", disponible: true },
+      { slug: "neolithique", titre: "Le Néolithique et les premiers villages", disponible: true },
+      { slug: "premiers-etats-ecriture", titre: "Premiers États et premières écritures", disponible: true },
+      { slug: "cites-grecques", titre: "Le monde des cités grecques", disponible: true },
+      { slug: "rome-republique-empire", titre: "Rome, de la République à l'Empire", disponible: true },
+      { slug: "monotheismes-antiquite", titre: "Judaïsme et christianisme dans l'Antiquité", disponible: true },
+      { slug: "habiter-metropole", titre: "Habiter une métropole", disponible: true },
+      { slug: "habiter-littoral", titre: "Habiter les littoraux", disponible: true },
+    ],
     "5eme": [
       { slug: "byzance-carolingiens", titre: "Byzance et l'Europe carolingienne", disponible: true },
       { slug: "islam-medieval", titre: "La naissance de l'islam et ses empires", disponible: true },
@@ -229,6 +280,7 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   chinois: {
+    "6eme": [],
     "5eme": [
       { slug: "hsk2-se-presenter", titre: "HSK 2 — Se présenter et parler de soi", disponible: true },
       { slug: "hsk2-famille-ecole", titre: "HSK 2 — La famille et l'école", disponible: true },
@@ -250,6 +302,7 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   russe: {
+    "6eme": [],
     "5eme": [
       { slug: "alphabet-cyrillique", titre: "L'alphabet cyrillique : lire et écrire", disponible: true },
       { slug: "se-presenter", titre: "Se présenter : premiers dialogues", disponible: true },
@@ -270,6 +323,7 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   espagnol: {
+    "6eme": [],
     "5eme": [
       { slug: "saludos-presentarse", titre: "Saludos : se présenter", disponible: true },
       { slug: "alfabeto-pronunciacion", titre: "L'alphabet et la prononciation", disponible: true },
@@ -294,6 +348,7 @@ export const PROGRAMME: Record<MatiereId, Record<Niveau, EntreeProgramme[]>> = {
     ],
   },
   "histoire-danse": {
+    "6eme": [],
     "5eme": [
       { slug: "naissance-ballet", titre: "La naissance du ballet : des cours royales à l'Opéra", disponible: true },
       { slug: "danses-anciennes", titre: "Danses anciennes et danses traditionnelles", disponible: true },

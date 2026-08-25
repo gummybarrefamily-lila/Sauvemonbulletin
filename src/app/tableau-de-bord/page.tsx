@@ -35,7 +35,14 @@ export default async function TableauDeBord() {
     take: 8,
   });
 
-  const niveauLabel = user.niveau === "5eme" ? "5ème" : user.niveau === "4eme" ? "4ème" : "3ème";
+  const niveauLabel =
+    user.niveau === "6eme"
+      ? "6ème"
+      : user.niveau === "5eme"
+        ? "5ème"
+        : user.niveau === "4eme"
+          ? "4ème"
+          : "3ème";
 
   return (
     <div className="flex min-h-screen flex-col">

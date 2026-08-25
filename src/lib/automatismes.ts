@@ -221,7 +221,44 @@ const par3eme: Generateur[] = [
   },
 ];
 
+// Automatismes de 6ème : calcul mental de base (tables, décimaux simples, doubles/moitiés).
+const par6eme: Generateur[] = [
+  (rng) => {
+    const a = entier(rng, 2, 9);
+    const b = entier(rng, 2, 9);
+    return { question: `${a} × ${b} = ?`, reponse: `${a * b}`, explication: `Table de multiplication : ${a} × ${b} = ${a * b}.` };
+  },
+  (rng) => {
+    const a = entier(rng, 20, 99);
+    const b = entier(rng, 10, 50);
+    return { question: `${a} + ${b} = ?`, reponse: `${a + b}`, explication: `${a} + ${b} = ${a + b}.` };
+  },
+  (rng) => {
+    const a = entier(rng, 50, 99);
+    const b = entier(rng, 10, 49);
+    return { question: `${a} − ${b} = ?`, reponse: `${a - b}`, explication: `${a} − ${b} = ${a - b}.` };
+  },
+  (rng) => {
+    const n = entier(rng, 3, 20);
+    return { question: `Le double de ${n} = ?`, reponse: `${n * 2}`, explication: `Le double, c'est ×2 : ${n} × 2 = ${n * 2}.` };
+  },
+  (rng) => {
+    const n = entier(rng, 2, 25) * 2;
+    return { question: `La moitié de ${n} = ?`, reponse: `${n / 2}`, explication: `La moitié, c'est ÷2 : ${n} ÷ 2 = ${n / 2}.` };
+  },
+  (rng) => {
+    const a = entier(rng, 1, 9);
+    const b = entier(rng, 1, 9);
+    return { question: `${a},5 + ${b},5 = ?`, reponse: `${a + b + 1}`, explication: `0,5 + 0,5 = 1, donc ${a},5 + ${b},5 = ${a} + ${b} + 1 = ${a + b + 1}.` };
+  },
+  (rng) => {
+    const n = entier(rng, 2, 9);
+    return { question: `${n} × 10 = ?`, reponse: `${n * 10}`, explication: `Multiplier par 10 : on ajoute un zéro. ${n} × 10 = ${n * 10}.` };
+  },
+];
+
 const GENERATEURS: Record<Niveau, Generateur[]> = {
+  "6eme": par6eme,
   "5eme": [...communs, ...par5eme],
   "4eme": [...communs.slice(0, 3), ...par4eme],
   "3eme": [...communs.slice(0, 2), ...par3eme],

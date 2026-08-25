@@ -102,6 +102,7 @@ export function BilanVue() {
               onChange={(e) => setNiveau(e.target.value as Niveau)}
               className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5"
             >
+              <option value="6eme">6ème</option>
               <option value="5eme">5ème</option>
               <option value="4eme">4ème</option>
               <option value="3eme">3ème</option>

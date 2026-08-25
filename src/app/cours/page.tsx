@@ -4,7 +4,7 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { ChapitreVue } from "@/components/ChapitreVue";
 import { trouverChapitre } from "@content/chapitres";
-import { matiereInfo } from "@content/curriculum";
+import { matiereInfo, niveauLabel } from "@content/curriculum";
 import type { MatiereId, Niveau } from "@content/types";
 
 export default function PageCours({
@@ -28,7 +28,7 @@ export default function PageCours({
         </Link>
         <div className="mt-3">
           <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
-            {chap.niveau === "5eme" ? "5ème" : chap.niveau === "4eme" ? "4ème" : "3ème"}
+            {niveauLabel(chap.niveau)}
           </span>
           <h1 className="mt-3 text-3xl font-bold text-slate-900">{chap.titre}</h1>
           <p className="mt-2 text-slate-600">{chap.description}</p>
