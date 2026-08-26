@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 
 const MENU_ENTRAINER = [
-  { href: "/recompenses", label: "🏆 Mes récompenses" },
   { href: "/automatismes", label: "⚡ Automatismes du jour" },
   { href: "/problemes-maths", label: "🧩 Problèmes de maths" },
   { href: "/dictee", label: "✍️ Dictée de la semaine" },
@@ -17,6 +16,11 @@ const MENU_REUSSIR = [
   { href: "/methodes", label: "💡 Méthodes" },
   { href: "/comprehension", label: "🔎 Compréhension de texte" },
   { href: "/brevet", label: "🏆 Brevets blancs" },
+];
+
+const MENU_ESPACE = [
+  { href: "/tableau-de-bord", label: "📊 Mes progrès" },
+  { href: "/defis", label: "🏆 Mes défis" },
 ];
 
 function Deroulant({
@@ -63,7 +67,7 @@ function Deroulant({
 
 export function NavBar() {
   const { data: session } = useSession();
-  const [menuOuvert, setMenuOuvert] = useState<"entrainer" | "reussir" | null>(null);
+  const [menuOuvert, setMenuOuvert] = useState<"entrainer" | "reussir" | "espace" | null>(null);
   const [mobileOuvert, setMobileOuvert] = useState(false);
   const ref = useRef<HTMLElement>(null);
 
@@ -116,9 +120,13 @@ export function NavBar() {
           </Link>
           {session ? (
             <>
-              <Link href="/tableau-de-bord" onClick={fermerTout} className="btn-ghost px-3 py-2 font-semibold">
-                Mon espace
-              </Link>
+              <Deroulant
+                label="Mon espace"
+                items={MENU_ESPACE}
+                ouvert={menuOuvert === "espace"}
+                onToggle={() => setMenuOuvert(menuOuvert === "espace" ? null : "espace")}
+                onClose={fermerTout}
+              />
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="rounded-lg px-3 py-2 font-semibold text-slate-500 hover:bg-slate-100"
@@ -172,9 +180,11 @@ export function NavBar() {
             </Link>
             {session ? (
               <>
-                <Link href="/tableau-de-bord" onClick={fermerTout} className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50">
-                  Mon espace
-                </Link>
+                {MENU_ESPACE.map((item) => (
+                  <Link key={item.href} href={item.href} onClick={fermerTout} className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50">
+                    {item.label}
+                  </Link>
+                ))}
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
                   className="block w-full rounded-xl px-3 py-2 text-left text-sm font-medium text-slate-500 hover:bg-slate-50"

@@ -22,6 +22,8 @@ model User {
   revisions  RevisionProgrammee[]
   objectifs  Objectif[]
   groupes    MembreGroupe[]
+  defis      Defi[]
+  reactions  Reaction[]
 }
 
 /// Toute activité de l'élève : exercice, examen, automatismes, bilan...
@@ -38,7 +40,38 @@ model Activite {
   details   String?  // JSON : détail par chapitre pour les bilans
   date      DateTime @default(now())
 
+  reactions Reaction[]
+
   @@index([userId, date])
+}
+
+/// Défi de la semaine ou du mois : cibles par activité + récompense promise.
+model Defi {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  periode      String   // semaine | mois
+  automatismes Int
+  dictees      Int
+  problemes    Int
+  fondamentaux Int
+  recompense   String   @default("")
+  majLe        DateTime @updatedAt
+
+  @@unique([userId, periode])
+}
+
+/// Réaction d'un membre du groupe sur une activité (bravo, félicitations...).
+model Reaction {
+  id         String   @id @default(cuid())
+  activiteId String
+  activite   Activite @relation(fields: [activiteId], references: [id], onDelete: Cascade)
+  auteurId   String
+  auteur     User     @relation(fields: [auteurId], references: [id], onDelete: Cascade)
+  message    String
+  creeLe     DateTime @default(now())
+
+  @@index([activiteId])
 }
 
 /// Objectif personnel de l'élève : une cible (streak ou points) et la récompense convenue.

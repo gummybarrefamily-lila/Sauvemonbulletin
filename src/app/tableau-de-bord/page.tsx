@@ -48,6 +48,14 @@ export default async function TableauDeBord() {
     <div className="flex min-h-screen flex-col">
       <NavBar />
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">
+        {/* Onglets Mon espace */}
+        <div className="mb-6 flex gap-1.5 border-b border-slate-200 pb-2">
+          <span className="rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-semibold text-white">📊 Mes progrès</span>
+          <Link href="/defis" className="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">
+            🏆 Mes défis
+          </Link>
+        </div>
+
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Bonjour {user.prenom} 👋</h1>
@@ -83,7 +91,7 @@ export default async function TableauDeBord() {
                       </div>
                     </div>
                     <Link
-                      href={`/matieres/${r.matiere}/${r.niveau}/${r.chapitre}`}
+                      href={`/cours?m=${r.matiere}&n=${r.niveau}&c=${r.chapitre}`}
                       className="btn-primary shrink-0 px-3 py-1.5 text-sm"
                     >
                       Réviser

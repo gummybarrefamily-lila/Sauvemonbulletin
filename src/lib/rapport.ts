@@ -3,6 +3,8 @@ import { prisma } from "./prisma";
 import { statsUtilisateur } from "./progression";
 import { matiereInfo } from "@content/curriculum";
 import { DICTEES, type Dictee } from "@content/dictees";
+import { donneesRecompenses, ciblesDefis, defiReussi, type ProgresDefi, type CiblesDefi, type Streaks } from "./recompenses";
+import { PROPOSITIONS_HEBDO } from "@content/propositions-hebdo";
 import type { MatiereId, Niveau } from "@content/types";
 
 /**
@@ -49,7 +51,20 @@ export async function envoyerRapportsHebdo(): Promise<{ envoyes: number; erreurs
     });
 
     const dictee = dicteeDeLaSemaine(eleve.niveau, new Date());
-    const html = genererHtmlRapport(eleve.prenom, activites, stats, revisions.length, dictee);
+    const donneesDefis = await donneesRecompenses(eleve.id);
+    const cibles = await ciblesDefis(eleve.id);
+    const html = genererHtmlRapport(
+      eleve.prenom,
+      activites,
+      stats,
+      revisions.length,
+      dictee,
+      {
+        semaine: { cibles: cibles.semaine, progres: donneesDefis.semaine },
+        mois: { cibles: cibles.mois, progres: donneesDefis.mois },
+      },
+      donneesDefis.streaks
+    );
 
     if (!resend) {
       // Mode non configuré : on n'envoie pas mais on ne casse pas.
@@ -76,7 +91,12 @@ function genererHtmlRapport(
   activites: { type: string; matiere: string; score: number; scoreMax: number; date: Date }[],
   stats: { matiere: string; activites: number; scoreMoyen: number }[],
   revisionsEnAttente: number,
-  dictee: Dictee | null
+  dictee: Dictee | null,
+  defis: {
+    semaine: { cibles: CiblesDefi; progres: ProgresDefi };
+    mois: { cibles: CiblesDefi; progres: ProgresDefi };
+  },
+  streaks: Streaks
 ): string {
   const nbActivites = activites.length;
   const lignesStats = stats
@@ -120,6 +140,40 @@ function genererHtmlRapport(
         </table>`
             : `<p style="color:#6b7280;">Aucune activité notée cette semaine. Encouragez ${prenom} à se connecter !</p>`
         }
+        <h2 style="font-size:16px;margin-top:28px;">🎯 Les défis de ${prenom}</h2>
+        ${(["semaine", "mois"] as const)
+          .map((p) => {
+            const d = defis[p];
+            const reussi = defiReussi(d.progres, d.cibles);
+            const lignes = [
+              ["⚡ Automatismes (jours)", d.progres.automatismes, d.cibles.automatismes],
+              ["✍️ Dictées", d.progres.dictees, d.cibles.dictees],
+              ["🧩 Problèmes de maths", d.progres.problemes, d.cibles.problemes],
+              ["📅 Fondamentaux hebdo", d.progres.fondamentaux, d.cibles.fondamentaux],
+            ]
+              .map(
+                ([label, fait, cible]) =>
+                  `<tr><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;">${label}</td><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;text-align:center;font-weight:bold;color:${
+                    Number(fait) >= Number(cible) ? "#16a34a" : "#6b7280"
+                  };">${fait} / ${cible}</td></tr>`
+              )
+              .join("");
+            return `<div style="border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;margin-bottom:10px;${
+              reussi ? "background:#f0fdf4;border-color:#bbf7d0;" : ""
+            }">
+            <p style="margin:0 0 6px;font-weight:bold;">${p === "semaine" ? "🗓️ Défi de la semaine" : "📆 Défi du mois"}${
+              reussi ? " — 🎉 réussi !" : ""
+            }</p>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">${lignes}</table>
+            ${
+              d.cibles.recompense
+                ? `<p style="margin:6px 0 0;font-size:13px;">🎁 Récompense promise : <strong>${d.cibles.recompense}</strong></p>`
+                : ""
+            }
+          </div>`;
+          })
+          .join("")}
+        <p style="font-size:12px;color:#6b7280;">Une activité n'est validée qu'à partir de 70 % de réussite.</p>
         ${
           dictee
             ? `<h2 style="font-size:16px;margin-top:28px;">✍️ La dictée de la semaine ${dictee.semaine}</h2>
@@ -142,6 +196,27 @@ function genererHtmlRapport(
         <p style="font-size:12px;color:#6b7280;margin-top:8px;">${prenom} peut aussi faire cette dictée en autonomie sur le site (rubrique « Dictée » : lecture audio et correction automatique).</p>`
             : ""
         }
+        <h2 style="font-size:16px;margin-top:28px;">🔥 Les streaks de ${prenom}</h2>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          ${[
+            ["⚡ Automatismes", streaks.auto, `jour${streaks.auto > 1 ? "s" : ""} d'affilée`],
+            ["✍️ Dictée", streaks.dictee, `semaine${streaks.dictee > 1 ? "s" : ""} d'affilée`],
+            ["🧩 Problèmes de maths", streaks.problemes, `semaine${streaks.problemes > 1 ? "s" : ""} d'affilée`],
+            ["📅 Fondamentaux hebdo", streaks.fondamentaux, `semaine${streaks.fondamentaux > 1 ? "s" : ""} d'affilée`],
+          ]
+            .map(
+              ([label, valeur, unite]) =>
+                `<tr><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;">${label}</td><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;text-align:center;font-weight:bold;color:${
+                  Number(valeur) > 0 ? "#d97706" : "#6b7280"
+                };">${valeur} ${unite}</td></tr>`
+            )
+            .join("")}
+        </table>
+        <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 16px;margin-top:14px;">
+          <p style="margin:0;font-size:14px;line-height:1.5;">💡 <strong>Pour la semaine prochaine :</strong> ${PROPOSITIONS_HEBDO[
+            semaineScolaire(new Date()) % PROPOSITIONS_HEBDO.length
+          ].replace(/\{prenom\}/g, prenom)}</p>
+        </div>
         <p style="margin-top:24px;font-size:13px;color:#6b7280;">
           Ce compte rendu est envoyé automatiquement chaque semaine. Les révisions personnalisées sont programmées selon les résultats aux examens bilan.
         </p>
