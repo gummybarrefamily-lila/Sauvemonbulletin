@@ -6,6 +6,7 @@ const chapitres: Chapitre[] = [
   titre: "L'alphabet cyrillique : lire et écrire",
   matiere: "russe",
   niveau: "5eme",
+  langueVoix: "ru-RU",
   description:
     "Découvrir les 33 lettres de l'alphabet cyrillique, apprendre à les lire sans les confondre avec les lettres françaises, déchiffrer ses premiers mots russes et écrire son prénom.",
   objectifs: [
@@ -2146,6 +2147,7 @@ const chapitres: Chapitre[] = [
   titre: "Conversation : la vie quotidienne",
   matiere: "russe",
   niveau: "4eme",
+  langueVoix: "ru-RU",
   description:
     "Savoir saluer, se présenter et être poli en russe, parler de sa journée et de ses activités, et conjuguer ses premiers verbes au présent — avec un focus danse-études pour parler de ses cours de ballet.",
   objectifs: [
@@ -4307,6 +4309,7 @@ const chapitres: Chapitre[] = [
   titre: "Conversation avancée : raconter et décrire",
   matiere: "russe",
   niveau: "3eme",
+  langueVoix: "ru-RU",
   description:
     "Raconter des événements au passé, décrire avec des adjectifs, exprimer ses goûts et ses opinions, poser des questions — et maîtriser le vocabulaire russe de la répétition et de la scène, indispensable en danse-études.",
   objectifs: [

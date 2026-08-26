@@ -1264,6 +1264,7 @@ const chapitres: Chapitre[] = [
   titre: "HSK 2 — Se présenter et parler de soi",
   matiere: "chinois",
   niveau: "5eme",
+  langueVoix: "zh-CN",
   description:
     "Savoir se présenter en chinois : dire son nom, sa nationalité et son âge, poser des questions simples avec 吗 et 什么, et maîtriser l'ordre des mots sujet-verbe-objet avec le vocabulaire HSK 1-2.",
   objectifs: [
@@ -3030,6 +3031,7 @@ const chapitres: Chapitre[] = [
   titre: "HSK 3 — Voyager et se déplacer",
   matiere: "chinois",
   niveau: "4eme",
+  langueVoix: "zh-CN",
   description:
     "Parler des transports (坐飞机, 骑自行车), demander et indiquer son chemin (怎么走, 在哪儿, 左/右/前/后), et utiliser les structures 从...到..., 离...远/近 et les compléments de direction 来/去, avec le vocabulaire HSK 3 du voyage.",
   objectifs: [
@@ -3950,6 +3952,7 @@ const chapitres: Chapitre[] = [
   titre: "HSK 4 — Culture chinoise et actualité",
   matiere: "chinois",
   niveau: "3eme",
+  langueVoix: "zh-CN",
   description:
     "Parler des grandes fêtes traditionnelles chinoises (春节, 中秋节), exprimer et nuancer une opinion (我觉得, 我认为, 对我来说) et argumenter avec les structures 虽然...但是..., 因为...所以... et 不但...而且..., avec le vocabulaire HSK 4.",
   objectifs: [
