@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 
 const MENU_ENTRAINER = [
+  { href: "/recompenses", label: "🏆 Mes récompenses" },
   { href: "/automatismes", label: "⚡ Automatismes du jour" },
   { href: "/problemes-maths", label: "🧩 Problèmes de maths" },
   { href: "/dictee", label: "✍️ Dictée de la semaine" },

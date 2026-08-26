@@ -176,10 +176,18 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
             <span className="text-5xl">🤔</span>
             <div>
               <h2 className="text-2xl font-bold text-slate-900">À quoi ça sert, concrètement ?</h2>
-              <p className="mt-4 text-lg leading-relaxed text-slate-700">
-                {aQuoiCaSert ??
-                  "L'explication arrive bientôt pour ce chapitre. En attendant : si c'est au programme, c'est que ça resservira — promis."}
-              </p>
+              <div className="mt-4 space-y-4">
+                {(
+                  aQuoiCaSert ??
+                  "L'explication arrive bientôt pour ce chapitre. En attendant : si c'est au programme, c'est que ça resservira — promis."
+                )
+                  .split("\n\n")
+                  .map((par, i) => (
+                    <p key={i} className="text-lg leading-relaxed text-slate-700">
+                      {par}
+                    </p>
+                  ))}
+              </div>
             </div>
           </div>
         </div>

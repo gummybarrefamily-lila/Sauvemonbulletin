@@ -20,6 +20,8 @@ model User {
 
   activites  Activite[]
   revisions  RevisionProgrammee[]
+  objectifs  Objectif[]
+  groupes    MembreGroupe[]
 }
 
 /// Toute activité de l'élève : exercice, examen, automatismes, bilan...
@@ -37,6 +39,42 @@ model Activite {
   date      DateTime @default(now())
 
   @@index([userId, date])
+}
+
+/// Objectif personnel de l'élève : une cible (streak ou points) et la récompense convenue.
+model Objectif {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type       String    // automatismes | dictee | problemes | points
+  cible      Int       // ex : 30 (jours), 8 (semaines), 500 (points)
+  recompense String    // ex : "Sortie cinéma avec papa"
+  atteint    Boolean   @default(false)
+  atteintLe  DateTime?
+  creeLe     DateTime  @default(now())
+
+  @@index([userId])
+}
+
+/// Groupe d'amis : on se compare gentiment (streaks, bons points).
+model Groupe {
+  id      String          @id @default(cuid())
+  nom     String
+  code    String          @unique // code d'invitation à partager
+  creeLe  DateTime        @default(now())
+  membres MembreGroupe[]
+}
+
+model MembreGroupe {
+  id        String   @id @default(cuid())
+  groupeId  String
+  groupe    Groupe   @relation(fields: [groupeId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rejointLe DateTime @default(now())
+
+  @@unique([groupeId, userId])
+  @@index([userId])
 }
 
 /// Révision programmée automatiquement après un bilan (faiblesse détectée).
