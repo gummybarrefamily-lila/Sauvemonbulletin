@@ -54,7 +54,7 @@ export default function Accueil() {
             {MATIERES.map((m) => (
               <Link
                 key={m.id}
-                href={`/matieres/${m.id}`}
+                href={`/matiere?m=${m.id}`}
                 className="card group flex flex-col p-5 transition hover:-translate-y-1 hover:shadow-md"
               >
                 <span className="text-3xl">{m.emoji}</span>
