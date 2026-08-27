@@ -150,6 +150,7 @@ function genererHtmlRapport(
               ["✍️ Dictées", d.progres.dictees, d.cibles.dictees],
               ["🧩 Problèmes de maths", d.progres.problemes, d.cibles.problemes],
               ["📅 Fondamentaux hebdo", d.progres.fondamentaux, d.cibles.fondamentaux],
+              ["📝 Rédactions évaluées", d.progres.ecritures, d.cibles.ecritures],
             ]
               .map(
                 ([label, fait, cible]) =>

@@ -26,6 +26,7 @@ export interface ProgresDefi {
   dictees: number;
   problemes: number;
   fondamentaux: number;
+  ecritures: number;
 }
 
 export interface CiblesDefi {
@@ -33,6 +34,7 @@ export interface CiblesDefi {
   dictees: number;
   problemes: number;
   fondamentaux: number;
+  ecritures: number;
   recompense: string;
 }
 
@@ -41,6 +43,7 @@ export const DEFI_SEMAINE_DEFAUT: CiblesDefi = {
   dictees: 1,
   problemes: 1,
   fondamentaux: 1,
+  ecritures: 1,
   recompense: "",
 };
 
@@ -49,6 +52,7 @@ export const DEFI_MOIS_DEFAUT: CiblesDefi = {
   dictees: 4,
   problemes: 4,
   fondamentaux: 4,
+  ecritures: 4,
   recompense: "",
 };
 
@@ -108,7 +112,7 @@ interface Donnees {
 
 export async function donneesRecompenses(userId: string): Promise<Donnees> {
   const activites = await prisma.activite.findMany({
-    where: { userId, type: { in: ["automatismes", "dictee", "problemes", "hebdo"] } },
+    where: { userId, type: { in: ["automatismes", "dictee", "problemes", "hebdo", "ecriture"] } },
     select: { type: true, date: true, score: true, scoreMax: true },
   });
 
@@ -121,8 +125,8 @@ export async function donneesRecompenses(userId: string): Promise<Donnees> {
   const semDictee = new Set<string>();
   const semProblemes = new Set<string>();
   const semFondamentaux = new Set<string>();
-  const semaine: ProgresDefi = { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0 };
-  const mois: ProgresDefi = { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0 };
+  const semaine: ProgresDefi = { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0, ecritures: 0 };
+  const mois: ProgresDefi = { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0, ecritures: 0 };
   const joursAutoSemaine = new Set<string>();
   const joursAutoMois = new Set<string>();
 
@@ -149,6 +153,9 @@ export async function donneesRecompenses(userId: string): Promise<Donnees> {
       semFondamentaux.add(sem);
       if (sem === semaineCourante) semaine.fondamentaux++;
       if (m === moisCourant) mois.fondamentaux++;
+    } else if (a.type === "ecriture") {
+      if (sem === semaineCourante) semaine.ecritures++;
+      if (m === moisCourant) mois.ecritures++;
     }
   }
   semaine.automatismes = joursAutoSemaine.size;
@@ -183,10 +190,10 @@ export async function ciblesDefis(userId: string): Promise<{ semaine: CiblesDefi
   const m = defis.find((d) => d.periode === "mois");
   return {
     semaine: s
-      ? { automatismes: s.automatismes, dictees: s.dictees, problemes: s.problemes, fondamentaux: s.fondamentaux, recompense: s.recompense }
+      ? { automatismes: s.automatismes, dictees: s.dictees, problemes: s.problemes, fondamentaux: s.fondamentaux, ecritures: s.ecritures, recompense: s.recompense }
       : DEFI_SEMAINE_DEFAUT,
     mois: m
-      ? { automatismes: m.automatismes, dictees: m.dictees, problemes: m.problemes, fondamentaux: m.fondamentaux, recompense: m.recompense }
+      ? { automatismes: m.automatismes, dictees: m.dictees, problemes: m.problemes, fondamentaux: m.fondamentaux, ecritures: m.ecritures, recompense: m.recompense }
       : DEFI_MOIS_DEFAUT,
   };
 }
@@ -211,7 +218,7 @@ export async function historiqueDefis(
   userId: string
 ): Promise<{ semaines: PeriodeHistorique[]; mois: PeriodeHistorique[] }> {
   const activites = await prisma.activite.findMany({
-    where: { userId, type: { in: ["automatismes", "dictee", "problemes", "hebdo"] } },
+    where: { userId, type: { in: ["automatismes", "dictee", "problemes", "hebdo", "ecriture"] } },
     select: { type: true, date: true, score: true, scoreMax: true },
   });
 
@@ -220,7 +227,7 @@ export async function historiqueDefis(
   const seau = (map: Map<string, { joursAuto: Set<string>; progres: ProgresDefi }>, cle: string) => {
     let s = map.get(cle);
     if (!s) {
-      s = { joursAuto: new Set(), progres: { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0 } };
+      s = { joursAuto: new Set(), progres: { automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0, ecritures: 0 } };
       map.set(cle, s);
     }
     return s;
@@ -238,12 +245,13 @@ export async function historiqueDefis(
       else if (a.type === "dictee") s.progres.dictees++;
       else if (a.type === "problemes") s.progres.problemes++;
       else if (a.type === "hebdo") s.progres.fondamentaux++;
+      else if (a.type === "ecriture") s.progres.ecritures++;
     }
   }
   Array.from(parSemaine.values()).forEach((s) => (s.progres.automatismes = s.joursAuto.size));
   Array.from(parMois.values()).forEach((s) => (s.progres.automatismes = s.joursAuto.size));
 
-  const vide = (): ProgresDefi => ({ automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0 });
+  const vide = (): ProgresDefi => ({ automatismes: 0, dictees: 0, problemes: 0, fondamentaux: 0, ecritures: 0 });
   const maintenant = new Date();
 
   const semaines: PeriodeHistorique[] = [];
@@ -272,6 +280,7 @@ export function defiReussi(progres: ProgresDefi, cibles: CiblesDefi): boolean {
     progres.automatismes >= cibles.automatismes &&
     progres.dictees >= cibles.dictees &&
     progres.problemes >= cibles.problemes &&
-    progres.fondamentaux >= cibles.fondamentaux
+    progres.fondamentaux >= cibles.fondamentaux &&
+    progres.ecritures >= cibles.ecritures
   );
 }

@@ -19,6 +19,7 @@ const LABEL_TYPE: Record<string, string> = {
   hebdo: "Fondamentaux hebdo",
   bilan: "Bilan",
   brevet: "Brevet blanc",
+  ecriture: "Atelier d'écriture",
 };
 
 export default async function TableauDeBord() {

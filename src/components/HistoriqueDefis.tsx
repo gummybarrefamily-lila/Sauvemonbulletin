@@ -3,15 +3,16 @@
 export interface PeriodeAffiche {
   /** Lundi de la semaine (AAAA-MM-JJ) ou mois (AAAA-MM). */
   cle: string;
-  progres: { automatismes: number; dictees: number; problemes: number; fondamentaux: number };
+  progres: { automatismes: number; dictees: number; problemes: number; fondamentaux: number; ecritures: number };
   reussi: boolean;
 }
 
-const COLONNES: { cle: "automatismes" | "dictees" | "problemes" | "fondamentaux"; emoji: string; titre: string }[] = [
+const COLONNES: { cle: "automatismes" | "dictees" | "problemes" | "fondamentaux" | "ecritures"; emoji: string; titre: string }[] = [
   { cle: "automatismes", emoji: "⚡", titre: "Automatismes (jours)" },
   { cle: "dictees", emoji: "✍️", titre: "Dictées" },
   { cle: "problemes", emoji: "🧩", titre: "Problèmes" },
   { cle: "fondamentaux", emoji: "📅", titre: "Fondamentaux" },
+  { cle: "ecritures", emoji: "📝", titre: "Rédactions" },
 ];
 
 function labelSemaine(cle: string): string {
@@ -26,7 +27,7 @@ function labelMois(cle: string): string {
 }
 
 function total(p: PeriodeAffiche["progres"]): number {
-  return p.automatismes + p.dictees + p.problemes + p.fondamentaux;
+  return p.automatismes + p.dictees + p.problemes + p.fondamentaux + p.ecritures;
 }
 
 /** Petit graphique en barres : activités validées par semaine (ordre chronologique). */

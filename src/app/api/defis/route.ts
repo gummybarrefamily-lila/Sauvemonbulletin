@@ -9,6 +9,7 @@ const DefiSchema = z.object({
   dictees: z.number().int().min(0).max(10),
   problemes: z.number().int().min(0).max(10),
   fondamentaux: z.number().int().min(0).max(10),
+  ecritures: z.number().int().min(0).max(10),
   recompense: z.string().max(200),
 });
 
@@ -29,6 +30,7 @@ export async function POST(req: Request) {
       dictees: d.dictees,
       problemes: d.problemes,
       fondamentaux: d.fondamentaux,
+      ecritures: d.ecritures,
       recompense: d.recompense,
     },
   });

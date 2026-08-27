@@ -55,6 +55,7 @@ model Defi {
   dictees      Int
   problemes    Int
   fondamentaux Int
+  ecritures    Int      @default(1)
   recompense   String   @default("")
   majLe        DateTime @updatedAt
 

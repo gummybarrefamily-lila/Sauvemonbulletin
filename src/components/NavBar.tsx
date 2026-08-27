@@ -8,6 +8,7 @@ const MENU_ENTRAINER = [
   { href: "/automatismes", label: "⚡ Automatismes du jour" },
   { href: "/problemes-maths", label: "🧩 Problèmes de maths" },
   { href: "/dictee", label: "✍️ Dictée de la semaine" },
+  { href: "/ecriture", label: "📝 Atelier d'écriture" },
   { href: "/hebdo", label: "📅 Fondamentaux hebdo" },
   { href: "/bilan", label: "🧭 Examen bilan" },
 ];

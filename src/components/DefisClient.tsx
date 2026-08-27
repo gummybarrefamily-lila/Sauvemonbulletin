@@ -5,16 +5,17 @@ import { useRouter } from "next/navigation";
 
 export interface DefiAffiche {
   periode: "semaine" | "mois";
-  cibles: { automatismes: number; dictees: number; problemes: number; fondamentaux: number; recompense: string };
-  progres: { automatismes: number; dictees: number; problemes: number; fondamentaux: number };
+  cibles: { automatismes: number; dictees: number; problemes: number; fondamentaux: number; ecritures: number; recompense: string };
+  progres: { automatismes: number; dictees: number; problemes: number; fondamentaux: number; ecritures: number };
   reussi: boolean;
 }
 
-const LIGNES: { cle: "automatismes" | "dictees" | "problemes" | "fondamentaux"; label: string }[] = [
+const LIGNES: { cle: "automatismes" | "dictees" | "problemes" | "fondamentaux" | "ecritures"; label: string }[] = [
   { cle: "automatismes", label: "⚡ Automatismes (jours)" },
   { cle: "dictees", label: "✍️ Dictées" },
   { cle: "problemes", label: "🧩 Problèmes de maths" },
   { cle: "fondamentaux", label: "📅 Fondamentaux hebdo" },
+  { cle: "ecritures", label: "📝 Rédactions évaluées" },
 ];
 
 function CarteDefi({ defi }: { defi: DefiAffiche }) {
