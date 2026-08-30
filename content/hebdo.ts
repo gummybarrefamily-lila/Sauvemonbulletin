@@ -19,10 +19,10 @@ export const HEBDO: SerieHebdo[] = [
       {
         type: "qcm",
         difficulte: "facile",
-        question: "Choisis la bonne orthographe : « Elle ___ allée au collège. »",
+        question: "Choisis la bonne orthographe : « Elle ___ blessée en tombant dans la cour. »",
         choix: ["c'est", "s'est", "ses", "ces"],
         bonneReponse: 1,
-        explication: "« s'est » : pronom réfléchi + auxiliaire être (elle s'est allée → ici « est allée », mais dans la structure pronominale on écrit s'est).",
+        explication: "« s'est » = pronom réfléchi « se » + auxiliaire « être » : le verbe pronominal « se blesser » (elle s'est blessée). « c'est » = cela est ; « ses » et « ces » sont des déterminants.",
       },
       {
         type: "ouverte",

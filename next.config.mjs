@@ -19,6 +19,11 @@ const nextConfig = {
           { key: "Permissions-Policy", value: "camera=(), geolocation=(), microphone=(self)" },
         ],
       },
+      {
+        // Le service worker doit être revalidé à chaque visite pour que les mises à jour arrivent vite.
+        source: "/sw.js",
+        headers: [{ key: "Cache-Control", value: "no-cache, no-store, must-revalidate" }],
+      },
     ];
   },
 };
