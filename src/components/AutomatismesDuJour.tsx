@@ -68,6 +68,8 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
         {serie.map((a, i) => {
           const bon = corrige && normaliser(reponses[i] ?? "") === normaliser(a.reponse);
           const faux = corrige && !bon;
+          // Pavé numérique iOS/Android quand la réponse est un nombre ; clavier complet sinon (fractions, « x = 5 »…).
+          const numerique = /^-?[0-9]+([.,][0-9]+)?$/.test(a.reponse);
           return (
             <div key={i} className="card p-4">
               <div className="flex items-center justify-between gap-3">
@@ -76,10 +78,17 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
                   {a.question}
                 </p>
                 <input
+                  type="text"
+                  inputMode={numerique ? "decimal" : "text"}
+                  autoComplete="off"
+                  autoCorrect="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  enterKeyHint="next"
                   value={reponses[i] ?? ""}
                   onChange={(e) => setReponses({ ...reponses, [i]: e.target.value })}
                   disabled={corrige}
-                  className={`w-28 rounded-lg border px-3 py-1.5 text-center focus:outline-none ${
+                  className={`w-28 rounded-lg border px-3 py-1.5 text-center text-base focus:outline-none ${
                     bon ? "border-green-400 bg-green-50" : faux ? "border-red-400 bg-red-50" : "border-slate-300 focus:border-brand-500"
                   }`}
                   placeholder="?"

@@ -180,8 +180,11 @@ function OuverteBlock({
     <div className="mt-3">
       <textarea
         disabled={termine}
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck={false}
         placeholder="Écris ta réponse ici…"
-        className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none"
+        className="w-full rounded-xl border border-slate-300 px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
         rows={2}
       />
       {!termine && (
