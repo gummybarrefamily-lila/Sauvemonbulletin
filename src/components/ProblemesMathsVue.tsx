@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { PROBLEMES_MATHS } from "@content/problemes-maths";
 import { Quiz } from "./Quiz";
 import { InvitationCompte } from "./InvitationCompte";
+import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 
 /** Problèmes de mathématiques de la semaine (raisonnement, mises en situation). */
 export function ProblemesMathsVue() {
@@ -13,6 +14,8 @@ export function ProblemesMathsVue() {
   const [niveau, setNiveau] = useState<"6eme" | "5eme" | "4eme" | "3eme">("5eme");
   const series = PROBLEMES_MATHS.filter((p) => p.niveau === niveau).sort((a, b) => a.semaine - b.semaine);
   const [idx, setIdx] = useState(0);
+  const [sauvegarde, setSauvegarde] = useState<EtatSauvegarde>(null);
+  const dernierResultat = useRef<{ niv: string; score: number; scoreMax: number } | null>(null);
   const serie = series[idx];
   const verrouille = invite && idx > 0;
 
@@ -35,17 +38,34 @@ export function ProblemesMathsVue() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [niveau, status]);
 
+  // La bannière d'enregistrement ne concerne que la série en cours.
+  useEffect(() => {
+    setSauvegarde(null);
+    dernierResultat.current = null;
+  }, [idx, niveau]);
+
   async function enregistrer(niv: string, score: number, scoreMax: number) {
-    if (!session) return;
+    dernierResultat.current = { niv, score, scoreMax };
+    if (!session) {
+      setSauvegarde("invite");
+      return;
+    }
+    setSauvegarde("envoi");
     try {
-      await fetch("/api/activite", {
+      const rep = await fetch("/api/activite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type: "problemes", matiere: "maths", niveau: niv, score, scoreMax }),
       });
+      setSauvegarde(rep.ok ? "ok" : "erreur");
     } catch {
-      /* silencieux */
+      setSauvegarde("erreur");
     }
+  }
+
+  function renvoyer() {
+    const d = dernierResultat.current;
+    if (d) enregistrer(d.niv, d.score, d.scoreMax);
   }
 
   return (
@@ -107,6 +127,7 @@ export function ProblemesMathsVue() {
               </div>
             </div>
             <Quiz questions={serie.questions} filtrable={false} onTermine={(sc, m) => enregistrer(serie.niveau, sc, m)} />
+            <EtatEnregistrement etat={sauvegarde} onRenvoyer={renvoyer} />
           </div>
           )}
         </div>

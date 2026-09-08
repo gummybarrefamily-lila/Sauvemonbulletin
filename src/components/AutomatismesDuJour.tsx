@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import { serieDuJour } from "@/lib/automatismes";
+import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 import type { Niveau } from "@content/types";
 
 export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
@@ -11,7 +12,7 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
   const serie = useMemo(() => serieDuJour(dateISO, niveau), [dateISO, niveau]);
   const [reponses, setReponses] = useState<Record<number, string>>({});
   const [corrige, setCorrige] = useState(false);
-  const [enregistre, setEnregistre] = useState(false);
+  const [sauvegarde, setSauvegarde] = useState<EtatSauvegarde>(null);
 
   function normaliser(s: string) {
     return s.replace(/\s/g, "").replace(",", ".").toLowerCase();
@@ -21,37 +22,44 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
     return serie.reduce((acc, a, i) => acc + (normaliser(reponses[i] ?? "") === normaliser(a.reponse) ? 1 : 0), 0);
   }
 
+  async function envoyer() {
+    if (!session) {
+      setSauvegarde("invite");
+      return;
+    }
+    setSauvegarde("envoi");
+    try {
+      const rep = await fetch("/api/activite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "automatismes", matiere: "maths", niveau, score: score(), scoreMax: serie.length }),
+      });
+      setSauvegarde(rep.ok ? "ok" : "erreur");
+    } catch {
+      setSauvegarde("erreur");
+    }
+  }
+
   async function valider() {
     setCorrige(true);
-    if (session && !enregistre) {
-      setEnregistre(true);
-      try {
-        await fetch("/api/activite", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ type: "automatismes", matiere: "maths", niveau, score: score(), scoreMax: serie.length }),
-        });
-      } catch {
-        /* silencieux */
-      }
-    }
+    await envoyer();
   }
 
   return (
     <div className="mt-6">
       <div className="mb-4 flex gap-1.5">
-        {(["5eme", "4eme", "3eme"] as Niveau[]).map((n) => (
+        {(["6eme", "5eme", "4eme", "3eme"] as Niveau[]).map((n) => (
           <button
             key={n}
             onClick={() => {
               setNiveau(n);
               setReponses({});
               setCorrige(false);
-              setEnregistre(false);
+              setSauvegarde(null);
             }}
             className={`rounded-lg px-3 py-1.5 text-sm font-semibold ${niveau === n ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-600"}`}
           >
-            {n === "5eme" ? "5ème" : n === "4eme" ? "4ème" : "3ème"}
+            {n === "6eme" ? "6ème" : n === "5eme" ? "5ème" : n === "4eme" ? "4ème" : "3ème"}
           </button>
         ))}
       </div>
@@ -101,6 +109,7 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
             onClick={() => {
               setReponses({});
               setCorrige(false);
+              setSauvegarde(null);
             }}
             className="btn-ghost"
           >
@@ -108,7 +117,8 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
           </button>
         </div>
       )}
-      {!session && <p className="mt-3 text-center text-xs text-slate-400">Connecte-toi pour enregistrer tes résultats.</p>}
+      {corrige && <EtatEnregistrement etat={sauvegarde} onRenvoyer={envoyer} />}
+      {!session && !corrige && <p className="mt-3 text-center text-xs text-slate-400">Connecte-toi pour enregistrer tes résultats.</p>}
     </div>
   );
 }

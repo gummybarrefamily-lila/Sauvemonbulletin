@@ -19,6 +19,41 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Notifications push : affiche la notification reçue.
+self.addEventListener("push", (event) => {
+  let contenu = { titre: "SauveMonBulletin", corps: "", url: "/" };
+  try {
+    contenu = Object.assign(contenu, event.data ? event.data.json() : {});
+  } catch (e) {
+    /* contenu illisible : on garde les valeurs par défaut */
+  }
+  event.waitUntil(
+    self.registration.showNotification(contenu.titre, {
+      body: contenu.corps,
+      icon: "/icon-192.png",
+      badge: "/icon-192.png",
+      data: { url: contenu.url || "/" },
+    })
+  );
+});
+
+// Toucher la notification ouvre (ou ramène au premier plan) la page visée.
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || "/";
+  event.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then((fenetres) => {
+      for (const f of fenetres) {
+        if ("focus" in f) {
+          f.navigate(url);
+          return f.focus();
+        }
+      }
+      return clients.openWindow(url);
+    })
+  );
+});
+
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);

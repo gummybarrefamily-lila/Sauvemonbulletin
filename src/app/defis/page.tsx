@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { DefisClient, type DefiAffiche } from "@/components/DefisClient";
 import { GroupesClient, type GroupeAffiche, type EvenementAffiche } from "@/components/GroupesClient";
 import { HistoriqueDefis, type PeriodeAffiche } from "@/components/HistoriqueDefis";
+import { NotificationsPush } from "@/components/NotificationsPush";
 import { utilisateurConnecte } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 import { donneesRecompenses, ciblesDefis, defiReussi, historiqueDefis } from "@/lib/recompenses";
@@ -154,6 +155,7 @@ export default async function PageDefis() {
         <p className="mt-2 text-center text-xs text-slate-400">
           ✅ Une activité n&apos;est validée qu&apos;à partir de 70 % de réussite — en dessous, refais-la pour la valider.
         </p>
+        <NotificationsPush />
 
         {/* Défis */}
         <section className="mt-10">

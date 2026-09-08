@@ -8,7 +8,7 @@ import type { MatiereId, Niveau } from "@content/types";
 const schema = z.object({
   type: z.enum(["cours", "fiche", "exercices", "revision", "examen", "automatismes", "hebdo", "bilan", "brevet"]),
   matiere: z.string(),
-  niveau: z.enum(["5eme", "4eme", "3eme"]),
+  niveau: z.enum(["6eme", "5eme", "4eme", "3eme"]),
   chapitre: z.string().optional(),
   score: z.number().int().min(0),
   scoreMax: z.number().int().min(0),

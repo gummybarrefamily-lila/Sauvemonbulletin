@@ -24,6 +24,20 @@ model User {
   groupes    MembreGroupe[]
   defis      Defi[]
   reactions  Reaction[]
+  abonnementsPush AbonnementPush[]
+}
+
+/// Abonnement aux notifications push (un par appareil/navigateur).
+model AbonnementPush {
+  id       String   @id @default(cuid())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint String   @unique
+  p256dh   String
+  auth     String
+  creeLe   DateTime @default(now())
+
+  @@index([userId])
 }
 
 /// Toute activité de l'élève : exercice, examen, automatismes, bilan...

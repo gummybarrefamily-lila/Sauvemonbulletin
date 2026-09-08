@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { DICTEES } from "@content/dictees";
 import { diffDictee } from "@/lib/dictee-diff";
 import { InvitationCompte } from "./InvitationCompte";
+import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 
 /** Dictée hebdomadaire : lue par l'ordinateur, l'élève tape, un correcteur repère les fautes. */
 export function DicteeVue() {
@@ -21,6 +22,7 @@ export function DicteeVue() {
   const [lecture, setLecture] = useState(false);
   const [vitesse, setVitesse] = useState(0.75);
   const [supporteVoix, setSupporteVoix] = useState(true);
+  const [sauvegarde, setSauvegarde] = useState<EtatSauvegarde>(null);
 
   useEffect(() => {
     setSupporteVoix(typeof window !== "undefined" && "speechSynthesis" in window);
@@ -52,6 +54,7 @@ export function DicteeVue() {
   useEffect(() => {
     setSaisie("");
     setCorrige(false);
+    setSauvegarde(null);
     if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
     setLecture(false);
   }, [niveau, idx]);
@@ -76,23 +79,32 @@ export function DicteeVue() {
 
   const resultat = corrige && dictee ? diffDictee(dictee.texte, saisie) : null;
 
+  async function envoyerResultat() {
+    if (!dictee) return;
+    if (!session) {
+      setSauvegarde("invite");
+      return;
+    }
+    const r = diffDictee(dictee.texte, saisie);
+    const motsRef = dictee.texte.trim().split(/\s+/).length;
+    const score = Math.max(0, motsRef - r.erreurs);
+    setSauvegarde("envoi");
+    try {
+      const rep = await fetch("/api/activite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "dictee", matiere: "francais", niveau, score, scoreMax: motsRef }),
+      });
+      setSauvegarde(rep.ok ? "ok" : "erreur");
+    } catch {
+      setSauvegarde("erreur");
+    }
+  }
+
   async function corriger() {
     stop();
     setCorrige(true);
-    if (session && dictee) {
-      const r = diffDictee(dictee.texte, saisie);
-      const motsRef = dictee.texte.trim().split(/\s+/).length;
-      const score = Math.max(0, motsRef - r.erreurs);
-      try {
-        await fetch("/api/activite", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ type: "dictee", matiere: "francais", niveau, score, scoreMax: motsRef }),
-        });
-      } catch {
-        /* silencieux */
-      }
-    }
+    await envoyerResultat();
   }
 
   return (
@@ -213,6 +225,7 @@ export function DicteeVue() {
                   {resultat.erreurs === 0 ? "Sans faute ! 🎉" : `${resultat.erreurs} erreur${resultat.erreurs > 1 ? "s" : ""}`}
                 </span>
               </div>
+              <EtatEnregistrement etat={sauvegarde} onRenvoyer={envoyerResultat} />
 
               <p className="mt-3 leading-relaxed">
                 {resultat.parts.map((p, i) =>
