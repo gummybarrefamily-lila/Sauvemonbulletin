@@ -5,7 +5,6 @@ import { AutomatismesDuJour } from "@/components/AutomatismesDuJour";
 export const metadata = { title: "Automatismes du jour — SauveMonBulletin" };
 
 export default function PageAutomatismes() {
-  const aujourdhui = new Date().toISOString().slice(0, 10);
   return (
     <div className="flex min-h-screen flex-col">
       <NavBar />
@@ -14,10 +13,10 @@ export default function PageAutomatismes() {
           <span className="text-4xl">⚡</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Automatismes du jour</h1>
-            <p className="text-slate-500">10 calculs mentaux quotidiens. Une nouvelle série chaque jour.</p>
+            <p className="text-slate-500">10 calculs mentaux quotidiens. Nouvelle série chaque matin à 8 h.</p>
           </div>
         </div>
-        <AutomatismesDuJour dateISO={aujourdhui} />
+        <AutomatismesDuJour />
       </main>
       <Footer />
     </div>

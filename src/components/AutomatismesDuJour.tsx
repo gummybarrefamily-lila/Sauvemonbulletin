@@ -1,18 +1,49 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import { serieDuJour } from "@/lib/automatismes";
 import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 import type { Niveau } from "@content/types";
 
-export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
+/**
+ * Jour « effectif » de la série : la nouvelle série arrive à 8 h du matin
+ * (heure de l'appareil). Avant 8 h, on reste sur la série de la veille.
+ */
+function jourEffectif(): string {
+  const d = new Date(Date.now() - 8 * 3600 * 1000);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+export function AutomatismesDuJour() {
   const { data: session } = useSession();
   const [niveau, setNiveau] = useState<Niveau>("5eme");
-  const serie = useMemo(() => serieDuJour(dateISO, niveau), [dateISO, niveau]);
+  // Calculé après montage (jamais figé au build), puis revérifié chaque minute
+  // et au retour au premier plan — l'app installée peut rester ouverte des jours.
+  const [dateISO, setDateISO] = useState<string | null>(null);
+  useEffect(() => {
+    const maj = () => setDateISO(jourEffectif());
+    maj();
+    const intervalle = setInterval(maj, 60 * 1000);
+    document.addEventListener("visibilitychange", maj);
+    return () => {
+      clearInterval(intervalle);
+      document.removeEventListener("visibilitychange", maj);
+    };
+  }, []);
+
+  const serie = useMemo(() => (dateISO ? serieDuJour(dateISO, niveau) : []), [dateISO, niveau]);
   const [reponses, setReponses] = useState<Record<number, string>>({});
   const [corrige, setCorrige] = useState(false);
   const [sauvegarde, setSauvegarde] = useState<EtatSauvegarde>(null);
+
+  // Nouvelle journée (bascule de 8 h) : on repart sur une grille vierge.
+  useEffect(() => {
+    setReponses({});
+    setCorrige(false);
+    setSauvegarde(null);
+  }, [dateISO]);
 
   function normaliser(s: string) {
     return s.replace(/\s/g, "").replace(",", ".").toLowerCase();
@@ -43,6 +74,10 @@ export function AutomatismesDuJour({ dateISO }: { dateISO: string }) {
   async function valider() {
     setCorrige(true);
     await envoyer();
+  }
+
+  if (!dateISO) {
+    return <p className="mt-6 text-sm text-slate-400">Préparation de la série du jour…</p>;
   }
 
   return (
