@@ -19,6 +19,32 @@ export interface MessageChat {
   content: string;
 }
 
+/**
+ * Traduit une erreur de l'API Anthropic en message actionnable (affiché dans
+ * le chat) et journalise le détail complet dans les logs Vercel.
+ */
+export function messageErreurIA(e: unknown): string {
+  const statut = (e as { status?: number }).status;
+  const detail = e instanceof Error ? e.message : String(e);
+  console.error(`Tuteur IA — échec de l'appel Anthropic (statut ${statut ?? "?"}) :`, detail);
+  if (statut === 401 || statut === 403) {
+    return "⚠️ La clé API Anthropic est invalide ou révoquée. Vérifie la variable ANTHROPIC_API_KEY sur Vercel (et redéploie après modification).";
+  }
+  if (detail.toLowerCase().includes("credit")) {
+    return "⚠️ Le crédit de l'API Anthropic est épuisé. Recharge-le sur console.anthropic.com (rubrique Billing), puis réessaie.";
+  }
+  if (statut === 404) {
+    return "⚠️ Le modèle configuré est introuvable. Vérifie (ou supprime) la variable ANTHROPIC_MODEL sur Vercel.";
+  }
+  if (statut === 429) {
+    return "⚠️ Trop de demandes en même temps — attends une minute et réessaie.";
+  }
+  if (statut === 500 || statut === 529) {
+    return "⚠️ Le service IA est momentanément surchargé — réessaie dans un instant.";
+  }
+  return "⚠️ L'IA n'a pas pu répondre (erreur technique). Réessaie — et si ça persiste, regarde les logs Vercel.";
+}
+
 export async function repondreTuteur(
   messages: MessageChat[],
   contexte?: string
@@ -30,13 +56,16 @@ export async function repondreTuteur(
   const client = new Anthropic({ apiKey });
   const systeme = contexte ? `${SYSTEME}\n\nContexte de la page où se trouve l'élève : ${contexte}` : SYSTEME;
 
-  const reponse = await client.messages.create({
-    model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5",
-    max_tokens: 1024,
-    system: systeme,
-    messages: messages.map((m) => ({ role: m.role, content: m.content })),
-  });
-
-  const bloc = reponse.content.find((c) => c.type === "text");
-  return bloc && bloc.type === "text" ? bloc.text : "Désolé, je n'ai pas pu répondre. Réessaie !";
+  try {
+    const reponse = await client.messages.create({
+      model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5",
+      max_tokens: 1024,
+      system: systeme,
+      messages: messages.map((m) => ({ role: m.role, content: m.content })),
+    });
+    const bloc = reponse.content.find((c) => c.type === "text");
+    return bloc && bloc.type === "text" ? bloc.text : "Désolé, je n'ai pas pu répondre. Réessaie !";
+  } catch (e) {
+    return messageErreurIA(e);
+  }
 }

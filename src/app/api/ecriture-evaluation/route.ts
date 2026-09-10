@@ -3,6 +3,7 @@ import { z } from "zod";
 import Anthropic from "@anthropic-ai/sdk";
 import { prisma } from "@/lib/prisma";
 import { utilisateurApi } from "@/lib/session";
+import { messageErreurIA } from "@/lib/tuteur";
 import { EXERCICES_ECRITURE } from "@content/ecriture";
 
 const schema = z.object({
@@ -132,10 +133,7 @@ ${data.texte}
       ameliorations: evaluation.ameliorations,
       conseil: evaluation.conseil,
     });
-  } catch {
-    return NextResponse.json(
-      { erreur: "L'évaluation n'a pas pu être réalisée. Réessaie dans un instant." },
-      { status: 502 }
-    );
+  } catch (e) {
+    return NextResponse.json({ erreur: messageErreurIA(e) }, { status: 502 });
   }
 }
