@@ -6,7 +6,7 @@ import { programmerRevisions } from "@/lib/progression";
 import type { MatiereId, Niveau } from "@content/types";
 
 const schema = z.object({
-  type: z.enum(["cours", "fiche", "exercices", "revision", "examen", "automatismes", "hebdo", "bilan", "brevet"]),
+  type: z.enum(["cours", "fiche", "exercices", "revision", "examen", "automatismes", "hebdo", "bilan", "brevet", "dictee", "problemes"]),
   matiere: z.string(),
   niveau: z.enum(["6eme", "5eme", "4eme", "3eme"]),
   chapitre: z.string().optional(),
