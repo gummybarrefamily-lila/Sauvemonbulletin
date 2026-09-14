@@ -6,6 +6,10 @@ import { utilisateurApi } from "@/lib/session";
 import { messageErreurIA } from "@/lib/tuteur";
 import { EXERCICES_ECRITURE } from "@content/ecriture";
 
+// L'évaluation génère un long JSON : on laisse à la fonction jusqu'à 60 s
+// (la limite Vercel par défaut de 10 s coupait l'appel en plein vol).
+export const maxDuration = 60;
+
 const schema = z.object({
   semaine: z.number().int().min(1).max(60),
   texte: z.string().min(30).max(20000),
@@ -33,16 +37,24 @@ const reponseSchema = z.object({
     .array(
       z.object({
         nom: z.string(),
-        note: z.number().min(0),
-        max: z.number().min(1),
-        commentaire: z.string(),
+        note: z.coerce.number().min(0),
+        max: z.coerce.number().min(1),
+        commentaire: z.string().catch(""),
       })
     )
     .length(GRILLE.length),
-  pointsForts: z.array(z.string()).min(1).max(5),
-  ameliorations: z.array(z.string()).min(1).max(5),
-  conseil: z.string(),
+  pointsForts: z.array(z.string()).max(5).catch([]),
+  ameliorations: z.array(z.string()).max(5).catch([]),
+  conseil: z.string().catch(""),
 });
+
+/** Extrait l'objet JSON d'une réponse de modèle (balises ``` éventuelles, texte autour). */
+function extraireJson(brut: string): string {
+  const sansBalises = brut.replace(/```(?:json)?/g, "");
+  const debut = sansBalises.indexOf("{");
+  const fin = sansBalises.lastIndexOf("}");
+  return debut >= 0 && fin > debut ? sansBalises.slice(debut, fin + 1) : "";
+}
 
 /** Évalue la rédaction de la semaine avec la grille sur 48 points et enregistre le score. */
 export async function POST(req: Request) {
@@ -81,6 +93,7 @@ Règles d'évaluation :
 - pointsForts : 2 ou 3 réussites précises. ameliorations : 2 ou 3 axes de progrès concrets et actionnables.
 - conseil : le conseil numéro 1 pour la prochaine rédaction, en une ou deux phrases encourageantes, en tutoyant l'élève.
 - Tous les textes en français, en tutoyant l'élève.
+- Sois CONCIS : chaque commentaire de critère tient en UNE phrase courte.
 
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour, au format :
 {"criteres":[{"nom":"…","note":0,"max":0,"commentaire":"…"}],"pointsForts":["…"],"ameliorations":["…"],"conseil":"…"}
@@ -93,15 +106,33 @@ ${data.texte}
 
   try {
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const reponse = await client.messages.create({
-      model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5",
-      max_tokens: 2000,
-      messages: [{ role: "user", content: consigne }],
-    });
-    const bloc = reponse.content.find((c) => c.type === "text");
-    const brut = bloc && bloc.type === "text" ? bloc.text : "";
-    const json = brut.slice(brut.indexOf("{"), brut.lastIndexOf("}") + 1);
-    const evaluation = reponseSchema.parse(JSON.parse(json));
+
+    // Jusqu'à 2 tentatives : une réponse tronquée ou mal formée est réessayée
+    // une fois avant de renvoyer une erreur.
+    let evaluation: z.infer<typeof reponseSchema> | null = null;
+    for (let tentative = 1; tentative <= 2 && !evaluation; tentative++) {
+      const reponse = await client.messages.create({
+        model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5",
+        max_tokens: 3500,
+        messages: [{ role: "user", content: consigne }],
+      });
+      const bloc = reponse.content.find((c) => c.type === "text");
+      const brut = bloc && bloc.type === "text" ? bloc.text : "";
+      try {
+        evaluation = reponseSchema.parse(JSON.parse(extraireJson(brut)));
+      } catch {
+        console.error(
+          `Évaluation écriture — réponse illisible (tentative ${tentative}, stop: ${reponse.stop_reason}) :`,
+          brut.slice(0, 400)
+        );
+      }
+    }
+    if (!evaluation) {
+      return NextResponse.json(
+        { erreur: "Le tuteur a répondu dans un format inattendu. Réessaie dans un instant." },
+        { status: 502 }
+      );
+    }
 
     // Borne chaque note à son maximum de grille, puis calcule le total sur 48.
     const criteres = evaluation.criteres.map((c, i) => ({
