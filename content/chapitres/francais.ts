@@ -5610,6 +5610,19 @@ const chapitres: Chapitre[] = [
       voixOff:
         "Le récit d'aventures a donné naissance à des œuvres devenues des classiques. Robert Louis Stevenson, avec L'Île au trésor, raconte la chasse au trésor du jeune Jim Hawkins face à des pirates redoutables. Jules Verne, lui, emmène ses lecteurs dans des voyages extraordinaires, mêlant exploration et science, comme dans Voyage au centre de la Terre. Jack London, enfin, situe ses récits dans le Grand Nord glacé, où ses héros luttent pour survivre. Ces œuvres continuent d'inspirer des générations de lecteurs, et de nombreux films.",
     },
+    {
+      titre: "Zoom sur une œuvre : Le Comte de Monte-Cristo",
+      illustration: "🗝️",
+      visuel: "Dumas (1844) : trahison → prison → trésor → vengeance",
+      contenu: [
+        "Alexandre Dumas, 1844 : Edmond Dantès, jeune marin promis à un bel avenir, est trahi et emprisonné à tort au château d'If",
+        "En prison, il rencontre l'abbé Faria : un adjuvant décisif qui l'instruit, lui révèle le complot et lui lègue un trésor",
+        "Évadé après quatorze ans, Dantès devient le mystérieux comte de Monte-Cristo et accomplit sa vengeance",
+        "Toutes les caractéristiques du genre : quête, obstacles, suspense, transformation du héros",
+      ],
+      voixOff:
+        "Arrêtons-nous sur un chef-d'œuvre du genre : Le Comte de Monte-Cristo, d'Alexandre Dumas, publié en 1844. Edmond Dantès, jeune marin de dix-neuf ans, s'apprête à devenir capitaine et à épouser Mercédès quand des jaloux le dénoncent à tort : il est enfermé au château d'If, une prison sur une île au large de Marseille. C'est là qu'il rencontre l'abbé Faria, un prisonnier savant qui devient son maître et son ami : il l'instruit, l'aide à comprendre qui l'a trahi, et lui révèle l'emplacement d'un trésor caché sur l'île de Monte-Cristo. Après quatorze ans de captivité, Dantès s'évade, retrouve le trésor et revient sous le nom de comte de Monte-Cristo pour récompenser ceux qui lui furent fidèles et punir ceux qui l'ont trahi. Quête, obstacles, suspense, héros transformé par l'épreuve : tout le récit d'aventures est là.",
+    },
   ],
   fiche: {
     intro:
@@ -5655,9 +5668,19 @@ const chapitres: Chapitre[] = [
           "Repères d'œuvres : Stevenson (L'Île au trésor), Jules Verne (Voyage au centre de la Terre...), Jack London (Croc-Blanc)",
         ],
       },
+      {
+        titre: "Zoom sur une œuvre : Le Comte de Monte-Cristo (Alexandre Dumas, 1844)",
+        points: [
+          "L'histoire : Edmond Dantès, jeune marin promis au commandement du Pharaon et fiancé à Mercédès, est dénoncé à tort par des jaloux (Danglars, Fernand) et enfermé au château d'If par le procureur Villefort, qui protège un secret de famille",
+          "L'abbé Faria, rencontré en prison, est l'adjuvant par excellence : il instruit Dantès (langues, sciences, histoire), l'aide à comprendre qui l'a trahi et lui révèle le trésor de l'île de Monte-Cristo",
+          "Après quatorze ans, Dantès s'évade en prenant la place du corps de Faria, récupère le trésor et devient le comte de Monte-Cristo",
+          "Schéma narratif exemplaire : situation initiale (le marin heureux) → élément perturbateur (la dénonciation) → péripéties (prison, évasion, vengeance) → dénouement et situation finale (justice accomplie, un héros transformé)",
+          "Un récit d'aventures complet : quête (liberté puis justice), opposants (Danglars, Fernand, Villefort), adjuvant (Faria), suspense et déguisements",
+        ],
+      },
     ],
     audio:
-      "Fiche de révision : le récit d'aventures. Le récit d'aventures raconte les péripéties d'un héros lancé dans une quête risquée, souvent dans un décor exotique et dangereux : une île déserte, la mer, la jungle ou le grand froid. Comme tout récit, il suit un schéma narratif en cinq étapes. La situation initiale présente le héros dans son cadre de vie habituel. Un élément perturbateur vient ensuite bouleverser cet équilibre. Les péripéties forment la longue suite d'actions et d'épreuves que le héros doit surmonter. Le dénouement résout l'aventure, et la situation finale installe un nouvel équilibre : le héros a changé. Ce type de récit met en scène des personnages types : le héros, souvent jeune et courageux, les adjuvants qui l'aident dans sa quête, et les opposants qui lui font obstacle. Pour faire vivre cette aventure, les auteurs utilisent des procédés d'écriture précis : un rythme qui accélère dans les scènes de danger grâce à des phrases courtes, du suspense entretenu en cachant des informations au lecteur, des connecteurs temporels comme soudain ou alors, des connecteurs logiques comme car ou mais, ainsi qu'un vocabulaire riche de l'action et des sensations. Le point de vue interne, où un narrateur-personnage raconte à la première personne, est très fréquent : il permet au lecteur de vivre l'aventure de l'intérieur. Parmi les auteurs classiques du genre, on retient Robert Louis Stevenson et L'Île au trésor, Jules Verne et ses voyages extraordinaires, et Jack London avec ses récits de survie dans le Grand Nord.",
+      "Fiche de révision : le récit d'aventures. Le récit d'aventures raconte les péripéties d'un héros lancé dans une quête risquée, souvent dans un décor exotique et dangereux : une île déserte, la mer, la jungle ou le grand froid. Comme tout récit, il suit un schéma narratif en cinq étapes. La situation initiale présente le héros dans son cadre de vie habituel. Un élément perturbateur vient ensuite bouleverser cet équilibre. Les péripéties forment la longue suite d'actions et d'épreuves que le héros doit surmonter. Le dénouement résout l'aventure, et la situation finale installe un nouvel équilibre : le héros a changé. Ce type de récit met en scène des personnages types : le héros, souvent jeune et courageux, les adjuvants qui l'aident dans sa quête, et les opposants qui lui font obstacle. Pour faire vivre cette aventure, les auteurs utilisent des procédés d'écriture précis : un rythme qui accélère dans les scènes de danger grâce à des phrases courtes, du suspense entretenu en cachant des informations au lecteur, des connecteurs temporels comme soudain ou alors, des connecteurs logiques comme car ou mais, ainsi qu'un vocabulaire riche de l'action et des sensations. Le point de vue interne, où un narrateur-personnage raconte à la première personne, est très fréquent : il permet au lecteur de vivre l'aventure de l'intérieur. Parmi les auteurs classiques du genre, on retient Robert Louis Stevenson et L'Île au trésor, Jules Verne et ses voyages extraordinaires, et Jack London avec ses récits de survie dans le Grand Nord. Retiens enfin l'exemple du Comte de Monte-Cristo, d'Alexandre Dumas : Edmond Dantès, marin dénoncé à tort et enfermé au château d'If, y rencontre l'abbé Faria, l'adjuvant par excellence, qui l'instruit, lui révèle le complot dont il est victime et lui lègue le trésor de l'île de Monte-Cristo. Évadé après quatorze ans, Dantès devient le comte de Monte-Cristo et accomplit sa vengeance : un modèle parfait de schéma narratif et de héros transformé par l'épreuve.",
   },
   memoCards: [
     {
@@ -5691,6 +5714,18 @@ const chapitres: Chapitre[] = [
     {
       recto: "Comment un auteur crée-t-il du suspense ?",
       verso: "En cachant des informations au lecteur, en multipliant les dangers, et en terminant les chapitres sur une tension non résolue.",
+    },
+    {
+      recto: "Qui a écrit Le Comte de Monte-Cristo, et en quelle année ?",
+      verso: "Alexandre Dumas, en 1844.",
+    },
+    {
+      recto: "Pourquoi Edmond Dantès est-il emprisonné au château d'If ?",
+      verso: "Il est dénoncé à tort par des jaloux (Danglars, Fernand) et sacrifié par le procureur Villefort, qui protège un secret de famille.",
+    },
+    {
+      recto: "Quel rôle joue l'abbé Faria dans Le Comte de Monte-Cristo ?",
+      verso: "C'est l'adjuvant par excellence : il instruit Dantès, lui fait comprendre qui l'a trahi et lui révèle le trésor de l'île de Monte-Cristo.",
     },
   ],
   exercices: [
@@ -5786,6 +5821,49 @@ const chapitres: Chapitre[] = [
       reponse:
         "Exemple : Vingt mille lieues sous les mers raconte le voyage du capitaine Nemo et de son sous-marin, le Nautilus, à travers les mers du globe. On peut aussi citer Le Tour du monde en quatre-vingts jours ou Voyage au centre de la Terre.",
       explication: "Jules Verne est un auteur du XIXe siècle connu pour ses romans d'aventures mêlant exploration et anticipation scientifique.",
+    },
+    {
+      type: "qcm",
+      difficulte: "facile",
+      question: "Dans Le Comte de Monte-Cristo, pourquoi Edmond Dantès est-il enfermé au château d'If ?",
+      choix: [
+        "Il a volé le trésor de l'île de Monte-Cristo",
+        "Il a été dénoncé à tort par des jaloux",
+        "Il a déserté son navire, le Pharaon",
+        "Il a provoqué Villefort en duel",
+      ],
+      bonneReponse: 1,
+      explication:
+        "Dantès est victime d'un complot : Danglars envie son poste de capitaine, Fernand veut lui prendre Mercédès, et le procureur Villefort l'enferme pour protéger un secret de famille.",
+    },
+    {
+      type: "qcm",
+      difficulte: "moyen",
+      question: "Dans le vocabulaire du schéma actanciel, quel rôle l'abbé Faria joue-t-il auprès de Dantès ?",
+      choix: ["Un opposant", "Un adjuvant", "L'élément perturbateur", "Le narrateur"],
+      bonneReponse: 1,
+      explication:
+        "Faria aide le héros dans sa quête : il l'instruit, lui révèle la vérité sur le complot et lui donne les moyens de sa revanche — c'est la définition même de l'adjuvant.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "moyen",
+      question:
+        "Montre que Le Comte de Monte-Cristo suit le schéma narratif en 5 étapes (une phrase par étape).",
+      reponse:
+        "Situation initiale : Dantès, jeune marin heureux, va devenir capitaine et épouser Mercédès. Élément perturbateur : une dénonciation mensongère le fait enfermer au château d'If. Péripéties : quatorze ans de prison, la rencontre avec l'abbé Faria, l'évasion, la découverte du trésor, puis la vengeance méthodique. Dénouement : les traîtres sont démasqués et punis. Situation finale : Dantès, transformé par l'épreuve, peut enfin tourner la page et repartir vers une nouvelle vie.",
+      explication:
+        "Le roman de Dumas est un modèle du genre : chaque étape du schéma narratif y est clairement identifiable.",
+    },
+    {
+      type: "ouverte",
+      difficulte: "avance",
+      question:
+        "✍️ Exercice d'écriture — Quel soutien l'abbé Faria apporte-t-il à Dantès ? Rédige un paragraphe organisé (8 à 12 lignes) : présente au moins trois formes de soutien différentes, illustre chacune par un élément précis du roman, et termine en expliquant pourquoi Faria mérite le nom d'« adjuvant ».",
+      reponse:
+        "Pistes attendues — Faria soutient Dantès de plusieurs manières. 1) Un soutien intellectuel : ce prisonnier savant fait de Dantès un homme instruit en lui enseignant les langues, l'histoire et les sciences pendant leurs années de captivité. 2) Un soutien moral : sa rencontre arrache Dantès au désespoir ; Faria devient un ami et une véritable figure de père, qui redonne un sens à sa vie de prisonnier. 3) La vérité sur le complot : en raisonnant (« à qui profite le crime ? »), Faria aide Dantès à comprendre qui l'a trahi — Danglars, Fernand, Villefort. 4) Un soutien matériel : il lui révèle l'emplacement du trésor caché sur l'île de Monte-Cristo, qui financera sa nouvelle identité ; et c'est en prenant la place du corps de Faria que Dantès parvient à s'évader. Conclusion : parce qu'il aide le héros à chaque niveau — savoir, moral, vérité, fortune — Faria est l'adjuvant par excellence du récit d'aventures.",
+      explication:
+        "Un paragraphe réussi articule au moins trois soutiens (instruction, moral, vérité sur le complot, trésor/évasion) avec des exemples précis, relie Faria à la notion d'adjuvant, et soigne l'organisation (connecteurs) et la langue.",
     },
   ],
   revisionFinChapitre: [
