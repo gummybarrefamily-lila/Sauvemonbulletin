@@ -1146,54 +1146,65 @@ export const EXERCICES_ECRITURE: ExerciceEcriture[] = [
     },
     etapes: [
       {
-        titre: "Lis le texte et observe la méthode de Faria",
-        consigne:
-          "Relis l'extrait ci-dessus. Au brouillon, note CE QUE FAIT Faria dans ce dialogue : quel genre de questions pose-t-il (courtes, précises, dans un ordre logique) ? Que devine-t-il derrière chaque réponse de Dantès (le geste de brûler la lettre, le serment sur le nom de Noirtier) ? Sur quelle révélation le dialogue se termine-t-il ?",
-        amorce: "– Faria pose des questions précises : … – Il se méfie de la « bonté » de Villefort car… – La révélation finale : …",
+        titre: "Qui est l'abbé Faria ?",
+        consigne: "Réponds en une ou deux phrases simples : qui est Faria, et où Dantès le rencontre-t-il ?",
+        amorce: "L'abbé Faria est un prisonnier savant que Dantès rencontre…",
       },
       {
-        titre: "Relève tes citations",
+        titre: "Que fait Faria dans le texte ?",
         consigne:
-          "Choisis 3 citations courtes du texte que tu pourras réutiliser entre guillemets dans ta rédaction. Par exemple : une question de Faria, la phrase qui montre sa méfiance (« Cette conduite est trop sublime pour être naturelle »), la révélation (« Ce Noirtier, c'était son père ! »), ou l'effet sur Dantès (« La foudre… », « une terrible résolution »).",
-        amorce: "Citation 1 : « … » | Citation 2 : « … » | Citation 3 : « … »",
+          "Relis l'extrait. Réponds simplement à ces deux questions : 1) Que fait Faria pendant tout le dialogue ? (indice : regarde comment commencent ses répliques) 2) Quelle grande vérité annonce-t-il à la fin ?",
+        amorce: "1) Faria pose des questions à Dantès sur… 2) À la fin, il lui révèle que…",
       },
       {
-        titre: "Classe les soutiens en 4 familles",
+        titre: "Pourquoi Villefort a-t-il brûlé la lettre ?",
         consigne:
-          "À partir du texte ET de ta lecture du roman, range les soutiens de Faria en 4 familles, une ligne chacune avec son exemple : 1) la VÉRITÉ sur le complot — c'est le cœur de l'extrait : par ses questions, Faria « voit plus clair » dans la vie de Dantès que Dantès lui-même et démasque Villefort ; 2) le soutien INTELLECTUEL (que lui enseigne Faria pendant leur captivité ?) ; 3) le soutien MORAL (que devient Faria pour ce prisonnier désespéré ?) ; 4) le soutien MATÉRIEL (que lui lègue-t-il, et que permettra sa mort ?).",
-        amorce: "1) Vérité (extrait) : … | 2) Intellectuel : … | 3) Moral : … | 4) Matériel : …",
+          "Dantès croyait que Villefort était gentil avec lui. Faria comprend le contraire. En une ou deux phrases : pourquoi Villefort a-t-il vraiment brûlé la lettre adressée à Noirtier ?",
+        amorce: "Villefort a brûlé la lettre parce que Noirtier était…",
+      },
+      {
+        titre: "Choisis 2 citations",
+        consigne:
+          "Recopie 2 phrases courtes du texte que tu mettras entre guillemets dans ta rédaction. Idées : « Cette conduite est trop sublime pour être naturelle » / « Ce Noirtier, c'était son père ! » / « une terrible résolution ».",
+        amorce: "Citation 1 : « … » | Citation 2 : « … »",
+      },
+      {
+        titre: "Les 4 aides de Faria",
+        consigne:
+          "Complète chaque phrase avec un exemple (le texte t'aide pour la première ; ta lecture du roman pour les autres) :",
+        amorce:
+          "1) Faria aide Dantès à comprendre… | 2) Faria lui apprend… | 3) Faria lui redonne… | 4) Faria lui lègue…",
       },
       {
         titre: "Rédige l'introduction",
-        consigne:
-          "2 ou 3 phrases : présente l'œuvre (titre, auteur), rappelle le contexte (Dantès condamné à la prison à vie sans connaître les accusations, la rencontre au château d'If) et reformule la question en annonçant que Faria le soutient de plusieurs manières.",
-        amorce: "Dans Le Comte de Monte-Cristo, roman d'Alexandre Dumas, Edmond Dantès est emprisonné à vie sans savoir pourquoi…",
+        consigne: "Complète simplement l'amorce : le titre et l'auteur y sont déjà, ajoute où est Dantès et la question posée.",
+        amorce:
+          "Dans Le Comte de Monte-Cristo, roman d'Alexandre Dumas, Edmond Dantès est emprisonné au château d'If sans savoir pourquoi. Il y rencontre l'abbé Faria, qui va l'aider de plusieurs manières…",
       },
       {
         titre: "Rédige le développement",
         consigne:
-          "Un petit paragraphe (2-3 phrases) par forme de soutien, relié par des connecteurs (d'abord, ensuite, de plus, enfin). Commence par le soutien que montre l'extrait : la vérité. Décris la méthode de Faria (des questions précises, une déduction logique : à qui profitait la disparition de la lettre ?) et cite le texte au moins deux fois entre guillemets. Poursuis avec les autres soutiens, illustrés par ta lecture du roman.",
-        amorce: "D'abord, l'extrait montre le soutien le plus spectaculaire : Faria révèle à Dantès la vérité. En posant des questions précises (« … »), …",
+          "Écris un petit paragraphe (2 phrases suffisent) pour chacune des 4 aides de l'étape 5. Commence tes paragraphes par : D'abord… / Ensuite… / De plus… / Enfin… Place tes 2 citations dans le premier paragraphe (celui sur la vérité).",
+        amorce: "D'abord, Faria aide Dantès à découvrir la vérité : …",
       },
       {
         titre: "Rédige la conclusion",
-        consigne:
-          "2 phrases : réponds à la question en résumant (Faria éclaire, instruit, console et arme Dantès) et utilise le mot du cours — l'ADJUVANT. Tu peux ouvrir sur la dernière phrase du texte : cette révélation fait naître chez Dantès « une terrible résolution »… le début de sa vengeance.",
-        amorce: "Ainsi, l'abbé Faria est bien plus qu'un compagnon de cellule : …",
+        consigne: "Une ou deux phrases pour finir : complète l'amorce avec le mot du cours, « adjuvant ».",
+        amorce: "Ainsi, l'abbé Faria aide Dantès à tous les niveaux : c'est un véritable…",
       },
       {
         titre: "Ta version finale",
         consigne:
-          "Assemble le tout en un texte fluide de 15 à 20 lignes : introduction, les 4 paragraphes du développement, conclusion. Relis trois fois : l'enchaînement des idées, la clarté des phrases, puis l'orthographe (attention aux noms propres : Dantès, Faria, Villefort, Noirtier, Monte-Cristo, château d'If). Cette version te servira de base pour l'évaluation dans le carnet du lecteur !",
+          "Recopie le tout à la suite : introduction, tes 4 petits paragraphes, conclusion (environ 12 à 15 lignes). Relis une fois pour les idées, une fois pour l'orthographe — attention aux noms propres : Dantès, Faria, Villefort, Noirtier. Cette version te servira pour l'évaluation dans le carnet du lecteur !",
       },
     ],
     criteres: [
-      "Mon introduction présente l'œuvre (titre, auteur), le contexte et reformule la question.",
-      "Je présente au moins 3 formes de soutien différentes, chacune dans son propre paragraphe.",
-      "Je cite le texte au moins deux fois, entre guillemets, à bon escient.",
-      "J'explique la méthode de Faria dans l'extrait (questions précises, déduction : à qui profite la disparition de la lettre).",
-      "Mes paragraphes sont reliés par des connecteurs, et ma conclusion utilise le mot « adjuvant ».",
-      "J'ai vérifié l'orthographe, y compris celle des noms propres (Dantès, Villefort, Noirtier…).",
+      "Mon introduction donne le titre, l'auteur et la question posée.",
+      "J'ai un petit paragraphe pour chaque aide de Faria (au moins 3).",
+      "J'ai mis 2 citations du texte entre guillemets.",
+      "Mes paragraphes commencent par D'abord, Ensuite, De plus, Enfin.",
+      "Ma conclusion utilise le mot « adjuvant ».",
+      "J'ai vérifié l'orthographe des noms propres (Dantès, Villefort, Noirtier…).",
     ],
   },
 ];
