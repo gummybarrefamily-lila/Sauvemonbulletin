@@ -1,6 +1,6 @@
 /**
- * Atelier d'écriture : 44 exercices guidés, 1 par semaine (36 semaines
- * d'année scolaire + 8 exercices bonus pour les plus motivés).
+ * Atelier d'écriture : 45 exercices guidés, 1 par semaine (36 semaines
+ * d'année scolaire + exercices bonus, dont des études d'œuvres).
  * Progression inspirée des méthodes d'écriture persuasive anglo-saxonnes,
  * adaptée au collège français (argumentation, rédaction du brevet) :
  * donner son avis → arguments → introduction/conclusion → textes complets
@@ -15,11 +15,22 @@ export interface EtapeEcriture {
   amorce?: string;
 }
 
+/** Texte d'appui affiché avec l'exercice (extrait d'œuvre à analyser). */
+export interface TexteSupport {
+  titre: string;
+  source: string;
+  /** Paragraphes séparés par \n\n ; les répliques commencent par « — ». */
+  extrait: string;
+  /** Notes de vocabulaire (mot : définition). */
+  notes?: string[];
+}
+
 export interface ExerciceEcriture {
   semaine: number;
   titre: string;
   competence: string;
   lecon: string[];
+  support?: TexteSupport;
   modele?: { titre: string; texte: string };
   etapes: EtapeEcriture[];
   criteres: string[];
@@ -1100,6 +1111,89 @@ export const EXERCICES_ECRITURE: ExerciceEcriture[] = [
     criteres: [
       ...CRITERES_SUJET_COMPLET,
       "Ce texte me ressemble : je serais fier/fière de le faire lire.",
+    ],
+  },
+  {
+    semaine: 45,
+    titre: "Étude d'œuvre : l'abbé Faria et Dantès",
+    competence: "Préparation de l'évaluation (carnet du lecteur)",
+    lecon: [
+      "Cet exercice prépare l'évaluation « Edmond Dantès et l'abbé Faria », qui se fera dans le carnet du lecteur, à partir de ta lecture, du cours et de ta compréhension. La question : « Quel soutien l'abbé Faria apporte-t-il à Edmond Dantès ? »",
+      "Le contexte : Edmond Dantès est condamné à la prison à vie, sans connaître les chefs d'accusation portés contre lui. Au château d'If, il rencontre l'abbé Faria, un prisonnier savant. Dans l'extrait ci-dessous (page 84, ligne 454), Faria interroge méthodiquement Dantès sur son interrogatoire — et lui fait découvrir une vérité foudroyante sur le substitut Villefort.",
+      "La méthode pour répondre : 1) une introduction qui présente l'œuvre (titre, auteur) et reformule la question ; 2) un développement organisé — une forme de soutien par paragraphe, appuyée sur le TEXTE (cite-le entre guillemets !) et sur ta lecture du roman ; 3) une conclusion qui répond à la question et utilise le vocabulaire du cours (l'adjuvant).",
+    ],
+    support: {
+      titre: "Le texte d'appui (page 84, ligne 454)",
+      source: "Alexandre Dumas, Le Comte de Monte-Cristo, chapitre 5",
+      extrait:
+        "« Voyons, interrogez-moi, car en vérité vous voyez plus clair dans ma vie que moi-même.\n— Qui vous a interrogé ? est-ce le procureur du roi, le substitut, le juge d'instruction ?\n— C'était le substitut.\n— Jeune, ou vieux ?\n— Jeune : vingt-sept ou vingt-huit ans.\n— Bien ! pas corrompu encore, mais ambitieux déjà, dit l'abbé. Quelles furent ses manières avec vous ?\n— Douces plutôt que sévères.\n— Lui avez-vous tout raconté ?\n— Tout.\n— Et ses manières ont-elles changé dans le courant de l'interrogatoire ?\n— Un instant, elles ont été altérées, lorsqu'il eut lu la lettre qui me compromettait ; il parut comme accablé de mon malheur.\n— De votre malheur ?\n— Oui.\n— Et vous êtes bien sûr que c'était votre malheur qu'il plaignait ?\n— Il m'a donné une grande preuve de sa sympathie, du moins.\n— Laquelle ?\n— Il a brûlé la seule pièce qui pouvait me compromettre.\n— Laquelle ? la dénonciation ?\n— Non, la lettre.\n— Vous en êtes sûr ?\n— Cela s'est passé devant moi.\n— C'est autre chose ; cet homme pourrait être un plus profond scélérat que vous ne croyez.\n— Vous me faites frissonner, sur mon honneur ! dit Dantès, le monde est-il donc peuplé de tigres et de crocodiles ?\n— Oui ; seulement, les tigres et les crocodiles à deux pieds sont plus dangereux que les autres.\n— Continuons, continuons.\n— Volontiers ; il a brûlé la lettre, dites-vous ?\n— Oui, en me disant : « Vous voyez, il n'existe que cette preuve-là contre vous, et je l'anéantis. »\n— Cette conduite est trop sublime pour être naturelle.\n— Vous croyez ?\n— J'en suis sûr. À qui cette lettre était-elle adressée ?\n— À M. Noirtier, rue Coq-Héron, n° 13, à Paris.\n— Pouvez-vous présumer que votre substitut eût quelque intérêt à ce que cette lettre disparût ?\n— Peut-être ; car il m'a fait promettre deux ou trois fois, dans mon intérêt, disait-il, de ne parler à personne de cette lettre, et il m'a fait jurer de ne pas prononcer le nom qui était inscrit sur l'adresse.\n— Noirtier ? répéta l'abbé… Noirtier ? j'ai connu un Noirtier à la cour de l'ancienne reine d'Étrurie, un Noirtier qui avait été girondin sous la Révolution. Comment s'appelait votre substitut, à vous ?\n— De Villefort. »\nL'abbé éclata de rire.\nDantès le regarda avec stupéfaction.\n« Qu'avez-vous ? dit-il.\n— Voyez-vous ce rayon du jour ? demanda l'abbé.\n— Oui.\n— Eh bien ! tout est plus clair pour moi maintenant que ce rayon transparent et lumineux. Pauvre enfant, pauvre jeune homme ! Et ce magistrat a été bon pour vous ?\n— Oui.\n— Ce digne substitut a brûlé, anéanti la lettre ?\n— Oui.\n— Cet honnête pourvoyeur du bourreau vous a fait jurer de ne jamais prononcer le nom de Noirtier ?\n— Oui.\n— Ce Noirtier, pauvre aveugle que vous êtes, savez-vous ce que c'était que ce Noirtier ? Ce Noirtier, c'était son père ! »\n\nLa foudre, tombée aux pieds de Dantès, et lui creusant un abîme au fond duquel s'ouvrait l'enfer, lui eût produit un effet moins prompt, moins électrique, moins écrasant, que ces paroles inattendues. Il se leva, saisissant sa tête à deux mains, comme pour l'empêcher d'éclater.\n« Son père ! son père ! s'écria-t-il. Oh ! il faut que je sois seul pour penser à tout cela. »\nEt en arrivant dans son cachot, il tomba sur son lit, où le porte-clefs le retrouva au soir, assis, les yeux fixes, les traits contractés, mais immobile et muet comme une statue.\nPendant des heures de méditation, qui s'étaient écoulées comme des secondes, il avait pris une terrible résolution et fait un formidable serment.",
+      notes: [
+        "Corrompu : qui contourne la loi en échange d'une somme d'argent.",
+        "Compromettait : qui met en doute son honnêteté, qui l'accuse.",
+        "Scélérat : homme détestable, traître.",
+        "Sublime : admirable, d'une grandeur exceptionnelle (ici, trop belle pour être honnête).",
+        "Étrurie : ancien royaume d'Italie.",
+        "Girondin : membre d'un groupe politique de la Révolution française.",
+        "Stupéfaction : étonnement si fort qu'il laisse sans réaction.",
+        "Abîme : gouffre très profond.",
+        "Prompt : rapide.",
+      ],
+    },
+    modele: {
+      titre: "Exemple de la méthode, sur une autre question : « Quels obstacles Dantès affronte-t-il ? »",
+      texte:
+        "Dans Le Comte de Monte-Cristo d'Alexandre Dumas, le héros affronte des obstacles de plusieurs natures. D'abord des ennemis humains : le substitut Villefort, qui l'enfonce pour protéger son père (« Ce Noirtier, c'était son père ! »). Ensuite un obstacle matériel : le château d'If, forteresse entourée par la mer, dont nul ne s'échappe. Enfin un obstacle intérieur : le désespoir de la prison à vie. Ces épreuves successives font de Dantès un véritable héros de récit d'aventures. — Observe la construction : une idée par phrase, une citation ou un exemple précis à chaque fois, et une conclusion qui relie au cours.",
+    },
+    etapes: [
+      {
+        titre: "Lis le texte et observe la méthode de Faria",
+        consigne:
+          "Relis l'extrait ci-dessus. Au brouillon, note CE QUE FAIT Faria dans ce dialogue : quel genre de questions pose-t-il (courtes, précises, dans un ordre logique) ? Que devine-t-il derrière chaque réponse de Dantès (le geste de brûler la lettre, le serment sur le nom de Noirtier) ? Sur quelle révélation le dialogue se termine-t-il ?",
+        amorce: "– Faria pose des questions précises : … – Il se méfie de la « bonté » de Villefort car… – La révélation finale : …",
+      },
+      {
+        titre: "Relève tes citations",
+        consigne:
+          "Choisis 3 citations courtes du texte que tu pourras réutiliser entre guillemets dans ta rédaction. Par exemple : une question de Faria, la phrase qui montre sa méfiance (« Cette conduite est trop sublime pour être naturelle »), la révélation (« Ce Noirtier, c'était son père ! »), ou l'effet sur Dantès (« La foudre… », « une terrible résolution »).",
+        amorce: "Citation 1 : « … » | Citation 2 : « … » | Citation 3 : « … »",
+      },
+      {
+        titre: "Classe les soutiens en 4 familles",
+        consigne:
+          "À partir du texte ET de ta lecture du roman, range les soutiens de Faria en 4 familles, une ligne chacune avec son exemple : 1) la VÉRITÉ sur le complot — c'est le cœur de l'extrait : par ses questions, Faria « voit plus clair » dans la vie de Dantès que Dantès lui-même et démasque Villefort ; 2) le soutien INTELLECTUEL (que lui enseigne Faria pendant leur captivité ?) ; 3) le soutien MORAL (que devient Faria pour ce prisonnier désespéré ?) ; 4) le soutien MATÉRIEL (que lui lègue-t-il, et que permettra sa mort ?).",
+        amorce: "1) Vérité (extrait) : … | 2) Intellectuel : … | 3) Moral : … | 4) Matériel : …",
+      },
+      {
+        titre: "Rédige l'introduction",
+        consigne:
+          "2 ou 3 phrases : présente l'œuvre (titre, auteur), rappelle le contexte (Dantès condamné à la prison à vie sans connaître les accusations, la rencontre au château d'If) et reformule la question en annonçant que Faria le soutient de plusieurs manières.",
+        amorce: "Dans Le Comte de Monte-Cristo, roman d'Alexandre Dumas, Edmond Dantès est emprisonné à vie sans savoir pourquoi…",
+      },
+      {
+        titre: "Rédige le développement",
+        consigne:
+          "Un petit paragraphe (2-3 phrases) par forme de soutien, relié par des connecteurs (d'abord, ensuite, de plus, enfin). Commence par le soutien que montre l'extrait : la vérité. Décris la méthode de Faria (des questions précises, une déduction logique : à qui profitait la disparition de la lettre ?) et cite le texte au moins deux fois entre guillemets. Poursuis avec les autres soutiens, illustrés par ta lecture du roman.",
+        amorce: "D'abord, l'extrait montre le soutien le plus spectaculaire : Faria révèle à Dantès la vérité. En posant des questions précises (« … »), …",
+      },
+      {
+        titre: "Rédige la conclusion",
+        consigne:
+          "2 phrases : réponds à la question en résumant (Faria éclaire, instruit, console et arme Dantès) et utilise le mot du cours — l'ADJUVANT. Tu peux ouvrir sur la dernière phrase du texte : cette révélation fait naître chez Dantès « une terrible résolution »… le début de sa vengeance.",
+        amorce: "Ainsi, l'abbé Faria est bien plus qu'un compagnon de cellule : …",
+      },
+      {
+        titre: "Ta version finale",
+        consigne:
+          "Assemble le tout en un texte fluide de 15 à 20 lignes : introduction, les 4 paragraphes du développement, conclusion. Relis trois fois : l'enchaînement des idées, la clarté des phrases, puis l'orthographe (attention aux noms propres : Dantès, Faria, Villefort, Noirtier, Monte-Cristo, château d'If). Cette version te servira de base pour l'évaluation dans le carnet du lecteur !",
+      },
+    ],
+    criteres: [
+      "Mon introduction présente l'œuvre (titre, auteur), le contexte et reformule la question.",
+      "Je présente au moins 3 formes de soutien différentes, chacune dans son propre paragraphe.",
+      "Je cite le texte au moins deux fois, entre guillemets, à bon escient.",
+      "J'explique la méthode de Faria dans l'extrait (questions précises, déduction : à qui profite la disparition de la lettre).",
+      "Mes paragraphes sont reliés par des connecteurs, et ma conclusion utilise le mot « adjuvant ».",
+      "J'ai vérifié l'orthographe, y compris celle des noms propres (Dantès, Villefort, Noirtier…).",
     ],
   },
 ];

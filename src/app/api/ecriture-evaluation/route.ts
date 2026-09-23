@@ -77,13 +77,16 @@ export async function POST(req: Request) {
 
   const grilleTexte = GRILLE.map((g, i) => `${i + 1}. ${g.nom} (sur ${g.max}) : ${g.detail}`).join("\n");
   const criteresSemaine = exercice.criteres.map((c) => `- ${c}`).join("\n");
+  const support = exercice.support
+    ? `\nTexte d'appui fourni à l'élève (${exercice.support.source}) — vérifie que ses citations en viennent réellement :\n"""\n${exercice.support.extrait}\n"""\n`
+    : "";
 
   const consigne = `Tu es le tuteur d'écriture de SauveMonBulletin. Un collégien (11-15 ans) te soumet sa rédaction de la semaine ${exercice.semaine} de l'atelier d'écriture.
 
 Exercice : « ${exercice.titre} » — compétence travaillée : ${exercice.competence}.
 Points de vérification spécifiques de cette semaine :
 ${criteresSemaine}
-
+${support}
 Évalue la rédaction avec la grille d'écriture persuasive suivante (note chaque critère, total sur 48) :
 ${grilleTexte}
 

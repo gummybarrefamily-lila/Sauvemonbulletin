@@ -5859,7 +5859,7 @@ const chapitres: Chapitre[] = [
       type: "ouverte",
       difficulte: "avance",
       question:
-        "✍️ Exercice d'écriture — Quel soutien l'abbé Faria apporte-t-il à Dantès ? Rédige un paragraphe organisé (8 à 12 lignes) : présente au moins trois formes de soutien différentes, illustre chacune par un élément précis du roman, et termine en expliquant pourquoi Faria mérite le nom d'« adjuvant ».",
+        "✍️ Exercice d'écriture — Quel soutien l'abbé Faria apporte-t-il à Dantès ? Rédige un paragraphe organisé (8 à 12 lignes) : présente au moins trois formes de soutien différentes, illustre chacune par un élément précis du roman, et termine en expliquant pourquoi Faria mérite le nom d'« adjuvant ». (Version guidée pas à pas, avec évaluation : S'entraîner → Atelier d'écriture → semaine 45.)",
       reponse:
         "Pistes attendues — Faria soutient Dantès de plusieurs manières. 1) Un soutien intellectuel : ce prisonnier savant fait de Dantès un homme instruit en lui enseignant les langues, l'histoire et les sciences pendant leurs années de captivité. 2) Un soutien moral : sa rencontre arrache Dantès au désespoir ; Faria devient un ami et une véritable figure de père, qui redonne un sens à sa vie de prisonnier. 3) La vérité sur le complot : en raisonnant (« à qui profite le crime ? »), Faria aide Dantès à comprendre qui l'a trahi — Danglars, Fernand, Villefort. 4) Un soutien matériel : il lui révèle l'emplacement du trésor caché sur l'île de Monte-Cristo, qui financera sa nouvelle identité ; et c'est en prenant la place du corps de Faria que Dantès parvient à s'évader. Conclusion : parce qu'il aide le héros à chaque niveau — savoir, moral, vérité, fortune — Faria est l'adjuvant par excellence du récit d'aventures.",
       explication:

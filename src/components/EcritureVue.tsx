@@ -177,6 +177,29 @@ export function EcritureVue() {
             )}
           </div>
 
+          {/* Texte d'appui (extrait d'œuvre) */}
+          {exercice.support && (
+            <div className="card p-6">
+              <h3 className="font-bold text-slate-900">📜 {exercice.support.titre}</h3>
+              <div className="mt-3 max-h-96 overflow-y-auto whitespace-pre-line rounded-2xl border border-amber-100 bg-amber-50/40 p-4 text-sm leading-relaxed text-slate-800">
+                {exercice.support.extrait}
+              </div>
+              <p className="mt-2 text-right text-xs italic text-slate-500">{exercice.support.source}</p>
+              {exercice.support.notes && exercice.support.notes.length > 0 && (
+                <details className="mt-2">
+                  <summary className="cursor-pointer select-none text-sm font-semibold text-brand-700">
+                    💡 Vocabulaire ({exercice.support.notes.length} mots expliqués)
+                  </summary>
+                  <ul className="mt-2 space-y-1 text-sm text-slate-600">
+                    {exercice.support.notes.map((n, i) => (
+                      <li key={i}>• {n}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </div>
+          )}
+
           {/* Étapes guidées */}
           {exercice.etapes.map((etape, e) => {
             const finale = e === exercice.etapes.length - 1;
