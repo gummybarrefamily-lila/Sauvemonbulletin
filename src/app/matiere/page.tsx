@@ -5,7 +5,6 @@ import { Footer } from "@/components/Footer";
 import { MATIERES, NIVEAUX, chapitresDe } from "@content/curriculum";
 import { chapitreGratuit, estConnecte } from "@/lib/acces";
 import type { MatiereId } from "@content/types";
-import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +23,7 @@ export default async function PageMatiere({ searchParams }: { searchParams: { m?
           ← Toutes les matières
         </Link>
         <div className="mt-4 flex items-center gap-4">
-          <span className="text-5xl">{avecPictos(info.emoji)}</span>
+          <span className="text-5xl">{info.emoji}</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">{info.nom}</h1>
             <p className="text-slate-500">{info.description}</p>

@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { brevetGratuit, estConnecte } from "@/lib/acces";
 import { BREVETS_BLANCS } from "@content/brevet";
 import { matiereInfo } from "@content/curriculum";
-import { avecPictos } from "@/components/Pictos";
 
 export const metadata = { title: "Brevets blancs — SauveMonBulletin" };
 export const dynamic = "force-dynamic";
@@ -36,7 +35,7 @@ export default async function PageBrevet() {
                 return (
                   <Link key={b.slug} href={`/sujet-brevet?s=${b.slug}`} className="card group flex items-center justify-between p-5 transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-3">
-                      <span className="text-3xl">{avecPictos(info.emoji)}</span>
+                      <span className="text-3xl">{info.emoji}</span>
                       <div>
                         <h3 className="font-bold text-slate-800 group-hover:text-brand-700">
                           {!connecte && b.slug !== gratuit ? "🔒 " : ""}

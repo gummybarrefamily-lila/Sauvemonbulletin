@@ -6,7 +6,6 @@ import { ComprehensionVue } from "@/components/ComprehensionVue";
 import { InvitationCompte } from "@/components/InvitationCompte";
 import { comprehensionGratuite, estConnecte } from "@/lib/acces";
 import { COMPREHENSION } from "@content/comprehension";
-import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -35,7 +34,7 @@ export default async function PageFicheComprehension({ searchParams }: { searchP
           ← Compréhension de texte
         </Link>
         <div className="mt-4 flex items-start gap-4">
-          <span className="text-5xl">{avecPictos(fiche.emoji)}</span>
+          <span className="text-5xl">{fiche.emoji}</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">{fiche.titre}</h1>
             <p className="mt-2 text-lg text-slate-600">{fiche.accroche}</p>

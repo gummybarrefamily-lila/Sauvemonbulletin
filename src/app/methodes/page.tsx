@@ -3,7 +3,6 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { estConnecte, methodeGratuite } from "@/lib/acces";
 import { METHODES } from "@content/methodes";
-import { avecPictos } from "@/components/Pictos";
 
 export const metadata = { title: "Méthodes & techniques — SauveMonBulletin" };
 export const dynamic = "force-dynamic";
@@ -33,12 +32,12 @@ export default async function PageMethodes() {
           return (
             <section key={cat} className="mt-8">
               <h2 className="mb-3 text-xl font-bold text-slate-800">
-                {avecPictos(info.emoji)} {info.nom}
+                {info.emoji} {info.nom}
               </h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 {fiches.map((m) => (
                   <Link key={m.slug} href={`/methode?s=${m.slug}`} className="card group flex items-start gap-3 p-5 transition hover:-translate-y-0.5 hover:shadow-md">
-                    <span className="text-3xl">{avecPictos(m.emoji)}</span>
+                    <span className="text-3xl">{m.emoji}</span>
                     <div>
                       <h3 className="font-bold text-slate-800 group-hover:text-brand-700">
                         {!connecte && m.slug !== gratuite ? "🔒 " : ""}

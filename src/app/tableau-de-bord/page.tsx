@@ -6,7 +6,6 @@ import { statsUtilisateur } from "@/lib/progression";
 import { prisma } from "@/lib/prisma";
 import { matiereInfo } from "@content/curriculum";
 import type { MatiereId } from "@content/types";
-import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -86,7 +85,7 @@ export default async function TableauDeBord() {
                 return (
                   <div key={r.id} className="card flex items-center justify-between p-4">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl">{avecPictos(info?.emoji)}</span>
+                      <span className="text-2xl">{info?.emoji}</span>
                       <div>
                         <p className="font-semibold text-slate-800">{r.raison}</p>
                         <p className="text-xs text-slate-400">
@@ -121,7 +120,7 @@ export default async function TableauDeBord() {
                 return (
                   <div key={s.matiere} className="card p-5">
                     <div className="flex items-center gap-2">
-                      <span className="text-2xl">{avecPictos(info?.emoji)}</span>
+                      <span className="text-2xl">{info?.emoji}</span>
                       <span className="font-bold text-slate-800">{info?.nom ?? s.matiere}</span>
                     </div>
                     <div className="mt-3">

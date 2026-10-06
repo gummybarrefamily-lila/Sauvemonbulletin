@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Puzzle } from "@/components/Pictos";
 
 export interface MembreAffiche {
   prenom: string;
@@ -84,7 +83,7 @@ export function GroupesClient({ groupes }: { groupes: GroupeAffiche[] }) {
                   <th className="py-1">Prénom</th>
                   <th className="py-1 text-center">⚡ Auto</th>
                   <th className="py-1 text-center">✍️ Dictée</th>
-                  <th className="py-1 text-center"><Puzzle /> Probl.</th>
+                  <th className="py-1 text-center">🧩 Probl.</th>
                   <th className="py-1 text-center">📅 Fondam.</th>
                   <th className="py-1 text-center">Moy.</th>
                 </tr>

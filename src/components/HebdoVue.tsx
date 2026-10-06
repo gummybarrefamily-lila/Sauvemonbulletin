@@ -6,7 +6,6 @@ import { matiereInfo } from "@content/curriculum";
 import { Quiz } from "./Quiz";
 import { useSession } from "next-auth/react";
 import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
-import { avecPictos } from "@/components/Pictos";
 
 export function HebdoVue() {
   const { data: session } = useSession();
@@ -65,7 +64,7 @@ export function HebdoVue() {
             return (
               <div key={i} className="card p-5">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="text-2xl">{avecPictos(info.emoji)}</span>
+                  <span className="text-2xl">{info.emoji}</span>
                   <div>
                     <h2 className="font-bold text-slate-900">{info.nom}</h2>
                     <p className="text-sm text-slate-500">{s.titre}</p>

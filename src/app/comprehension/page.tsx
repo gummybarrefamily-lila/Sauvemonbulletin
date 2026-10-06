@@ -3,7 +3,6 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { comprehensionGratuite, estConnecte } from "@/lib/acces";
 import { COMPREHENSION } from "@content/comprehension";
-import { avecPictos } from "@/components/Pictos";
 
 export const metadata = { title: "Compréhension de texte — SauveMonBulletin" };
 export const dynamic = "force-dynamic";
@@ -29,7 +28,7 @@ export default async function PageComprehension() {
               href={`/fiche-comprehension?s=${f.slug}`}
               className="card group flex items-start gap-3 p-5 transition hover:-translate-y-0.5 hover:shadow-md"
             >
-              <span className="text-3xl">{avecPictos(f.emoji)}</span>
+              <span className="text-3xl">{f.emoji}</span>
               <div>
                 <h3 className="font-bold text-slate-800 group-hover:text-brand-700">
                   {!connecte && f.slug !== gratuite ? "🔒 " : ""}

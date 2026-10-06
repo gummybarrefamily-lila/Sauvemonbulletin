@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { Logo } from "@/components/Mascotte";
-import { avecPictos } from "@/components/Pictos";
 
 const MENU_ENTRAINER = [
   { href: "/automatismes", label: "⚡ Automatismes du jour" },
@@ -59,7 +58,7 @@ function Deroulant({
               onClick={onClose}
               className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-800"
             >
-              {avecPictos(item.label)}
+              {item.label}
             </Link>
           ))}
         </div>
@@ -160,18 +159,18 @@ export function NavBar() {
       {mobileOuvert && (
         <nav className="border-t border-slate-100 bg-white px-4 py-3 md:hidden">
           <Link href="/matieres" onClick={fermerTout} className="block rounded-xl px-3 py-2.5 font-semibold text-slate-700 hover:bg-slate-50">
-            {avecPictos("📚")} Matières
+            📚 Matières
           </Link>
           <p className="mt-2 px-3 text-xs font-bold uppercase tracking-wide text-slate-400">S'entraîner</p>
           {MENU_ENTRAINER.map((item) => (
             <Link key={item.href} href={item.href} onClick={fermerTout} className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-              {avecPictos(item.label)}
+              {item.label}
             </Link>
           ))}
           <p className="mt-2 px-3 text-xs font-bold uppercase tracking-wide text-slate-400">Réussir</p>
           {MENU_REUSSIR.map((item) => (
             <Link key={item.href} href={item.href} onClick={fermerTout} className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
-              {avecPictos(item.label)}
+              {item.label}
             </Link>
           ))}
           <div className="mt-3 border-t border-slate-100 pt-3">
@@ -182,7 +181,7 @@ export function NavBar() {
               <>
                 {MENU_ESPACE.map((item) => (
                   <Link key={item.href} href={item.href} onClick={fermerTout} className="block rounded-xl px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50">
-                    {avecPictos(item.label)}
+                    {item.label}
                   </Link>
                 ))}
                 <button

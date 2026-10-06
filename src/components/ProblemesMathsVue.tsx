@@ -6,7 +6,6 @@ import { PROBLEMES_MATHS } from "@content/problemes-maths";
 import { Quiz } from "./Quiz";
 import { InvitationCompte } from "./InvitationCompte";
 import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
-import { Puzzle } from "@/components/Pictos";
 
 /** Problèmes de mathématiques de la semaine (raisonnement, mises en situation). */
 export function ProblemesMathsVue() {
@@ -124,7 +123,7 @@ export function ProblemesMathsVue() {
                 <h2 className="font-bold text-slate-900">
                   Semaine {serie.semaine} — {serie.titre}
                 </h2>
-                <p className="text-sm text-slate-500"><Puzzle /> {serie.theme}</p>
+                <p className="text-sm text-slate-500">🧩 {serie.theme}</p>
               </div>
             </div>
             <Quiz questions={serie.questions} filtrable={false} onTermine={(sc, m) => enregistrer(serie.niveau, sc, m)} />

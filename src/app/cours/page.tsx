@@ -7,7 +7,6 @@ import { trouverChapitre } from "@content/chapitres";
 import { matiereInfo, niveauLabel } from "@content/curriculum";
 import { estChapitreGratuit, estConnecte } from "@/lib/acces";
 import type { MatiereId, Niveau } from "@content/types";
-import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -65,7 +64,7 @@ export default async function PageCours({
       <NavBar />
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8">
         <Link href={`/matiere?m=${chap.matiere}`} className="text-sm font-semibold text-brand-600 hover:underline">
-          ← {avecPictos(info.emoji)} {info.nom}
+          ← {info.emoji} {info.nom}
         </Link>
         <div className="mt-3">
           <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">

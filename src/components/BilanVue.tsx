@@ -5,7 +5,6 @@ import { useSession } from "next-auth/react";
 import { construireBilan } from "@/lib/bilan";
 import { MATIERES } from "@content/curriculum";
 import type { MatiereId, Niveau, Question } from "@content/types";
-import { avecPictos } from "@/components/Pictos";
 
 export function BilanVue() {
   const { data: session } = useSession();
@@ -91,7 +90,7 @@ export function BilanVue() {
             >
               {matieresDispo.map((m) => (
                 <option key={m.id} value={m.id}>
-                  {avecPictos(m.emoji)} {m.nom}
+                  {m.emoji} {m.nom}
                 </option>
               ))}
             </select>
