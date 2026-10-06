@@ -5,6 +5,7 @@ import type { Slide } from "@content/types";
 import { VoiceRecorder } from "./VoiceRecorder";
 import { MotAudio } from "./MotAudio";
 import { Coche } from "@/components/Coche";
+import { avecPictos } from "@/components/Pictos";
 
 /**
  * Lecteur de cours en diapositives. Plus de voix off automatique : l'élève lit
@@ -25,7 +26,7 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
         <div className="flex h-[24rem] flex-col p-6 sm:h-[26rem] sm:p-10">
           <div className="mb-4 flex shrink-0 items-center gap-3">
             <span className="text-4xl">
-              {slide.illustration === "✅" || slide.illustration === "✔️" ? <Coche /> : slide.illustration ?? "📘"}
+              {slide.illustration === "✅" || slide.illustration === "✔️" ? <Coche /> : avecPictos(slide.illustration ?? "📘")}
             </span>
             <h2 className="text-2xl font-extrabold text-brand-800 sm:text-3xl">{slide.titre}</h2>
           </div>

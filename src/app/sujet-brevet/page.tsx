@@ -7,6 +7,7 @@ import { InvitationCompte } from "@/components/InvitationCompte";
 import { brevetGratuit, estConnecte } from "@/lib/acces";
 import { BREVETS_BLANCS } from "@content/brevet";
 import { matiereInfo } from "@content/curriculum";
+import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -36,7 +37,7 @@ export default async function PageSujetBrevet({ searchParams }: { searchParams: 
           ← Tous les brevets blancs
         </Link>
         <div className="mt-4 flex items-center gap-4">
-          <span className="text-5xl">{info.emoji}</span>
+          <span className="text-5xl">{avecPictos(info.emoji)}</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">{b.titre}</h1>
             <p className="text-slate-500">

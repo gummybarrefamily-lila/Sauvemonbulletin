@@ -3,6 +3,7 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { MATIERES } from "@content/curriculum";
 import { Mascotte } from "@/components/Mascotte";
+import { avecPictos } from "@/components/Pictos";
 
 const FONCTIONNALITES = [
   { emoji: "🎬", titre: "Cours en slides + audio", desc: "Des cours illustrés avec voix off pour apprendre en écoutant et en regardant." },
@@ -62,7 +63,7 @@ export default function Accueil() {
                 href={`/matiere?m=${m.id}`}
                 className="card group flex flex-col p-5 transition hover:-translate-y-1 hover:shadow-md"
               >
-                <span className="text-3xl">{m.emoji}</span>
+                <span className="text-3xl">{avecPictos(m.emoji)}</span>
                 <h3 className="mt-3 font-extrabold text-brand-900 group-hover:text-brand-600">{m.nom}</h3>
                 <p className="mt-1 text-sm text-slate-500">{m.description}</p>
                 {m.danseEtudes && (
@@ -83,7 +84,7 @@ export default function Accueil() {
               {FONCTIONNALITES.map((f) => (
                 <div key={f.titre} className="card p-5">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{f.emoji}</span>
+                    <span className="text-2xl">{avecPictos(f.emoji)}</span>
                     <h3 className="font-bold text-slate-800">{f.titre}</h3>
                   </div>
                   <p className="mt-2 text-sm text-slate-500">{f.desc}</p>

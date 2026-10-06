@@ -8,6 +8,7 @@ import { getAllNotes } from "@/lib/notes";
 import { CHAPITRES } from "@content/chapitres";
 import { MATIERES, matiereInfo } from "@content/curriculum";
 import type { MatiereId } from "@content/types";
+import { avecPictos } from "@/components/Pictos";
 
 interface NoteEnrichie {
   id: string;
@@ -100,7 +101,7 @@ export default function PageMesNotes() {
               return (
                 <section key={m.id}>
                   <h2 className="flex items-center gap-2 text-xl font-bold text-slate-800">
-                    <span className="text-2xl">{info.emoji}</span> {info.nom}
+                    <span className="text-2xl">{avecPictos(info.emoji)}</span> {info.nom}
                   </h2>
                   <div className="mt-3 space-y-3">
                     {parMatiere.get(m.id)!.map((n) => (

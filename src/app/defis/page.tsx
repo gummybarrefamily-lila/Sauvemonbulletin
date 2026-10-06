@@ -11,6 +11,7 @@ import { donneesRecompenses, ciblesDefis, defiReussi, historiqueDefis } from "@/
 import { PROGRAMME, matiereInfo, niveauLabel } from "@content/curriculum";
 import type { MatiereId, Niveau } from "@content/types";
 import { Coche } from "@/components/Coche";
+import { avecPictos } from "@/components/Pictos";
 
 export const metadata = { title: "Mes défis — SauveMonBulletin" };
 export const dynamic = "force-dynamic";
@@ -31,7 +32,7 @@ function ilYA(date: Date): string {
 function CarteStreak({ emoji, titre, valeur, unite, actif, aFaire }: { emoji: string; titre: string; valeur: number; unite: string; actif: boolean; aFaire: string }) {
   return (
     <div className={`card p-5 text-center ${valeur > 0 ? "border-amber-200" : ""}`}>
-      <span className="text-4xl">{emoji}</span>
+      <span className="text-4xl">{avecPictos(emoji)}</span>
       <p className="mt-2 text-3xl font-extrabold text-slate-900">
         {valeur}
         <span className="ml-1 text-base font-semibold text-slate-400">{unite}</span>

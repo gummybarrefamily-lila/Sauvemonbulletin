@@ -3,6 +3,7 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { BREVETS_BLANCS } from "@content/brevet";
 import { matiereInfo } from "@content/curriculum";
+import { avecPictos } from "@/components/Pictos";
 
 export const metadata = { title: "Brevets blancs — SauveMonBulletin" };
 
@@ -31,7 +32,7 @@ export default function PageBrevet() {
                 return (
                   <Link key={b.slug} href={`/sujet-brevet?s=${b.slug}`} className="card group flex items-center justify-between p-5 transition hover:-translate-y-0.5 hover:shadow-md">
                     <div className="flex items-center gap-3">
-                      <span className="text-3xl">{info.emoji}</span>
+                      <span className="text-3xl">{avecPictos(info.emoji)}</span>
                       <div>
                         <h3 className="font-bold text-slate-800 group-hover:text-brand-700">{b.titre}</h3>
                         <p className="text-sm text-slate-500">⏱️ {b.dureeMinutes} min · {b.parties.length} parties</p>

@@ -7,6 +7,7 @@ import { ExercicePratique } from "@/components/ExercicePratique";
 import { InvitationCompte } from "@/components/InvitationCompte";
 import { estConnecte, methodeGratuite } from "@/lib/acces";
 import { METHODES } from "@content/methodes";
+import { avecPictos } from "@/components/Pictos";
 
 export const dynamic = "force-dynamic";
 
@@ -39,7 +40,7 @@ export default async function PageMethode({ searchParams }: { searchParams: { s?
           ← Toutes les méthodes
         </Link>
         <div className="mt-4 flex items-start gap-4">
-          <span className="text-5xl">{m.emoji}</span>
+          <span className="text-5xl">{avecPictos(m.emoji)}</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">{m.titre}</h1>
             <p className="mt-2 text-lg text-slate-600">{m.accroche}</p>

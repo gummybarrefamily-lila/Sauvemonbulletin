@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Logo } from "@/components/Mascotte";
 import { MATIERES } from "@content/curriculum";
+import { avecPictos } from "@/components/Pictos";
 
 export default function Inscription() {
   const router = useRouter();
@@ -141,7 +142,7 @@ export default function Inscription() {
                         : "border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
                     }`}
                   >
-                    {m.emoji} {m.nom}
+                    {avecPictos(m.emoji)} {m.nom}
                   </button>
                 ))}
               </div>

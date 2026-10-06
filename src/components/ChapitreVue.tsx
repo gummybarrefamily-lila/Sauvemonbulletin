@@ -12,6 +12,7 @@ import { MotAudio } from "./MotAudio";
 import A_QUOI_CA_SERT from "@content/a-quoi-ca-sert";
 import { TelechargerFiche } from "./TelechargerFiche";
 import { Examen } from "./Examen";
+import { avecPictos } from "@/components/Pictos";
 
 type Onglet = "cours" | "fiche" | "memo" | "exercices" | "examens" | "pourquoi";
 
@@ -65,7 +66,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
                 onglet === o.id ? "bg-brand-600 text-white" : "text-slate-600 hover:bg-slate-100"
               }`}
             >
-              <span className="mr-1.5">{o.emoji}</span>
+              <span className="mr-1.5">{avecPictos(o.emoji)}</span>
               {o.label}
             </button>
           ))}

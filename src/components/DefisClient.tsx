@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { avecPictos } from "@/components/Pictos";
 
 export interface DefiAffiche {
   periode: "semaine" | "mois";
@@ -68,7 +69,7 @@ function CarteDefi({ defi }: { defi: DefiAffiche }) {
           return (
             <div key={l.cle}>
               <div className="flex items-center justify-between text-sm">
-                <span className="font-medium text-slate-700">{l.label}</span>
+                <span className="font-medium text-slate-700">{avecPictos(l.label)}</span>
                 {edition ? (
                   <input
                     type="number"
