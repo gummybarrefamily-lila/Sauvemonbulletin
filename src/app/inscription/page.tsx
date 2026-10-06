@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Logo } from "@/components/Mascotte";
 import { MATIERES } from "@content/curriculum";
 
 export default function Inscription() {
@@ -53,9 +54,9 @@ export default function Inscription() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-brand-50 to-white px-4 py-10">
       <div className="w-full max-w-lg">
-        <Link href="/" className="mb-6 flex items-center justify-center gap-2 text-2xl font-extrabold text-brand-700">
-          🎓 SauveMonBulletin
-        </Link>
+        <div className="mb-6 flex justify-center">
+          <Logo taille={48} className="text-2xl" />
+        </div>
         <div className="card p-8">
           <h1 className="text-2xl font-bold text-slate-900">Créer mon compte</h1>
           <p className="mt-1 text-sm text-slate-500">Quelques infos et c'est parti.</p>

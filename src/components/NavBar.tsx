@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useSession, signOut } from "next-auth/react";
+import { Logo } from "@/components/Mascotte";
 
 const MENU_ENTRAINER = [
   { href: "/automatismes", label: "⚡ Automatismes du jour" },
@@ -92,10 +93,7 @@ export function NavBar() {
   return (
     <header ref={ref} className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-2 font-extrabold text-brand-700" onClick={fermerTout}>
-          <span className="text-2xl">🎓</span>
-          <span>SauveMonBulletin</span>
-        </Link>
+        <Logo onClick={fermerTout} className="text-lg" />
 
         {/* Navigation bureau */}
         <nav className="hidden items-center gap-1 text-sm md:flex">

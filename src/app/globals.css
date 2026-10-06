@@ -7,23 +7,66 @@
 }
 
 body {
-  @apply bg-slate-50 text-slate-800 antialiased;
+  @apply bg-[#f6f8fd] font-medium text-slate-800 antialiased;
+}
+
+h1,
+h2 {
+  @apply font-black tracking-tight;
+  text-wrap: balance;
 }
 
 .card {
-  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  @apply rounded-lg border border-slate-200 bg-white shadow-sm;
 }
 
 .btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition;
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-extrabold transition;
 }
+/* Texte toujours blanc sur un fond plein (encre ou rouge). */
 .btn-primary {
-  @apply btn bg-brand-600 text-white hover:bg-brand-700;
+  @apply btn bg-brand-600 text-white shadow-[0_2px_0_theme(colors.brand.800)] hover:bg-brand-700 hover:text-white active:translate-y-0.5 active:shadow-none;
 }
 .btn-ghost {
-  @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-100;
+  @apply btn border border-slate-300 bg-white text-brand-900 hover:bg-brand-50;
 }
 
 .prose-fiche h3 {
-  @apply mt-5 mb-2 text-lg font-bold text-brand-800;
+  @apply mt-5 mb-2 text-lg font-extrabold text-brand-800;
+}
+
+/* Trait de stylo rouge sous un mot. */
+.souligne-rouge {
+  position: relative;
+  white-space: nowrap;
+}
+.souligne-rouge::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 0.02em;
+  height: 0.13em;
+  border-radius: 2px;
+  background: theme(colors.marge.DEFAULT);
+  transform: rotate(-1.2deg);
+}
+
+/* Annotation manuscrite dans la marge (à utiliser avec parcimonie). */
+.note-marge {
+  @apply font-main font-bold text-marge;
+}
+
+@keyframes mascotte-flotte {
+  50% {
+    transform: rotate(3deg) translateY(-4px);
+  }
+}
+.mascotte-anime {
+  animation: mascotte-flotte 4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mascotte-anime {
+    animation: none;
+  }
 }

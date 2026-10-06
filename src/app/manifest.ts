@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Réviser le collège autrement : cours, exercices, dictées, défis et brevets blancs de la 6ème à la 3ème.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f4f6fb",
-    theme_color: "#1d60f1",
+    background_color: "#ffffff",
+    theme_color: "#2440a8",
     lang: "fr",
     categories: ["education"],
     icons: [
