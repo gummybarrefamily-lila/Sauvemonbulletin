@@ -5,7 +5,7 @@ export type PoseMascotte = "sourire" | "clin-oeil" | "bravo" | "reflechir";
 const ENCRE = "#2440a8";
 const ROUGE = "#e2403a";
 
-/** Le bulletin-mascotte, dessiné comme une page de cahier Seyès. */
+/** Le bulletin-mascotte du brand book (papier, coin replié, deux lignes de texte). */
 export function Mascotte({
   pose = "sourire",
   taille = 40,
@@ -65,9 +65,7 @@ export function Mascotte({
         <path d="M94 62L70 86V72a10 10 0 0 1 10-10z" fill={ROUGE} strokeWidth={5} />
         {yeux}
         {bouche}
-        <path d="M22 66h48M22 76h40" stroke="#b9c6ee" strokeWidth={2} />
-        <path d="M27 22v62" stroke={ROUGE} strokeWidth={2.5} />
-        <path d="M33 71h14" strokeWidth={5} opacity={0.35} />
+        <path d="M31 63h18M31 73h13" stroke="#A9BBD3" strokeWidth={5.5} />
       </g>
       <g stroke={ROUGE} strokeWidth={5.5} strokeLinecap="round">
         <path d="M93 12l4-8M101 20l9-5M104 30h9" />

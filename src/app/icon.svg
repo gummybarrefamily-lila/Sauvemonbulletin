@@ -2,5 +2,5 @@
 <path d="M28 18h56a10 10 0 0 1 10 10v34l-24 24H28a10 10 0 0 1-10-10V28a10 10 0 0 1 10-10z" fill="#F5F8FC"/>
 <path d="M94 62L70 86V72a10 10 0 0 1 10-10z" fill="#e2403a" stroke-width="5"/>
 <path d="M37 41q5-6 10 0M60 36q5-6 10 0"/><path d="M48 50q8 7 16-3"/>
-<path d="M22 66h48M22 76h40" stroke="#b9c6ee" stroke-width="2"/><path d="M27 22v62" stroke="#e2403a" stroke-width="2.5"/><path d="M33 71h14" stroke-width="5" opacity=".35"/></g>
+<path d="M31 63h18M31 73h13" stroke="#A9BBD3" stroke-width="5.5"/></g>
 <g stroke="#e2403a" stroke-width="5.5" stroke-linecap="round"><path d="M93 12l4-8M101 20l9-5M104 30h9"/></g></svg>
