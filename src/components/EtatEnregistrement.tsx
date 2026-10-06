@@ -1,4 +1,5 @@
 "use client";
+import { Coche } from "@/components/Coche";
 
 /** États possibles après une tentative d'enregistrement d'un résultat. */
 export type EtatSauvegarde = "envoi" | "ok" | "erreur" | "invite" | null;
@@ -14,8 +15,8 @@ export function EtatEnregistrement({ etat, onRenvoyer }: { etat: EtatSauvegarde;
   }
   if (etat === "ok") {
     return (
-      <p className="mt-3 rounded-xl border border-green-200 bg-green-50 px-4 py-2.5 text-sm text-green-800">
-        ✅ Résultat enregistré ! Il compte pour <strong>Mes défis</strong> à partir de 70 % de réussite.
+      <p className="mt-3 rounded-xl border border-citron-200 bg-citron-50 px-4 py-2.5 text-sm text-brand-800">
+        <Coche /> Résultat enregistré ! Il compte pour <strong>Mes défis</strong> à partir de 70 % de réussite.
       </p>
     );
   }

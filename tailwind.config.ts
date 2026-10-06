@@ -22,6 +22,10 @@ const config: Config = {
         citron: {
           50: "#f7fde4",
           100: "#eef9c8",
+          200: "#e2f59e",
+          300: "#d6f270",
+          400: "#C8F03C",
+          500: "#C8F03C",
           DEFAULT: "#C8F03C",
           600: "#C8F03C",
           700: "#a8d11f",

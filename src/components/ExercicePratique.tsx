@@ -30,7 +30,7 @@ export function ExercicePratique({
         {montre ? "Cacher le corrigé" : "Voir le corrigé modèle"}
       </button>
       {montre && (
-        <div className="mt-2 whitespace-pre-wrap rounded-xl bg-green-50 p-4 text-sm text-green-900">
+        <div className="mt-2 whitespace-pre-wrap rounded-xl bg-citron-50 p-4 text-sm text-brand-900">
           <strong>Corrigé modèle :</strong>
           {"\n"}
           {corrige}

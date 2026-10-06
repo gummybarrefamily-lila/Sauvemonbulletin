@@ -126,13 +126,13 @@ export default async function TableauDeBord() {
                     <div className="mt-3">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-slate-500">Réussite moyenne</span>
-                        <span className={`font-bold ${s.scoreMoyen >= 60 ? "text-green-600" : "text-red-500"}`}>
+                        <span className={`font-bold ${s.scoreMoyen >= 60 ? "text-brand-700" : "text-red-500"}`}>
                           {s.scoreMoyen}%
                         </span>
                       </div>
                       <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className={`h-full ${s.scoreMoyen >= 60 ? "bg-green-500" : "bg-amber-500"}`}
+                          className={`h-full ${s.scoreMoyen >= 60 ? "bg-citron" : "bg-amber-500"}`}
                           style={{ width: `${s.scoreMoyen}%` }}
                         />
                       </div>

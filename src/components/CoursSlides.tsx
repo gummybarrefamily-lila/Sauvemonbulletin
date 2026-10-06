@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Slide } from "@content/types";
 import { VoiceRecorder } from "./VoiceRecorder";
 import { MotAudio } from "./MotAudio";
+import { Coche } from "@/components/Coche";
 
 /**
  * Lecteur de cours en diapositives. Plus de voix off automatique : l'élève lit
@@ -23,7 +24,9 @@ export function CoursSlides({ slides, idBase, lang = "fr-FR" }: { slides: Slide[
       <div className="relative w-full rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-50 via-white to-slate-50 shadow-sm">
         <div className="flex h-[24rem] flex-col p-6 sm:h-[26rem] sm:p-10">
           <div className="mb-4 flex shrink-0 items-center gap-3">
-            <span className="text-4xl">{slide.illustration ?? "📘"}</span>
+            <span className="text-4xl">
+              {slide.illustration === "✅" || slide.illustration === "✔️" ? <Coche /> : slide.illustration ?? "📘"}
+            </span>
             <h2 className="text-2xl font-extrabold text-brand-800 sm:text-3xl">{slide.titre}</h2>
           </div>
           <div className="flex min-h-0 flex-1 flex-col justify-center gap-6 overflow-y-auto sm:flex-row sm:items-center">

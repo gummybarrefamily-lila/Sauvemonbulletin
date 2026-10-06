@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { serieDuJour } from "@/lib/automatismes";
 import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 import type { Niveau } from "@content/types";
+import { Coche } from "@/components/Coche";
 
 /**
  * Jour « effectif » de la série : la nouvelle série arrive à 8 h du matin
@@ -124,14 +125,14 @@ export function AutomatismesDuJour() {
                   onChange={(e) => setReponses({ ...reponses, [i]: e.target.value })}
                   disabled={corrige}
                   className={`w-28 rounded-lg border px-3 py-1.5 text-center text-base focus:outline-none ${
-                    bon ? "border-green-400 bg-green-50" : faux ? "border-red-400 bg-red-50" : "border-slate-300 focus:border-brand-500"
+                    bon ? "border-citron-400 bg-citron-50" : faux ? "border-red-400 bg-red-50" : "border-slate-300 focus:border-brand-500"
                   }`}
                   placeholder="?"
                 />
               </div>
               {corrige && (
                 <p className="mt-2 text-sm text-slate-500">
-                  {bon ? "✅ " : `❌ Réponse : ${a.reponse}. `}
+                  {bon ? <><Coche />{" "}</> : `❌ Réponse : ${a.reponse}. `}
                   {a.explication}
                 </p>
               )}

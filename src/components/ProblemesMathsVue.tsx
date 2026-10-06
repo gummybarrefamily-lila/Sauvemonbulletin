@@ -106,7 +106,7 @@ export function ProblemesMathsVue() {
           </div>
 
           {invite && idx === 0 && (
-            <p className="rounded-xl bg-green-50 px-4 py-2 text-sm text-green-800">
+            <p className="rounded-xl bg-citron-50 px-4 py-2 text-sm text-brand-800">
               🎁 Série d&apos;essai gratuite — crée un compte gratuit pour débloquer toutes les semaines.
             </p>
           )}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Coche } from "@/components/Coche";
 
 function base64VersUint8Array(base64: string): Uint8Array {
   const rembourrage = "=".repeat((4 - (base64.length % 4)) % 4);
@@ -97,7 +98,7 @@ export function NotificationsPush() {
         </p>
       ) : etat === "actif" ? (
         <button onClick={desactiver} disabled={occupe} className="btn-ghost px-4 py-2 text-sm disabled:opacity-40">
-          ✅ Activés — toucher pour désactiver
+          <Coche /> Activés — toucher pour désactiver
         </button>
       ) : (
         <button onClick={activer} disabled={occupe} className="btn-primary px-4 py-2 text-sm disabled:opacity-40">
