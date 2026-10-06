@@ -2,8 +2,9 @@ import Link from "next/link";
 
 export type PoseMascotte = "sourire" | "clin-oeil" | "bravo" | "reflechir";
 
-const ENCRE = "#2440a8";
-const ROUGE = "#e2403a";
+const ENCRE = "#16324F";
+const CITRON = "#C8F03C";
+const LANGUE = "#F7A1B4";
 
 /** Le bulletin-mascotte du brand book (papier, coin replié, deux lignes de texte). */
 export function Mascotte({
@@ -34,7 +35,7 @@ export function Mascotte({
     pose === "bravo" ? (
       <>
         <path d="M47 49q9-3 17-5q-1 11-9 12q-7 1-8-7z" fill={ENCRE} />
-        <path d="M51 53q4-3 8-2q-2 4-6 4z" fill={ROUGE} stroke="none" />
+        <path d="M51 53q4-3 8-2q-2 4-6 4z" fill={LANGUE} stroke="none" />
       </>
     ) : (
       <path d="M48 50q8 7 16-3" />
@@ -62,19 +63,19 @@ export function Mascotte({
           d="M28 18h56a10 10 0 0 1 10 10v34l-24 24H28a10 10 0 0 1-10-10V28a10 10 0 0 1 10-10z"
           fill="#F5F8FC"
         />
-        <path d="M94 62L70 86V72a10 10 0 0 1 10-10z" fill={ROUGE} strokeWidth={5} />
+        <path d="M94 62L70 86V72a10 10 0 0 1 10-10z" fill={CITRON} strokeWidth={5} />
         {yeux}
         {bouche}
         <path d="M31 63h18M31 73h13" stroke="#A9BBD3" strokeWidth={5.5} />
       </g>
-      <g stroke={ROUGE} strokeWidth={5.5} strokeLinecap="round">
+      <g stroke={CITRON} strokeWidth={5.5} strokeLinecap="round">
         <path d="M93 12l4-8M101 20l9-5M104 30h9" />
       </g>
     </svg>
   );
 }
 
-/** Logo complet : mascotte + « SauveMon » à l'encre + « Bulletin » au stylo rouge. */
+/** Logo complet : mascotte + « SauveMon » en marine + « Bulletin » en citron. */
 export function Logo({
   taille = 36,
   className = "",
@@ -92,7 +93,7 @@ export function Logo({
     >
       <Mascotte taille={taille} />
       <span>
-        SauveMon<span className="text-marge">Bulletin</span>
+        SauveMon<span className="text-citron">Bulletin</span>
       </span>
     </Link>
   );

@@ -28,9 +28,9 @@ export default function Accueil() {
         <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-brand-50 to-white">
           <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-14 sm:py-20 md:grid-cols-[1.5fr_1fr]">
             <div>
-              <p className="note-marge -rotate-2 text-lg">6ème · 5ème · 4ème · 3ème</p>
+              <p className="note-main -rotate-2 text-lg">6ème · 5ème · 4ème · 3ème</p>
               <h1 className="mt-4 max-w-2xl text-4xl text-brand-900 sm:text-6xl sm:leading-[1.05]">
-                Réviser le collège <span className="souligne-rouge">autrement</span>
+                Réviser le collège <span className="surligne-citron">autrement</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg text-slate-600">
                 Cours animés, fiches audio, cartes mémo, exercices adaptés à ton niveau, examens, brevets blancs et un tuteur IA. Tout pour préparer sereinement le brevet et cartonner en classe.
@@ -46,7 +46,7 @@ export default function Accueil() {
             </div>
             <div className="hidden flex-col items-center gap-1 md:flex">
               <Mascotte pose="bravo" taille={200} className="mascotte-anime" />
-              <p className="note-marge -rotate-3 text-xl">Allez, on s&apos;y met !</p>
+              <p className="note-main -rotate-3 text-xl">Allez, on s&apos;y met !</p>
             </div>
           </div>
         </section>

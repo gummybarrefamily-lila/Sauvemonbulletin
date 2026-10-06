@@ -116,7 +116,7 @@ function genererHtmlRapport(
   return `<!doctype html>
   <html lang="fr"><body style="margin:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;color:#1f2937;">
     <div style="max-width:600px;margin:0 auto;padding:24px;">
-      <div style="background:#1d60f1;border-radius:16px 16px 0 0;padding:24px;color:white;">
+      <div style="background:#16324F;border-radius:16px 16px 0 0;padding:24px;color:white;">
         <h1 style="margin:0;font-size:22px;">📊 SauveMonBulletin</h1>
         <p style="margin:6px 0 0;opacity:.9;">Compte rendu hebdomadaire de ${prenom}</p>
       </div>

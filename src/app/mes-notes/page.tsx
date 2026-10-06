@@ -154,7 +154,7 @@ function genererHtml(notes: NoteEnrichie[]): string {
     .join("");
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Mes notes — SauveMonBulletin</title><style>
     body{font-family:Arial,sans-serif;margin:24px;color:#1f2937;max-width:800px}
-    h1{color:#1d60f1}
+    h1{color:#16324F}
     h2{margin-top:28px;border-bottom:2px solid #e2e8f0;padding-bottom:6px}
     .note{border-left:3px solid #93c5fd;background:#f8fafc;padding:8px 14px;margin:12px 0;page-break-inside:avoid}
     .note h3{margin:0 0 4px;font-size:15px;color:#334155}

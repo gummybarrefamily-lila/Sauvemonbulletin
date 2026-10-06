@@ -5,26 +5,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Encre bleue (600 = couleur principale).
+        // Marine du brand book (600 = couleur principale, boutons, liens).
         brand: {
-          50: "#eef1fb",
-          100: "#dde3f6",
-          200: "#bcc8ee",
-          300: "#8fa2e0",
-          400: "#5d78cf",
-          500: "#3a57bd",
-          600: "#2440a8",
-          700: "#1d3590",
-          800: "#182b74",
-          900: "#14244f",
+          50: "#eef2f7",
+          100: "#dde5ee",
+          200: "#bccbdc",
+          300: "#8fa6c0",
+          400: "#5f7d9f",
+          500: "#3a5a7e",
+          600: "#16324F",
+          700: "#122a43",
+          800: "#0e2238",
+          900: "#0b1c2f",
         },
-        // Stylo rouge / marge du cahier.
-        marge: {
-          50: "#fdeeed",
-          100: "#fbd9d7",
-          DEFAULT: "#e2403a",
-          600: "#e2403a",
-          700: "#c22f29",
+        // Citron : le surligneur numérique (emphase, réussite). Jamais en texte sur fond clair.
+        citron: {
+          50: "#f7fde4",
+          100: "#eef9c8",
+          DEFAULT: "#C8F03C",
+          600: "#C8F03C",
+          700: "#a8d11f",
         },
       },
       fontFamily: {

@@ -69,7 +69,7 @@ function genererHtmlImprimable(cards: MemoCard[], titre: string): string {
     titre
   )}</title><style>
     body{font-family:Arial,sans-serif;margin:20px;color:#1f2937}
-    h1{color:#1d60f1}
+    h1{color:#16324F}
     .grille{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .carte{display:flex;gap:6px;page-break-inside:avoid}
     .face{flex:1;border:2px solid #cbd5e1;border-radius:12px;padding:12px;min-height:90px}
