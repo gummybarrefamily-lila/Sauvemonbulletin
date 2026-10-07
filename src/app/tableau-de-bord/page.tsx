@@ -6,6 +6,7 @@ import { statsUtilisateur } from "@/lib/progression";
 import { prisma } from "@/lib/prisma";
 import { matiereInfo } from "@content/curriculum";
 import type { MatiereId } from "@content/types";
+import { BAROMETRE, niveauReussite } from "@/lib/barometre";
 
 export const dynamic = "force-dynamic";
 
@@ -126,13 +127,13 @@ export default async function TableauDeBord() {
                     <div className="mt-3">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-slate-500">Réussite moyenne</span>
-                        <span className={`font-bold ${s.scoreMoyen >= 60 ? "text-brand-700" : "text-red-500"}`}>
+                        <span className={`font-bold ${BAROMETRE[niveauReussite(s.scoreMoyen)].texte}`}>
                           {s.scoreMoyen}%
                         </span>
                       </div>
                       <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className={`h-full ${s.scoreMoyen >= 60 ? "bg-brand-500" : "bg-amber-500"}`}
+                          className={`h-full ${BAROMETRE[niveauReussite(s.scoreMoyen)].barre}`}
                           style={{ width: `${s.scoreMoyen}%` }}
                         />
                       </div>

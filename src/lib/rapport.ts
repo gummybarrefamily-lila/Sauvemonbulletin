@@ -6,6 +6,7 @@ import { DICTEES, type Dictee } from "@content/dictees";
 import { donneesRecompenses, ciblesDefis, defiReussi, type ProgresDefi, type CiblesDefi, type Streaks } from "./recompenses";
 import { PROPOSITIONS_HEBDO } from "@content/propositions-hebdo";
 import type { MatiereId, Niveau } from "@content/types";
+import { BAROMETRE, niveauReussite } from "@/lib/barometre";
 
 /**
  * Numéro de semaine de l'année scolaire (1 = première semaine de septembre).
@@ -107,7 +108,7 @@ function genererHtmlRapport(
         <td style="padding:8px 12px;border-bottom:1px solid #eee;">${nom}</td>
         <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">${s.activites}</td>
         <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;font-weight:bold;color:${
-          s.scoreMoyen >= 60 ? "#154bde" : "#dc2626"
+          BAROMETRE[niveauReussite(s.scoreMoyen)].hex
         };">${s.scoreMoyen}%</td>
       </tr>`;
     })
