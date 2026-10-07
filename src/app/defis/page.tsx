@@ -10,7 +10,6 @@ import { prisma } from "@/lib/prisma";
 import { donneesRecompenses, ciblesDefis, defiReussi, historiqueDefis } from "@/lib/recompenses";
 import { PROGRAMME, matiereInfo, niveauLabel } from "@content/curriculum";
 import type { MatiereId, Niveau } from "@content/types";
-import { Coche } from "@/components/Coche";
 
 export const metadata = { title: "Mes défis — SauveMonBulletin" };
 export const dynamic = "force-dynamic";
@@ -37,7 +36,7 @@ function CarteStreak({ emoji, titre, valeur, unite, actif, aFaire }: { emoji: st
         <span className="ml-1 text-base font-semibold text-slate-400">{unite}</span>
       </p>
       <p className="text-sm font-semibold text-slate-600">{titre}</p>
-      <p className={`mt-2 text-xs ${actif ? "text-brand-700" : "text-amber-600"}`}>{actif ? <><Coche /> Validé</> : `⏳ ${aFaire}`}</p>
+      <p className={`mt-2 text-xs ${actif ? "text-green-600" : "text-amber-600"}`}>{actif ? "✅ Validé" : `⏳ ${aFaire}`}</p>
     </div>
   );
 }
@@ -154,7 +153,7 @@ export default async function PageDefis() {
           <CarteStreak emoji="📅" titre="Fondamentaux" valeur={s.fondamentaux} unite="sem" actif={s.fondamentauxFaitsCetteSemaine} aFaire="À faire cette semaine !" />
         </div>
         <p className="mt-2 text-center text-xs text-slate-400">
-          <Coche /> Une activité n&apos;est validée qu&apos;à partir de 70 % de réussite — en dessous, refais-la pour la valider.
+          ✅ Une activité n&apos;est validée qu&apos;à partir de 70 % de réussite — en dessous, refais-la pour la valider.
         </p>
         <NotificationsPush />
 

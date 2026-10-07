@@ -125,7 +125,7 @@ function genererHtmlRapport(
         <p>Bonjour,</p>
         <p>Voici le résumé de la semaine de travail de <strong>${prenom}</strong> sur SauveMonBulletin.</p>
         <p style="background:#eef6ff;border-radius:10px;padding:12px 16px;">
-          <span style="display:inline-block;background:#1d60f1;color:#ffffff;border-radius:4px;padding:0 5px;font-weight:900;">✓</span> <strong>${nbActivites}</strong> activité${nbActivites > 1 ? "s" : ""} réalisée${nbActivites > 1 ? "s" : ""} cette semaine.
+          ✅ <strong>${nbActivites}</strong> activité${nbActivites > 1 ? "s" : ""} réalisée${nbActivites > 1 ? "s" : ""} cette semaine.
           ${revisionsEnAttente > 0 ? `<br/>📌 <strong>${revisionsEnAttente}</strong> révision${revisionsEnAttente > 1 ? "s" : ""} personnalisée${revisionsEnAttente > 1 ? "s" : ""} à faire.` : ""}
         </p>
         ${
@@ -156,7 +156,7 @@ function genererHtmlRapport(
               .map(
                 ([label, fait, cible]) =>
                   `<tr><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;">${label}</td><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;text-align:center;font-weight:bold;color:${
-                    Number(fait) >= Number(cible) ? "#154bde" : "#6b7280"
+                    Number(fait) >= Number(cible) ? "#16a34a" : "#6b7280"
                   };">${fait} / ${cible}</td></tr>`
               )
               .join("");

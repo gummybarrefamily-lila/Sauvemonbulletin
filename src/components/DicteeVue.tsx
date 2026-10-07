@@ -6,7 +6,6 @@ import { DICTEES } from "@content/dictees";
 import { diffDictee } from "@/lib/dictee-diff";
 import { InvitationCompte } from "./InvitationCompte";
 import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
-import { Coche } from "@/components/Coche";
 
 /** Dictée hebdomadaire : lue par l'ordinateur, l'élève tape, un correcteur repère les fautes. */
 export function DicteeVue() {
@@ -149,7 +148,7 @@ export function DicteeVue() {
           </div>
 
           {invite && idx === 0 && (
-            <p className="rounded-xl bg-brand-50 px-4 py-2 text-sm text-brand-800">
+            <p className="rounded-xl bg-green-50 px-4 py-2 text-sm text-green-800">
               🎁 Dictée d&apos;essai gratuite — crée un compte gratuit pour débloquer les 36 semaines.
             </p>
           )}
@@ -197,7 +196,7 @@ export function DicteeVue() {
             <div className="mt-3 flex gap-2">
               {!corrige ? (
                 <button onClick={corriger} disabled={!saisie.trim()} className="btn-primary disabled:opacity-40">
-                  <Coche /> Corriger
+                  ✅ Corriger
                 </button>
               ) : (
                 <button
@@ -220,7 +219,7 @@ export function DicteeVue() {
                 <h3 className="font-bold text-slate-900">Correction</h3>
                 <span
                   className={`rounded-full px-3 py-1 text-sm font-bold ${
-                    resultat.erreurs === 0 ? "bg-brand-100 text-brand-800" : "bg-amber-100 text-amber-800"
+                    resultat.erreurs === 0 ? "bg-green-100 text-green-800" : "bg-amber-100 text-amber-800"
                   }`}
                 >
                   {resultat.erreurs === 0 ? "Sans faute ! 🎉" : `${resultat.erreurs} erreur${resultat.erreurs > 1 ? "s" : ""}`}
@@ -235,13 +234,13 @@ export function DicteeVue() {
                   ) : p.type === "faux" ? (
                     <span key={i} className="text-red-600 line-through">{p.texte} </span>
                   ) : (
-                    <span key={i} className="rounded bg-brand-100 px-1 font-semibold text-brand-800">{p.texte} </span>
+                    <span key={i} className="rounded bg-green-100 px-1 font-semibold text-green-800">{p.texte} </span>
                   )
                 )}
               </p>
               <p className="mt-2 text-xs text-slate-400">
                 <span className="text-red-600 line-through">rouge barré</span> = ce que tu as écrit en trop ou mal
-                orthographié · <span className="rounded bg-brand-100 px-1 text-brand-800">vert</span> = le mot correct attendu.
+                orthographié · <span className="rounded bg-green-100 px-1 text-green-800">vert</span> = le mot correct attendu.
               </p>
 
               <div className="mt-4 rounded-xl bg-slate-50 p-3">

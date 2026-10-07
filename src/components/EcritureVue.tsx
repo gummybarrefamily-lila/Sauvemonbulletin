@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { EXERCICES_ECRITURE } from "@content/ecriture";
 import { InvitationCompte } from "./InvitationCompte";
-import { Coche } from "@/components/Coche";
 
 interface Evaluation {
   total: number;
@@ -118,8 +117,8 @@ export function EcritureVue() {
       });
       const data = await rep.json();
       if (!rep.ok) setResultat("❌ " + (data.erreur ?? "Une erreur est survenue."));
-      else if (data.envoye) setResultat("✓ Ta version finale a été envoyée à tes parents. Bravo !");
-      else setResultat("✓ Ta rédaction est enregistrée. ⚠️ " + (data.raison ?? "Email non envoyé."));
+      else if (data.envoye) setResultat("✅ Ta version finale a été envoyée à tes parents. Bravo !");
+      else setResultat("✅ Ta rédaction est enregistrée. ⚠️ " + (data.raison ?? "Email non envoyé."));
     } catch {
       setResultat("❌ Impossible d'envoyer pour le moment. Réessaie dans un instant.");
     }
@@ -227,7 +226,7 @@ export function EcritureVue() {
 
           {/* Auto-vérification */}
           <div className="card p-6">
-            <h3 className="font-bold text-slate-900"><Coche /> Avant d&apos;envoyer, vérifie :</h3>
+            <h3 className="font-bold text-slate-900">✅ Avant d&apos;envoyer, vérifie :</h3>
             <div className="mt-3 space-y-2">
               {exercice.criteres.map((c, i) => (
                 <label key={i} className="flex cursor-pointer items-start gap-2.5 text-sm text-slate-700">
@@ -294,7 +293,7 @@ export function EcritureVue() {
                         <span className="text-sm font-semibold text-slate-700">{c.nom}</span>
                         <span
                           className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold ${
-                            c.note >= c.max * 0.7 ? "bg-brand-100 text-brand-700" : "bg-amber-100 text-amber-700"
+                            c.note >= c.max * 0.7 ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
                           }`}
                         >
                           {c.note} / {c.max}
@@ -302,7 +301,7 @@ export function EcritureVue() {
                       </div>
                       <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className={`h-full ${c.note >= c.max * 0.7 ? "bg-brand-500" : "bg-amber-500"}`}
+                          className={`h-full ${c.note >= c.max * 0.7 ? "bg-green-500" : "bg-amber-500"}`}
                           style={{ width: `${Math.round((c.note / c.max) * 100)}%` }}
                         />
                       </div>
@@ -312,9 +311,9 @@ export function EcritureVue() {
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-brand-200 bg-brand-50 p-4">
-                    <p className="text-sm font-bold text-brand-900">🌟 Tes points forts</p>
-                    <ul className="mt-2 space-y-1 text-sm text-brand-900">
+                  <div className="rounded-2xl border border-green-200 bg-green-50 p-4">
+                    <p className="text-sm font-bold text-green-900">🌟 Tes points forts</p>
+                    <ul className="mt-2 space-y-1 text-sm text-green-900">
                       {evaluation.pointsForts.map((p, i) => (
                         <li key={i}>• {p}</li>
                       ))}

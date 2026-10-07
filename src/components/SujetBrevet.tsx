@@ -48,7 +48,7 @@ export function SujetBrevet({ parties }: { parties: Partie[] }) {
                 {corriges[i] ? "Cacher le corrigé" : "Voir le corrigé"}
               </button>
               {corriges[i] && (
-                <div className="mt-3 space-y-1.5 rounded-xl bg-brand-50 p-4 text-sm text-brand-900">
+                <div className="mt-3 space-y-1.5 rounded-xl bg-green-50 p-4 text-sm text-green-900">
                   <p className="font-bold">Corrigé :</p>
                   {p.corrige.map((ligne, k) => (
                     <p key={k} className={ligne.trim() === "" ? "h-2" : ""}>

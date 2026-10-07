@@ -37,7 +37,7 @@ export default async function PageComprehension() {
                 <p className="mt-1 text-sm text-slate-500">{f.accroche}</p>
                 <p className="mt-1 text-xs text-slate-400">{f.series.length} séries d&apos;exercices</p>
                 {!connecte && f.slug === gratuite && (
-                  <span className="mt-1 inline-block rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-bold text-brand-700">
+                  <span className="mt-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
                     Essai gratuit
                   </span>
                 )}

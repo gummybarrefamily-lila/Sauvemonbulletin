@@ -137,7 +137,7 @@ export function BilanVue() {
                         const choisi = val === ci;
                         const bon = ci === q.bonneReponse;
                         let cls = "border-slate-200 hover:border-brand-300";
-                        if (termine && bon) cls = "border-brand-400 bg-brand-50";
+                        if (termine && bon) cls = "border-green-400 bg-green-50";
                         else if (termine && choisi && !bon) cls = "border-red-400 bg-red-50";
                         else if (choisi) cls = "border-brand-500 bg-brand-50";
                         return (
@@ -210,7 +210,7 @@ function OuverteAuto({
             <div className="mt-1 rounded-lg bg-amber-50 p-2 text-sm text-amber-900">
               {reponse}
               <div className="mt-1 flex gap-2">
-                <button onClick={() => onJuger(true)} className="rounded bg-brand-600 px-2 py-0.5 text-xs font-semibold text-white">
+                <button onClick={() => onJuger(true)} className="rounded bg-green-600 px-2 py-0.5 text-xs font-semibold text-white">
                   J'avais juste
                 </button>
                 <button onClick={() => onJuger(false)} className="rounded border border-red-300 px-2 py-0.5 text-xs font-semibold text-red-700">
