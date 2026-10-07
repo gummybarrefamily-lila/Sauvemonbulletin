@@ -43,7 +43,7 @@ export default async function PageBrevet() {
                         </h3>
                         <p className="text-sm text-slate-500">⏱️ {b.dureeMinutes} min · {b.parties.length} parties</p>
                         {!connecte && b.slug === gratuit && (
-                          <span className="mt-1 inline-block rounded-full bg-citron-100 px-2 py-0.5 text-[11px] font-bold text-brand-700">
+                          <span className="mt-1 inline-block rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-bold text-brand-700">
                             Essai gratuit
                           </span>
                         )}

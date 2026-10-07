@@ -76,7 +76,7 @@ export default async function PageMatiere({ searchParams }: { searchParams: { m?
                       connecte || (gratuit && gratuit.niveau === niv.id && gratuit.slug === c.slug) ? (
                         <span className="flex items-center gap-2">
                           {!connecte && (
-                            <span className="rounded-full bg-citron-100 px-2 py-0.5 text-[11px] font-bold text-brand-700">
+                            <span className="rounded-full bg-brand-100 px-2 py-0.5 text-[11px] font-bold text-brand-700">
                               Essai gratuit
                             </span>
                           )}

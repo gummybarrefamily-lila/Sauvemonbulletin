@@ -39,7 +39,7 @@ function CarteDefi({ defi }: { defi: DefiAffiche }) {
   const titre = defi.periode === "semaine" ? "🗓️ Défi de la semaine" : "📆 Défi du mois";
 
   return (
-    <div className={`card p-5 ${defi.reussi ? "border-citron-300 bg-citron-50" : ""}`}>
+    <div className={`card p-5 ${defi.reussi ? "border-brand-300 bg-brand-50" : ""}`}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-lg font-bold text-slate-900">
           {titre} {defi.reussi && "— 🎉 réussi !"}
@@ -86,7 +86,7 @@ function CarteDefi({ defi }: { defi: DefiAffiche }) {
               {!edition && (
                 <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100">
                   <div
-                    className={`h-full rounded-full ${fait >= cible ? "bg-citron" : "bg-brand-500"}`}
+                    className={`h-full rounded-full ${fait >= cible ? "bg-brand-600" : "bg-brand-300"}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

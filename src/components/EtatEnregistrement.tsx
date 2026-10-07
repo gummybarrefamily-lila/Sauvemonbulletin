@@ -15,7 +15,7 @@ export function EtatEnregistrement({ etat, onRenvoyer }: { etat: EtatSauvegarde;
   }
   if (etat === "ok") {
     return (
-      <p className="mt-3 rounded-xl border border-citron-200 bg-citron-50 px-4 py-2.5 text-sm text-brand-800">
+      <p className="mt-3 rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm text-brand-800">
         <Coche /> Résultat enregistré ! Il compte pour <strong>Mes défis</strong> à partir de 70 % de réussite.
       </p>
     );

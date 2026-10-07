@@ -45,7 +45,7 @@ function Graphique({ semaines }: { semaines: PeriodeAffiche[] }) {
           return (
             <div key={s.cle} className="group relative flex h-full flex-1 flex-col justify-end" title={`${labelSemaine(s.cle)} : ${t} activité${t > 1 ? "s" : ""}`}>
               <div
-                className={`w-full rounded-t-md ${courante ? "bg-brand-600" : s.reussi ? "bg-citron" : "bg-slate-200"}`}
+                className={`w-full rounded-t-md ${courante ? "bg-brand-600" : s.reussi ? "bg-brand-300" : "bg-slate-200"}`}
                 style={{ height: `${Math.max(4, Math.round((t / max) * 100))}%` }}
               />
               <span className="pointer-events-none absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-bold text-slate-500 opacity-0 group-hover:opacity-100">
@@ -60,7 +60,7 @@ function Graphique({ semaines }: { semaines: PeriodeAffiche[] }) {
         <span className="font-semibold text-brand-600">Cette semaine</span>
       </div>
       <p className="mt-2 text-[11px] text-slate-400">
-        <span className="mr-3 inline-flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-sm bg-citron" /> défi de la semaine réussi</span>
+        <span className="mr-3 inline-flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-sm bg-brand-300" /> défi de la semaine réussi</span>
         <span className="inline-flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-sm bg-brand-600" /> semaine en cours</span>
       </p>
     </div>

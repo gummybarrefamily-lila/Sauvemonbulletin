@@ -4,7 +4,7 @@
  * - Pages : réseau d'abord, avec repli sur le cache si hors ligne.
  * - Les appels /api ne sont jamais interceptés (connexion, scores, tuteur…).
  */
-const CACHE = "smb-v4"; // à incrémenter quand des fichiers non versionnés changent (icônes…)
+const CACHE = "smb-v5"; // à incrémenter quand des fichiers non versionnés changent (icônes…)
 const PRECACHE = ["/", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (event) => {

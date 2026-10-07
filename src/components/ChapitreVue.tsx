@@ -159,7 +159,7 @@ export function ChapitreVue({ chapitre }: { chapitre: Chapitre }) {
           {chapitre.examens.map((ex, i) => (
             <Examen key={i} examen={ex} onTermine={(s, m) => enregistrer("examen", s, m)} />
           ))}
-          <div className="rounded-2xl border border-citron-200 bg-citron-50 p-5">
+          <div className="rounded-2xl border border-brand-200 bg-brand-50 p-5">
             <h3 className="font-bold text-brand-900">📌 Synthèse des révisions</h3>
             <ul className="mt-2 space-y-1 text-sm text-brand-900">
               {chapitre.syntheseRevisions.map((s, i) => (

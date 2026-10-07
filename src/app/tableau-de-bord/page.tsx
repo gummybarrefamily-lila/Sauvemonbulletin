@@ -132,7 +132,7 @@ export default async function TableauDeBord() {
                       </div>
                       <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className={`h-full ${s.scoreMoyen >= 60 ? "bg-citron" : "bg-amber-500"}`}
+                          className={`h-full ${s.scoreMoyen >= 60 ? "bg-brand-500" : "bg-amber-500"}`}
                           style={{ width: `${s.scoreMoyen}%` }}
                         />
                       </div>

@@ -107,7 +107,7 @@ function genererHtmlRapport(
         <td style="padding:8px 12px;border-bottom:1px solid #eee;">${nom}</td>
         <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">${s.activites}</td>
         <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;font-weight:bold;color:${
-          s.scoreMoyen >= 60 ? "#16324F" : "#dc2626"
+          s.scoreMoyen >= 60 ? "#154bde" : "#dc2626"
         };">${s.scoreMoyen}%</td>
       </tr>`;
     })
@@ -116,7 +116,7 @@ function genererHtmlRapport(
   return `<!doctype html>
   <html lang="fr"><body style="margin:0;background:#f4f6fb;font-family:Arial,Helvetica,sans-serif;color:#1f2937;">
     <div style="max-width:600px;margin:0 auto;padding:24px;">
-      <div style="background:#16324F;border-radius:16px 16px 0 0;padding:24px;color:white;">
+      <div style="background:#1d60f1;border-radius:16px 16px 0 0;padding:24px;color:white;">
         <h1 style="margin:0;font-size:22px;">📊 SauveMonBulletin</h1>
         <p style="margin:6px 0 0;opacity:.9;">Compte rendu hebdomadaire de ${prenom}</p>
       </div>
@@ -124,7 +124,7 @@ function genererHtmlRapport(
         <p>Bonjour,</p>
         <p>Voici le résumé de la semaine de travail de <strong>${prenom}</strong> sur SauveMonBulletin.</p>
         <p style="background:#eef6ff;border-radius:10px;padding:12px 16px;">
-          <span style="display:inline-block;background:#C8F03C;color:#16324F;border-radius:4px;padding:0 5px;font-weight:900;">✓</span> <strong>${nbActivites}</strong> activité${nbActivites > 1 ? "s" : ""} réalisée${nbActivites > 1 ? "s" : ""} cette semaine.
+          <span style="display:inline-block;background:#1d60f1;color:#ffffff;border-radius:4px;padding:0 5px;font-weight:900;">✓</span> <strong>${nbActivites}</strong> activité${nbActivites > 1 ? "s" : ""} réalisée${nbActivites > 1 ? "s" : ""} cette semaine.
           ${revisionsEnAttente > 0 ? `<br/>📌 <strong>${revisionsEnAttente}</strong> révision${revisionsEnAttente > 1 ? "s" : ""} personnalisée${revisionsEnAttente > 1 ? "s" : ""} à faire.` : ""}
         </p>
         ${
@@ -155,7 +155,7 @@ function genererHtmlRapport(
               .map(
                 ([label, fait, cible]) =>
                   `<tr><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;">${label}</td><td style="padding:4px 12px;border-bottom:1px solid #f1f5f9;text-align:center;font-weight:bold;color:${
-                    Number(fait) >= Number(cible) ? "#16324F" : "#6b7280"
+                    Number(fait) >= Number(cible) ? "#154bde" : "#6b7280"
                   };">${fait} / ${cible}</td></tr>`
               )
               .join("");

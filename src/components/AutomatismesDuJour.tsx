@@ -125,7 +125,7 @@ export function AutomatismesDuJour() {
                   onChange={(e) => setReponses({ ...reponses, [i]: e.target.value })}
                   disabled={corrige}
                   className={`w-28 rounded-lg border px-3 py-1.5 text-center text-base focus:outline-none ${
-                    bon ? "border-citron-400 bg-citron-50" : faux ? "border-red-400 bg-red-50" : "border-slate-300 focus:border-brand-500"
+                    bon ? "border-brand-400 bg-brand-50" : faux ? "border-red-400 bg-red-50" : "border-slate-300 focus:border-brand-500"
                   }`}
                   placeholder="?"
                 />

@@ -5,30 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Marine du brand book (600 = couleur principale, boutons, liens).
+        // Bleu d'origine du site (600 = couleur principale, boutons, liens).
         brand: {
-          50: "#eef2f7",
-          100: "#dde5ee",
-          200: "#bccbdc",
-          300: "#8fa6c0",
-          400: "#5f7d9f",
-          500: "#3a5a7e",
-          600: "#16324F",
-          700: "#122a43",
-          800: "#0e2238",
-          900: "#0b1c2f",
-        },
-        // Citron : le surligneur numérique (emphase, réussite). Jamais en texte sur fond clair.
-        citron: {
-          50: "#f7fde4",
-          100: "#eef9c8",
-          200: "#e2f59e",
-          300: "#d6f270",
-          400: "#C8F03C",
-          500: "#C8F03C",
-          DEFAULT: "#C8F03C",
-          600: "#C8F03C",
-          700: "#a8d11f",
+          50: "#eef6ff",
+          100: "#d9eaff",
+          200: "#bcdbff",
+          300: "#8ec5ff",
+          400: "#59a3ff",
+          500: "#3380fc",
+          600: "#1d60f1",
+          700: "#154bde",
+          800: "#183eb4",
+          900: "#19398d",
         },
       },
       fontFamily: {

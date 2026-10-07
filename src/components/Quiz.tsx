@@ -5,7 +5,7 @@ import type { Question, Difficulte } from "@content/types";
 import { Coche } from "@/components/Coche";
 
 const COULEUR_DIFF: Record<Difficulte, string> = {
-  facile: "bg-citron-100 text-brand-800",
+  facile: "bg-brand-100 text-brand-800",
   moyen: "bg-amber-100 text-amber-800",
   avance: "bg-red-100 text-red-800",
 };
@@ -99,7 +99,7 @@ function QuizInterne({
                 const choisi = reponses[i] === j;
                 const estBon = j === q.bonneReponse;
                 let cls = "border-slate-200 hover:border-brand-300";
-                if (termine && estBon) cls = "border-citron-400 bg-citron-50";
+                if (termine && estBon) cls = "border-brand-400 bg-brand-50";
                 else if (termine && choisi && !estBon) cls = "border-red-400 bg-red-50";
                 else if (choisi) cls = "border-brand-500 bg-brand-50";
                 return (
@@ -199,7 +199,7 @@ function OuverteBlock({
         <div className="mt-2 rounded-xl bg-amber-50 p-3 text-sm text-amber-900">
           {q.reponse}
           <div className="mt-2 flex gap-2">
-            <button onClick={() => onJuger(true)} className={`rounded-lg px-3 py-1 text-xs font-semibold ${juste ? "bg-citron text-brand-900" : "bg-white text-brand-700 border border-citron-300"}`}>
+            <button onClick={() => onJuger(true)} className={`rounded-lg px-3 py-1 text-xs font-semibold ${juste ? "bg-brand-600 text-white" : "bg-white text-brand-700 border border-brand-300"}`}>
               J'avais juste <Coche />
             </button>
             <button onClick={() => onJuger(false)} className="rounded-lg border border-red-300 bg-white px-3 py-1 text-xs font-semibold text-red-700">

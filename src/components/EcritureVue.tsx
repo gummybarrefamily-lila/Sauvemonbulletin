@@ -294,7 +294,7 @@ export function EcritureVue() {
                         <span className="text-sm font-semibold text-slate-700">{c.nom}</span>
                         <span
                           className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-bold ${
-                            c.note >= c.max * 0.7 ? "bg-citron-100 text-brand-700" : "bg-amber-100 text-amber-700"
+                            c.note >= c.max * 0.7 ? "bg-brand-100 text-brand-700" : "bg-amber-100 text-amber-700"
                           }`}
                         >
                           {c.note} / {c.max}
@@ -302,7 +302,7 @@ export function EcritureVue() {
                       </div>
                       <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-slate-100">
                         <div
-                          className={`h-full ${c.note >= c.max * 0.7 ? "bg-citron" : "bg-amber-500"}`}
+                          className={`h-full ${c.note >= c.max * 0.7 ? "bg-brand-500" : "bg-amber-500"}`}
                           style={{ width: `${Math.round((c.note / c.max) * 100)}%` }}
                         />
                       </div>
@@ -312,7 +312,7 @@ export function EcritureVue() {
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-citron-200 bg-citron-50 p-4">
+                  <div className="rounded-2xl border border-brand-200 bg-brand-50 p-4">
                     <p className="text-sm font-bold text-brand-900">🌟 Tes points forts</p>
                     <ul className="mt-2 space-y-1 text-sm text-brand-900">
                       {evaluation.pointsForts.map((p, i) => (
