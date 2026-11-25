@@ -13,7 +13,7 @@ export default function PageAutomatismes() {
           <span className="text-4xl">⚡</span>
           <div>
             <h1 className="text-3xl font-bold text-slate-900">Automatismes du jour</h1>
-            <p className="text-slate-500">10 calculs mentaux quotidiens. Nouvelle série chaque matin à 8 h.</p>
+            <p className="text-slate-500">10 calculs mentaux quotidiens. Nouvelle série chaque jour à minuit.</p>
           </div>
         </div>
         <AutomatismesDuJour />

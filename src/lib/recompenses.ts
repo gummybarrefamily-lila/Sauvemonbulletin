@@ -56,20 +56,23 @@ export const DEFI_MOIS_DEFAUT: CiblesDefi = {
   recompense: "",
 };
 
+/** Date du jour (AAAA-MM-JJ) à l'heure de Paris : la journée bascule à minuit en France. */
+const FORMAT_PARIS = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" });
+
 function cleJour(d: Date): string {
-  return d.toISOString().slice(0, 10);
+  return FORMAT_PARIS.format(d);
 }
 
-/** Clé de semaine = lundi de la semaine (AAAA-MM-JJ). */
+/** Clé de semaine = lundi de la semaine (AAAA-MM-JJ), à l'heure de Paris. */
 function cleSemaine(d: Date): string {
-  const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const x = new Date(`${cleJour(d)}T12:00:00Z`);
   const jour = (x.getUTCDay() + 6) % 7; // 0 = lundi
   x.setUTCDate(x.getUTCDate() - jour);
   return x.toISOString().slice(0, 10);
 }
 
 function cleMois(d: Date): string {
-  return d.toISOString().slice(0, 7); // AAAA-MM
+  return cleJour(d).slice(0, 7); // AAAA-MM
 }
 
 function jourPrecedent(cle: string): string {

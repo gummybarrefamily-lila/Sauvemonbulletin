@@ -7,13 +7,12 @@ import { EtatEnregistrement, type EtatSauvegarde } from "./EtatEnregistrement";
 import type { Niveau } from "@content/types";
 
 /**
- * Jour « effectif » de la série : la nouvelle série arrive à 8 h du matin
- * (heure de l'appareil). Avant 8 h, on reste sur la série de la veille.
+ * Jour de la série : la nouvelle série arrive à minuit, heure de Paris —
+ * le même jour que celui utilisé pour compter les défis (src/lib/recompenses.ts).
  */
+const FORMAT_PARIS = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" });
 function jourEffectif(): string {
-  const d = new Date(Date.now() - 8 * 3600 * 1000);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  return FORMAT_PARIS.format(new Date());
 }
 
 export function AutomatismesDuJour() {
@@ -38,7 +37,7 @@ export function AutomatismesDuJour() {
   const [corrige, setCorrige] = useState(false);
   const [sauvegarde, setSauvegarde] = useState<EtatSauvegarde>(null);
 
-  // Nouvelle journée (bascule de 8 h) : on repart sur une grille vierge.
+  // Nouvelle journée (bascule à minuit) : on repart sur une grille vierge.
   useEffect(() => {
     setReponses({});
     setCorrige(false);
